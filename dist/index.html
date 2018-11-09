@@ -12,7 +12,7 @@
           .sticky {
             position: -webkit-sticky;
             position: sticky;
-            top: 0;
+            top: 10;
           }
 
           h1 {
@@ -71,82 +71,29 @@
         </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container offset-1 col-10">
       <div class="row">
         <div class="col-sm-12 mt-5 mb-5">
           <h1>📸 Selfie Casualties ⚰️</h1>
         </div>
       </div>
 
-
-
-
-
-
-      <div class="row mt-5 mb-5">
-        <div class="col-sm-12">
-            <h1>Selfie Disasters Through the Years</h1>
-            <h2>Blah blah blah</h2>
-            <p>Please work.</p>
-        </div>
-        <div class="col-lg-8 sticky">
-          <div id="chart-1"></div>
-        </div>
-        <div class="col-lg-4">
-          <div class="step" id="blank">
-            <p><strong>Blank</strong></p>
-         </div>
-         <div class="step" id="eleven">
-            <p>2011</p>
-          </div>
-
-          <div class="step" id="thirteen">
-            <p>2013</p>
-          </div>
-
-          <div class="step" id="fourteen">
-            <p>2014</p>
-          </div>
-
-          <div class="step" id="fifteen">
-              <p>2015</p>
-          </div>
-
-          <div class="step" id="sixteen">
-              <p>2016</p>
-          </div>
-
-          <div class="step" id="seventeen">
-              <p>2017</p>
-          </div>
-
-          <div class="step" id="eighteen">
-            <p>2018</p>
-        </div>
-        </div>
-      </div>
-
-
-
-
-<!-- 
-
       <div class="row mt-5">
-        <div class="col-lg-12">
-          <h1>C H A R T * T W O</h1>
-        </div>
-        <div class="col-lg-6 sticky order-lg-2">
+          <div class="col-sm-12">
+              <h1>Mouse over the dots, yo</h1></div>
+        <div class="col-lg-6">
           <div id="chart-2"></div>
         </div>
-        <div class="col-lg-6">
-          <div class='step' id='requirements-2'>
-            <h2>Does cold weather slow the housing market?</h2>
-            <p>Make this graphic responsive, allowing it to <strong>fill the height and width of its container</strong>.</p>
-            <p><small>Let's be honest: I don't really know what this data is anymore, but that isn't going to stop us from using it.</small></p>
-          <p>It should look like this when you're done.</p>
-          </div>
-          <div class='step' id='lines'>
-            <p>In this step, you'll draw all of the lines.</p>
+        <div class="offset-1 col-lg-4">
+            <div id="info" style="display: none; margin-top: 200px">
+                <p>What happened!? <i id="description"></i><br>
+                </p>
+              </div>
+          <!-- <div class='step' id='requirements-2'>
+          <p>Please work.</p>
+          </div> -->
+          <!-- <div class='step' id='lines'>
+            <p>Falls were the most common.</p>
           </div>
           <div class='step' id='highlight-us'>
             <p>Give the "U.S." line a highlight color, bold the text, and and grey out every other line/bubble/text.</p>
@@ -156,57 +103,70 @@
           </div>
           <div class='step' id='winter'>
             <p>Finally, draw the rectangle that represents winter.</p>
-          </div>
+          </div> -->
         </div>
       </div>
+
+      <div class="row mt-5 mb-5">
+          <div class="col-sm-12">
+              <h1>Selfie Disasters Through the Years</h1>
+              <h2>Blah blah blah</h2>
+              <p>Please work.</p>
+          </div>
+          <div class="col-lg-8 sticky">
+            <div id="chart-1"></div>
+          </div>
+          <div class="col-lg-4">
+            <div class="step" id="blank">
+              <p><strong>Blank</strong></p>
+           </div>
+           <div class="step" id="eleven">
+              <p>2011</p>
+            </div>
+  
+            <div class="step" id="thirteen">
+              <p>2013</p>
+            </div>
+  
+            <div class="step" id="fourteen">
+              <p>2014</p>
+            </div>
+  
+            <div class="step" id="fifteen">
+                <p>2015</p>
+            </div>
+  
+            <div class="step" id="sixteen">
+                <p>2016</p>
+            </div>
+  
+            <div class="step" id="seventeen">
+                <p>2017</p>
+            </div>
+  
+            <div class="step" id="eighteen">
+              <p>2018</p>
+          </div>
+          </div>
+        </div>
 
 
 
 
       <div class="row mt-5">
         <div class="col-sm-12">
-          <h1>C H A R T * T H R E E</h1>
-          <p>Remember radial diagrams? They're back!</p>
+          <h1>CHOROPLETH TK</h1>
         </div>
-        <div class="col-lg-8 sticky order-lg-2">
+        <div class="col-lg-12 sticky order-lg-2">
           <div id="chart-3"></div>
         </div>
         <div class="col-lg-4">
-          <div class='step'>
-            <h2>It's getting cold and I don't like it.</h2>
-            <p>Requirements:</p>
-            <ul>
-              <li>Should display the city listed</li>
-              <li>When you're resizing, it should always be <strong>square</strong>. It should be the smallest between the height and width.</li>
-              <li>The bands should move with each city</li>
-              <li>The colors should change based on the <strong>mean high temperature</strong> of each city</li>
-              <li>As it scroll the transitions should be smooth</li>
-              <li>The background of the city name IN THE TEXT should match the color of the city circle (you can use the <code>colored-text</code> class to give the text some nice padding)</li>
-            </ul>
-          <p>It should look like when you're done.</p>
-          </div>
-          <div class='step' id='nyc'>
-            <p>Right now you're looking at <span class='colored-text label-NYC'>NYC</span>.</p>
-          </div>
-          <div class='step' id='beijing'>
-            <p><span class='colored-text label-Beijing'>Beijing</span> is similar to <span class='colored-text label-NYC'>NYC</span>, but a little colder in the winters.</p>
-          </div>
-          <div class='step' id='stockholm'>
-            <p>If we'd like to bundle up in coats and scarves, though, <span class='colored-text label-Stockholm'>Stockholm</span> definitely has Beijing beat!</p>
-          </div>
-          <div class='step' id='lima'>
-            <p>If you'd like to stay warm in those coldest months, it might be worth a trip across the equator to <span class='colored-text label-Lima'>Lima</span>.</p>
-          </div>
-          <div class='step' id='tucson'>
-            <p>Too much of a trek? <span class='colored-text label-Tucson'>Tucson, Arizona</span>, isn't that bad most of the year, as long as you don't mind the temperature dropping at night.</p>
-          </div>
-        </div>
       </div>
 
 
 
 
-
+<!-- 
 
 
       <div class="row mt-5">
@@ -243,11 +203,11 @@
 
     </div>
 
-    <script src="/01-chart.0ede2b9f.js"></script>
-    <!-- <script src="02-chart.js"></script>
-    <script src="03-chart.js"></script>
-    <script src="04-chart.js"></script> -->
-    <script src="/scrollytelling.cab071ec.js"></script>
+    <script src="/01-chart.07db4483.js"></script>
+    <script src="/02-chart.64192ce2.js"></script>
+    <script src="/03-chart.c2364e32.js"></script>
+    <!-- <script src="04-chart.js"></script> -->
+    <script src="/scrollytelling.b8e68415.js"></script>
 
-   </body>
+   </div></body>
 </html>

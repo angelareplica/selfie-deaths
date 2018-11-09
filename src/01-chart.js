@@ -32,94 +32,94 @@ const colorScale = d3
     '#fb8072',
     '#80b1d3',
     '#fdb462',
-    '#b3de69'
+    '#b3de69',
+    '#fccde5'
   ])
 
-d3.csv(require('./data/selfiedeaths.csv')).then(ready)
-.catch(err => console.log('Failed on', err))
+d3.csv(require('./data/selfiedeaths.csv'))
+  .then(ready)
+  .catch(err => console.log('Failed on', err))
 function ready(datapoints) {
+  var types = datapoints.map(d => d.Type)
+  yPositionScale.domain(types)
 
-var types = datapoints.map(d => d.Type)
-yPositionScale.domain(types)
+  let datapoints2011 = datapoints.filter(d => d.Year === '2011')
+  var nested2011 = d3
+    .nest()
+    .key(d => d.Type)
+    .entries(datapoints2011)
 
-let datapoints2011 = datapoints.filter(d => d.Year === '2011')
-var nested2011 = d3
-  .nest()
-  .key(d => d.Type)
-  .entries(datapoints2011)
+  let datapoints2013 = datapoints.filter(d => d.Year === '2013')
+  var nested2013 = d3
+    .nest()
+    .key(d => d.Type)
+    .entries(datapoints2013)
 
-let datapoints2013 = datapoints.filter(d => d.Year === '2013')
-var nested2013 = d3
-  .nest()
-  .key(d => d.Type)
-  .entries(datapoints2013)
+  let datapoints2014 = datapoints.filter(d => d.Year === '2014')
+  var nested2014 = d3
+    .nest()
+    .key(d => d.Type)
+    .entries(datapoints2014)
 
-let datapoints2014 = datapoints.filter(d => d.Year === '2014')
-var nested2014 = d3
-  .nest()
-  .key(d => d.Type)
-  .entries(datapoints2014)
+  let datapoints2015 = datapoints.filter(d => d.Year === '2015')
+  var nested2015 = d3
+    .nest()
+    .key(d => d.Type)
+    .entries(datapoints2015)
 
-let datapoints2015 = datapoints.filter(d => d.Year === '2015')
-var nested2015 = d3
-  .nest()
-  .key(d => d.Type)
-  .entries(datapoints2015)
-
-let datapoints2016 = datapoints.filter(d => d.Year === '2016')
-var nested2016 = d3
+  let datapoints2016 = datapoints.filter(d => d.Year === '2016')
+  var nested2016 = d3
     .nest()
     .key(d => d.Type)
     .entries(datapoints2016)
 
-let datapoints2017 = datapoints.filter(d => d.Year === '2017')
-var nested2017 = d3
+  let datapoints2017 = datapoints.filter(d => d.Year === '2017')
+  var nested2017 = d3
     .nest()
     .key(d => d.Type)
     .entries(datapoints2017)
 
-let datapoints2018 = datapoints.filter(d => d.Year === '2018')
-var nested2018 = d3
+  let datapoints2018 = datapoints.filter(d => d.Year === '2018')
+  var nested2018 = d3
     .nest()
     .key(d => d.Type)
     .entries(datapoints2018)
 
+  svg
+    .selectAll('.death-type')
+    .data(nested2016)
+    .enter()
+    .append('rect')
+    .attr('class', 'death-type')
+    .attr('y', d => yPositionScale(d.key))
+    .attr('x', 0)
+    .attr('height', yPositionScale.bandwidth())
+    .attr('width', 0)
+    // .attr('width', d => {
+    //   var casualties2016 = d.values.map(function(d) {
+    //     return d.Casualties
+    //   })
+    //   let sumCasualties2016 = d3.sum(casualties2016)
+    //   // console.log(sumCasualties2016)
+    //   return xPositionScale(sumCasualties2016)
+    // })
+    .attr('fill', d => colorScale(d.key))
+    .attr('opacity', 0.5)
 
-svg
-  .selectAll('.death-type')
-  .data(nested2016)
-  .enter()
-  .append('rect')
-  .attr('class', 'death-type')
-  .attr('y', d => yPositionScale(d.key))
-  .attr('x', 0)
-  .attr('height', yPositionScale.bandwidth())
-  .attr('width', 0)
-  // .attr('width', d => {
-  //   var casualties2016 = d.values.map(function(d) {
-  //     return d.Casualties
-  //   })
-  //   let sumCasualties2016 = d3.sum(casualties2016)
-  //   // console.log(sumCasualties2016)
-  //   return xPositionScale(sumCasualties2016)
-  // })
-  .attr('fill', d => colorScale(d.key))
-  .attr('opacity', 0.5)
+  var yAxis = d3
+    .axisLeft(yPositionScale)
+    .tickSize(0)
+    .tickFormat(d => d)
 
-var yAxis = d3
-  .axisLeft(yPositionScale)
-  .tickSize(0)
-  .tickFormat(d => d)
+  svg
+    .append('g')
+    .attr('class', 'axis y-axis')
+    .call(yAxis)
 
-svg
-  .append('g')
-  .attr('class', 'axis y-axis')
-  .call(yAxis)
-
-svg
-  .selectAll('.y-axis text')
-  .attr('fill', '#999999')
-  .attr('dx', -10)
+  svg
+    .selectAll('.y-axis text')
+    .attr('fill', '#999999')
+    .attr('dx', -10)
 
   var xAxis = d3
     .axisTop(xPositionScale)
@@ -127,140 +127,330 @@ svg
     .tickFormat(d => d)
     .tickSize(-height)
 
-svg
-  .append('g')
-  .attr('class', 'axis x-axis')
-  .call(xAxis)
-  .lower()
-
-svg.selectAll('.axis line').attr('stroke', '#ccc')
-svg.selectAll('.axis path').attr('stroke', 'none')
-
-svg.selectAll('.axis text').attr('font-size', 15)
-svg.selectAll('.x-axis text').attr('fill', '#999999')
-
-// SCROLLYTELLING! steps
-
-d3.select('#blank').on('stepin', () => {
   svg
-  .selectAll('.death-type')
-  .attr('width', 0)
-})
+    .append('g')
+    .attr('class', 'axis x-axis')
+    .call(xAxis)
+    .lower()
 
-d3.select('#eleven').on('stepin', () => {
-  svg
-  .selectAll('.death-type')
-  .data(nested2011)
-  .transition()
-  .attr('y', d => yPositionScale(d.key))
-  .attr('width', d => {
-    var casualties2011 = d.values.map(function(d) {
-      return d.Casualties
-    })
-    let sumCasualties2011 = d3.sum(casualties2011)
-    console.log('sum casualties 2011', sumCasualties2011)
-    return xPositionScale(sumCasualties2011)
+  svg.selectAll('.axis line').attr('stroke', '#ccc')
+  svg.selectAll('.axis path').attr('stroke', 'none')
+
+  svg.selectAll('.axis text').attr('font-size', 15)
+  svg.selectAll('.x-axis text').attr('fill', '#999999')
+
+  // SCROLLYTELLING! steps
+
+  d3.select('#blank').on('stepin', () => {
+    svg.selectAll('.death-type').attr('width', 0)
   })
-    .attr('fill', d => colorScale(d.key))
-})
 
-d3.select('#thirteen').on('stepin', () => {
-  svg
-  .selectAll('.death-type')
-  .data(nested2013)
-  .transition()
-  .attr('y', d => yPositionScale(d.key))
-  .attr('height', yPositionScale.bandwidth())
-  .attr('width', d => {
-    var casualties2013 = d.values.map(function(d) {
-      return d.Casualties
-    })
-    let sumCasualties2013 = d3.sum(casualties2013)
-    console.log('sum casualties 2013', sumCasualties2013)
-    return xPositionScale(sumCasualties2013)
+  d3.select('#eleven').on('stepin', () => {
+    svg
+      .selectAll('.death-type')
+      .data(nested2011)
+      .transition()
+      .attr('y', d => yPositionScale(d.key))
+      .attr('width', d => {
+        var casualties2011 = d.values.map(function(d) {
+          return d.Casualties
+        })
+        let sumCasualties2011 = d3.sum(casualties2011)
+        console.log('sum casualties 2011', sumCasualties2011)
+        return xPositionScale(sumCasualties2011)
+      })
+      .attr('fill', d => colorScale(d.key))
   })
-  .attr('fill', d => colorScale(d.key))
-})
 
-d3.select('#fourteen').on('stepin', () => {
-  svg
-  .selectAll('.death-type')
-  .data(nested2014)
-  .transition()
-  .attr('y', d => yPositionScale(d.key))
-  .attr('width', d => {
-    var casualties2014 = d.values.map(function(d) {
-      return d.Casualties
-    })
-    let sumCasualties2014 = d3.sum(casualties2014)
-    return xPositionScale(sumCasualties2014)
+  d3.select('#thirteen').on('stepin', () => {
+    svg.selectAll('.death-type').remove()
+
+    svg
+      .selectAll('.death-type')
+      .data(nested2013)
+      .enter()
+      .append('rect')
+      .attr('class', 'death-type')
+
+    svg
+      .selectAll('.death-type')
+      .attr('x', 0)
+      .attr('opacity', 0.5)
+      .attr('y', d => yPositionScale(d.key))
+      .attr('height', yPositionScale.bandwidth())
+      .transition()
+      .attr('width', d => {
+        var casualties2013 = d.values.map(function(d) {
+          return d.Casualties
+        })
+        let sumCasualties2013 = d3.sum(casualties2013)
+        console.log('sum casualties 2013', sumCasualties2013)
+        return xPositionScale(sumCasualties2013)
+      })
+      .attr('fill', d => colorScale(d.key))
   })
-  .attr('fill', d => colorScale(d.key))
-})
 
-d3.select('#fifteen').on('stepin', () => {
-  svg
-  .selectAll('.death-type')
-  .data(nested2015)
-  .transition()
-  .attr('y', d => yPositionScale(d.key))
-  .attr('width', d => {
-    var casualties2015 = d.values.map(function(d) {
-      return d.Casualties
-    })
-    let sumCasualties2015 = d3.sum(casualties2015)
-    return xPositionScale(sumCasualties2015)
+  d3.select('#fourteen').on('stepin', () => {
+    svg.selectAll('.death-type').remove()
+
+    svg
+      .selectAll('.death-type')
+      .data(nested2014)
+      .enter()
+      .append('rect')
+      .attr('class', 'death-type')
+    svg
+      .selectAll('.death-type')
+      .data(nested2014)
+      .attr('x', 0)
+      .attr('height', yPositionScale.bandwidth())
+      .attr('opacity', 0.5)
+      .transition()
+      .attr('y', d => yPositionScale(d.key))
+      .transition()
+      .attr('width', d => {
+        var casualties2014 = d.values.map(function(d) {
+          return d.Casualties
+        })
+        let sumCasualties2014 = d3.sum(casualties2014)
+        return xPositionScale(sumCasualties2014)
+      })
+      .attr('fill', d => colorScale(d.key))
   })
-  .attr('fill', d => colorScale(d.key))
-})
 
-d3.select('#sixteen').on('stepin', () => {
-  svg
-  .selectAll('.death-type')
-  .data(nested2016)
-  .transition()
-  .attr('y', d => yPositionScale(d.key))
-  .attr('width', d => {
-    var casualties2016 = d.values.map(function(d) {
-      return d.Casualties
-    })
-    let sumCasualties2016 = d3.sum(casualties2016)
-    return xPositionScale(sumCasualties2016)
+  d3.select('#fifteen').on('stepin', () => {
+    svg.selectAll('.death-type').remove()
+
+    svg
+      .selectAll('.death-type')
+      .data(nested2015)
+      .enter()
+      .append('rect')
+      .attr('class', 'death-type')
+
+    svg
+      .selectAll('.death-type')
+      .data(nested2015)
+      .attr('x', 0)
+      .attr('opacity', 0.5)
+      .attr('height', yPositionScale.bandwidth())
+      .attr('y', d => yPositionScale(d.key))
+      .transition()
+      .attr('width', d => {
+        var casualties2015 = d.values.map(function(d) {
+          return d.Casualties
+        })
+        let sumCasualties2015 = d3.sum(casualties2015)
+        return xPositionScale(sumCasualties2015)
+      })
+      .attr('fill', d => colorScale(d.key))
   })
-  .attr('fill', d => colorScale(d.key))
-})
 
-d3.select('#seventeen').on('stepin', () => {
-  svg
-  .selectAll('.death-type')
-  .data(nested2017)
-  .transition()
-  .attr('y', d => yPositionScale(d.key))
-  .attr('width', d => {
-    var casualties2017 = d.values.map(function(d) {
-      return d.Casualties
-    })
-    let sumCasualties2017 = d3.sum(casualties2017)
-    return xPositionScale(sumCasualties2017)
+  d3.select('#sixteen').on('stepin', () => {
+    svg.selectAll('.death-type').remove()
+
+    svg
+      .selectAll('.death-type')
+      .data(nested2016)
+      .enter()
+      .append('rect')
+      .attr('class', 'death-type')
+
+    svg
+      .selectAll('.death-type')
+      .data(nested2016)
+      .attr('x', 0)
+      .attr('opacity', 0.5)
+      .attr('height', yPositionScale.bandwidth())
+      .attr('y', d => yPositionScale(d.key))
+      .transition()
+      .attr('width', d => {
+        var casualties2016 = d.values.map(function(d) {
+          return d.Casualties
+        })
+        let sumCasualties2016 = d3.sum(casualties2016)
+        return xPositionScale(sumCasualties2016)
+      })
+      .attr('fill', d => colorScale(d.key))
   })
-  .attr('fill', d => colorScale(d.key))
-})
 
-d3.select('#eighteen').on('stepin', () => {
-  svg
-  .selectAll('.death-type')
-  .data(nested2018)
-  .transition()
-  .attr('y', d => yPositionScale(d.key))
-  .attr('width', d => {
-    var casualties2018 = d.values.map(function(d) {
-      return d.Casualties
-    })
-    let sumCasualties2018 = d3.sum(casualties2018)
-    // console.log('sum casualties 2018', sumCasualties2018)
-    return xPositionScale(sumCasualties2018)
+  d3.select('#seventeen').on('stepin', () => {
+    svg.selectAll('.death-type').remove()
+
+    // Yea so I'm rebinding everything,
+    // I know it's prob not the best way to do it
+    svg
+      .selectAll('.death-type')
+      .data(nested2017)
+      .enter()
+      .append('rect')
+      .attr('class', 'death-type')
+      .attr('x', 0)
+      .attr('height', yPositionScale.bandwidth())
+      .attr('opacity', 0.5)
+      .attr('y', d => yPositionScale(d.key))
+      .transition()
+      .attr('width', d => {
+        var casualties2017 = d.values.map(function(d) {
+          return d.Casualties
+        })
+        let sumCasualties2017 = d3.sum(casualties2017)
+        return xPositionScale(sumCasualties2017)
+      })
+      .attr('fill', d => colorScale(d.key))
   })
-  .attr('fill', d => colorScale(d.key))
-})
 
+  d3.select('#eighteen').on('stepin', () => {
+    svg.selectAll('.death-type').remove()
+
+    svg
+      .selectAll('.death-type')
+      .data(nested2018)
+      .enter()
+      .append('rect')
+      .attr('class', 'death-type')
+
+    svg
+      .selectAll('.death-type')
+      .attr('x', 0)
+      .attr('height', yPositionScale.bandwidth())
+      .attr('opacity', 0.5)
+      .attr('y', d => yPositionScale(d.key))
+      .transition()
+      .attr('width', d => {
+        var casualties2018 = d.values.map(function(d) {
+          return d.Casualties
+        })
+        let sumCasualties2018 = d3.sum(casualties2018)
+        // console.log('sum casualties 2018', sumCasualties2018)
+        return xPositionScale(sumCasualties2018)
+      })
+      .attr('fill', d => colorScale(d.key))
+  })
+
+  // d3.select('#blank').on('stepin', () => {
+  //   svg.selectAll('.death-type').attr('width', 0)
+  // })
+
+  // d3.select('#eleven').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2011)
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('width', d => {
+  //       var casualties2011 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2011 = d3.sum(casualties2011)
+  //       console.log('sum casualties 2011', sumCasualties2011)
+  //       return xPositionScale(sumCasualties2011)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
+
+  // d3.select('#thirteen').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2013)
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('height', yPositionScale.bandwidth())
+  //     .attr('width', d => {
+  //       var casualties2013 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2013 = d3.sum(casualties2013)
+  //       console.log('sum casualties 2013', sumCasualties2013)
+  //       return xPositionScale(sumCasualties2013)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
+
+  // d3.select('#fourteen').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2014)
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('width', d => {
+  //       var casualties2014 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2014 = d3.sum(casualties2014)
+  //       return xPositionScale(sumCasualties2014)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
+
+  // d3.select('#fifteen').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2015)
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('width', d => {
+  //       var casualties2015 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2015 = d3.sum(casualties2015)
+  //       return xPositionScale(sumCasualties2015)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
+
+  // d3.select('#sixteen').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2016)
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('width', d => {
+  //       var casualties2016 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2016 = d3.sum(casualties2016)
+  //       return xPositionScale(sumCasualties2016)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
+
+  // d3.select('#seventeen').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2017)
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('width', d => {
+  //       var casualties2017 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2017 = d3.sum(casualties2017)
+  //       console.log('sum casualties 2017', sumCasualties2017)
+  //       return xPositionScale(sumCasualties2017)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
+
+  // d3.select('#eighteen').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2018)
+  //     .exit()
+  //     .remove()
+
+  //   svg
+  //     .selectAll('.death-type')
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('width', d => {
+  //       var casualties2018 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2018 = d3.sum(casualties2018)
+  //       console.log('sum casualties 2018', sumCasualties2018)
+  //       return xPositionScale(sumCasualties2018)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
 }

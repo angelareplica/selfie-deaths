@@ -32,9 +32,11 @@
   "dependencies": {
     "babel-preset-env": "^1.7.0",
     "d3": "^5.7.0",
+    "d3-svg-legend": "^2.25.6",
     "enter-view": "^1.0.0",
     "jest": "^23.6.0",
     "node-fetch": "^2.2.0",
-    "topojson": "^3.0.2"
+    "topojson": "^3.0.2",
+    "topojson-server": "^3.0.0"
   }
 }

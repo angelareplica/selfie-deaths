@@ -53,7 +53,7 @@ Casualties,Type,Year
 1,Transport,2016
 3,Drowned,2016
 2,Drowned,2016
-1 (dolphin),Other,2016
+1,Other,2016
 5,Fall,2016
 1,Drowned,2016
 1,Firearm,2016
@@ -157,3 +157,4 @@ Casualties,Type,Year
 1,Fall,2018
 1,Fall,2018
 1,Fall,2018
+2,Fall,2018
