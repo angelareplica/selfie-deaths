@@ -30,8 +30,8 @@ var data = d3.map()
 // create color scale for the choropleth
 var colorScale = d3
   .scaleThreshold()
-  .domain(d3.range(0, 100))
-  .range(d3.schemePuBu[9])
+  .domain(d3.range(0, 160))
+  .range(d3.schemePuBu[8])
    // .unknown('#ffffff')
 
 

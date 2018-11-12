@@ -35877,7 +35877,7 @@ var path = d3.geoPath().projection(projection);
 var data = d3.map();
 
 // create color scale for the choropleth
-var colorScale = d3.scaleThreshold().domain(d3.range(0, 100)).range(d3.schemePuBu[9]);
+var colorScale = d3.scaleThreshold().domain(d3.range(0, 160)).range(d3.schemePuBu[8]);
 // .unknown('#ffffff')
 
 
@@ -35984,7 +35984,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '55308' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '63412' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
