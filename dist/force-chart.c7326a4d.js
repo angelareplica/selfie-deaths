@@ -27667,53 +27667,98 @@ function ready(datapoints) {
   }).attr('fill', function (d) {
     return colorScale(d.Type);
   }).attr('opacity', 0.7).on('mousemove', function (d) {
-    div.html(d.Description).style('left', d3.event.pageX + 'px')
+    div.html('Number of casualties: '.bold() + d.Casualties + '<br>' + 'Type of incident: '.bold() + d.Type).style('left', d3.event.pageX + 'px')
     // .style('right', d3.event.pageX + 'px')
     .style('top', d3.event.pageY - 28 + 'px').style('display', 'block');
   }).on('mouseover', function (d) {
     d3.select(this).transition().duration(100).attr('opacity', 1);
     div.transition().duration(200).style('opacity', 1);
-    div.html(d.Description).style('left', d3.event.pageX + 'px')
+    div.html(d.Type).style('left', d3.event.pageX + 'px')
     // .style('right', d3.event.pageX + 'px')
     .style('top', d3.event.pageY - 28 + 'px');
   }).on('mouseout', function (d) {
     d3.select(this).transition().duration(100).attr('opacity', 0.7);
     div.transition().duration(500).style('opacity', 0);
   });
-  // .on('mouseover', function(d) {
-  //   d3.select(this)
-  //     .transition()
-  //     .duration(100)
-  //     .attr('opacity', 1)
-  //   // .attr('r', d => radiusScale(d.Casualties) * 1.2)
-  //   d3.select('#description').text(d.Description)
-  //   d3.select('#info').style('display', 'block')
-  // })
-  // .on('mouseout', function(d) {
-  //   d3.select(this)
-  //     .transition()
-  //     .duration(100)
-  //     .attr('opacity', 0.5)
-  //   // .attr('r', d => radiusScale(d.Casualties))
 
-  //   d3.select('#info').style('display', 'none')
-  // })
+  // Label the clusters
+  var nested = d3.nest().key(function (d) {
+    return d.Type;
+  }).entries(datapoints);
+
+  svg.selectAll('label-death-type').data(nested).enter().append('text').text(function (d) {
+    return d.key;
+  }).attr('class', 'label-death-type').attr('font-weight', 'bold').attr('x', function (d) {
+    if (d.key === 'Fall') {
+      return 75;
+    } else if (d.key === 'Transport') {
+      return 275;
+    } else if (d.key === 'Drowned') {
+      return 475;
+    } else if (d.key === 'Electrocution') {
+      return 675;
+    } else if (d.key === 'Firearm') {
+      return 75;
+    } else if (d.key === 'Animal') {
+      return 275;
+    } else if (d.key === 'Other') {
+      return 475;
+    } else if (d.key === 'Fire') {
+      return 675;
+    }
+  }).attr('y', function (d) {
+    if (d.key === 'Fall') {
+      return 100;
+    } else if (d.key === 'Transport') {
+      return 100;
+    } else if (d.key === 'Drowned') {
+      return 100;
+    } else if (d.key === 'Electrocution') {
+      return 100;
+    } else if (d.key === 'Firearm') {
+      return 370;
+    } else if (d.key === 'Animal') {
+      return 370;
+    } else if (d.key === 'Other') {
+      return 370;
+    } else if (d.key === 'Fire') {
+      return 370;
+    }
+  }).style('visibility', 'hidden');
+
+  // Scrollytelling!
 
   d3.select('#start').on('stepin', function () {
-    // console.log('something happened')
-    // svg.selectAll('.label-industry').style('visibility', 'hidden')
-    // svg.selectAll('.label-gender').style('visibility', 'hidden')
-    // div.style('display', 'inline')
+    svg.selectAll('.label-death-type').transition().style('visibility', 'hidden');
 
     simulation.force('x', forceXCombine).force('y', forceYCombine).alphaTarget(0.01).restart();
   });
 
   d3.select('#split-death-type').on('stepin', function () {
-    // svg.selectAll('.label-industry').style('visibility', 'visible')
-    // svg.selectAll('.label-gender').style('visibility', 'hidden')
-    // div.style('opacity', 1)
+    svg.selectAll('.label-death-type').transition().style('visibility', 'visible');
 
     simulation.force('x', forceXSeparate).force('y', forceYSeparate).alphaTarget(0.7).restart();
+  });
+
+  d3.select('#back-together').on('stepin', function () {
+    svg.selectAll('.label-death-type').transition().style('visibility', 'hidden');
+
+    simulation.force('x', forceXCombine).force('y', forceYCombine).alphaTarget(0.01).restart();
+
+    svg.selectAll('.death').on('mousemove', function (d) {
+      div.html(d.Description).style('left', d3.event.pageX + 'px')
+      // .style('right', d3.event.pageX + 'px')
+      .style('top', d3.event.pageY - 28 + 'px').style('display', 'block');
+    }).on('mouseover', function (d) {
+      d3.select(this).transition().duration(100).attr('opacity', 1);
+      div.transition().duration(200).style('opacity', 1);
+      div.html(d.Description).style('left', d3.event.pageX + 'px')
+      // .style('right', d3.event.pageX + 'px')
+      .style('top', d3.event.pageY - 28 + 'px');
+    }).on('mouseout', function (d) {
+      d3.select(this).transition().duration(100).attr('opacity', 0.7);
+      div.transition().duration(500).style('opacity', 0);
+    });
   });
 
   simulation.nodes(datapoints).on('tick', ticked);
