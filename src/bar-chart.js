@@ -6,7 +6,7 @@ let height = 600 - margin.top - margin.bottom
 let width = 600 - margin.left - margin.right
 
 const svg = d3
-  .select('#chart-1')
+  .select('#bar-chart')
   .append('svg')
   .attr('width', width + margin.left + margin.right)
   .attr('height', height + margin.top + margin.bottom)
@@ -26,13 +26,14 @@ var yPositionScale = d3
 const colorScale = d3
   .scaleOrdinal()
   .range([
-    '#8dd3c7',
-    '#ffffb3',
-    '#bebada',
-    '#fb8072',
-    '#80b1d3',
-    '#fdb462',
-    '#b3de69'
+    '#845EC2',
+    '#D65DB1',
+    '#FF6F91',
+    '#FF9671',
+    '#FFC75F',
+    '#F9F871',
+    '#9BDE7E',
+    '#4BBC8E'
   ])
 
 d3.csv(require('./data/selfiedeaths.csv'))

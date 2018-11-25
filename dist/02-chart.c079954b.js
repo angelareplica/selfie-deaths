@@ -27578,8 +27578,8 @@ Object.keys(_d3Zoom).forEach(function (key) {
 },{"./dist/package":"../node_modules/d3/dist/package.js","d3-array":"../node_modules/d3-array/src/index.js","d3-axis":"../node_modules/d3-axis/src/index.js","d3-brush":"../node_modules/d3-brush/src/index.js","d3-chord":"../node_modules/d3-chord/src/index.js","d3-collection":"../node_modules/d3-collection/src/index.js","d3-color":"../node_modules/d3-color/src/index.js","d3-contour":"../node_modules/d3-contour/src/index.js","d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-dsv":"../node_modules/d3-dsv/src/index.js","d3-ease":"../node_modules/d3-ease/src/index.js","d3-fetch":"../node_modules/d3-fetch/src/index.js","d3-force":"../node_modules/d3-force/src/index.js","d3-format":"../node_modules/d3-format/src/index.js","d3-geo":"../node_modules/d3-geo/src/index.js","d3-hierarchy":"../node_modules/d3-hierarchy/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-path":"../node_modules/d3-path/src/index.js","d3-polygon":"../node_modules/d3-polygon/src/index.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js","d3-random":"../node_modules/d3-random/src/index.js","d3-scale":"../node_modules/d3-scale/src/index.js","d3-scale-chromatic":"../node_modules/d3-scale-chromatic/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-shape":"../node_modules/d3-shape/src/index.js","d3-time":"../node_modules/d3-time/src/index.js","d3-time-format":"../node_modules/d3-time-format/src/index.js","d3-timer":"../node_modules/d3-timer/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","d3-voronoi":"../node_modules/d3-voronoi/src/index.js","d3-zoom":"../node_modules/d3-zoom/src/index.js"}],"data/selfiedeaths.csv":[function(require,module,exports) {
 "use strict";
 
-module.exports = "/selfiedeaths.eb7a97be.csv";
-},{}],"01-chart.js":[function(require,module,exports) {
+module.exports = "/selfiedeaths.2ac6a4ac.csv";
+},{}],"02-chart.js":[function(require,module,exports) {
 'use strict';
 
 var _d = require('d3');
@@ -27591,230 +27591,142 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var margin = { top: 50, left: 125, right: 20, bottom: 100 };
 
 var height = 600 - margin.top - margin.bottom;
-var width = 600 - margin.left - margin.right;
+var width = 900 - margin.left - margin.right;
 
-var svg = d3.select('#chart-1').append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom).append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+var svg = d3.select('#chart-2').append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom).append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+var radiusScale = d3.scaleSqrt().domain([1, 100]).range([10, 80]);
 
 var xPositionScale = d3.scaleLinear().domain([0, 50]).range([0, width]);
 
 var yPositionScale = d3.scaleBand().range([height, 0]).padding(0.25);
 
-var colorScale = d3.scaleOrdinal().range(['#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69']);
+var colorScale = d3.scaleOrdinal().range(['#845EC2', '#D65DB1', '#FF6F91', '#FF9671', '#FFC75F', '#F9F871', '#9BDE7E', '#4BBC8E']);
+var div = d3.select('body').append('div').attr('class', 'tooltip').style('opacity', 0);
+
+var forceXSeparate = d3.forceX(function (d) {
+  if (d.Type === 'Fall') {
+    return 100;
+  } else if (d.Type === 'Transport') {
+    return 300;
+  } else if (d.Type === 'Drowned') {
+    return 500;
+  } else if (d.Type === 'Electrocution') {
+    return 700;
+  } else if (d.Type === 'Firearm') {
+    return 100;
+  } else if (d.Type === 'Animal') {
+    return 300;
+  } else if (d.Type === 'Other') {
+    return 500;
+  } else if (d.Type === 'Fire') {
+    return 700;
+  }
+}).strength(0.05);
+
+var forceYSeparate = d3.forceY(function (d) {
+  if (d.Type === 'Fall') {
+    return 200;
+  } else if (d.Type === 'Transport') {
+    return 200;
+  } else if (d.Type === 'Drowned') {
+    return 200;
+  } else if (d.Type === 'Electrocution') {
+    return 200;
+  } else if (d.Type === 'Firearm') {
+    return 450;
+  } else if (d.Type === 'Animal') {
+    return 450;
+  } else if (d.Type === 'Other') {
+    return 450;
+  } else if (d.Type === 'Fire') {
+    return 450;
+  }
+}).strength(0.08);
+
+var forceXCombine = d3.forceX(width / 2).strength(0.05);
+var forceYCombine = d3.forceY(height / 2).strength(0.05);
+
+// the simulation is a collection of forces about where we want our circles to go
+// and how we want our circles to interact
+var simulation = d3.forceSimulation().force('x', d3.forceX(width / 2).strength(0.05)) // play around with those numbers
+.force('y', d3.forceY(width / 2).strength(0.05)).force('collide',
+// replacing the below function with a number will change the spacing between circles
+// we make it a function bc we wnat to make it different for every circle
+d3.forceCollide(function (d) {
+  return radiusScale(d.Casualties) + 1;
+  // add 1 to push the circles out apart a bit more
+})).force('charge', d3.forceManyBody().strength(-3));
 
 d3.csv(require('./data/selfiedeaths.csv')).then(ready).catch(function (err) {
   return console.log('Failed on', err);
 });
 function ready(datapoints) {
-  var types = datapoints.map(function (d) {
-    return d.Type;
+  var circles = svg.selectAll('.death').data(datapoints).enter().append('circle').attr('class', 'death').attr('r', function (d) {
+    return radiusScale(d.Casualties);
+  }).attr('fill', function (d) {
+    return colorScale(d.Type);
+  }).attr('opacity', 0.7).on('mousemove', function (d) {
+    div.html(d.Description).style('left', d3.event.pageX + 'px')
+    // .style('right', d3.event.pageX + 'px')
+    .style('top', d3.event.pageY - 28 + 'px').style('display', 'block');
+  }).on('mouseover', function (d) {
+    d3.select(this).transition().duration(100).attr('opacity', 1);
+    div.transition().duration(200).style('opacity', 1);
+    div.html(d.Description).style('left', d3.event.pageX + 'px')
+    // .style('right', d3.event.pageX + 'px')
+    .style('top', d3.event.pageY - 28 + 'px');
+  }).on('mouseout', function (d) {
+    d3.select(this).transition().duration(100).attr('opacity', 0.7);
+    div.transition().duration(500).style('opacity', 0);
   });
-  yPositionScale.domain(types);
-
-  var datapoints2011 = datapoints.filter(function (d) {
-    return d.Year === '2011';
-  });
-  var nested2011 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2011);
-
-  var datapoints2013 = datapoints.filter(function (d) {
-    return d.Year === '2013';
-  });
-  var nested2013 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2013);
-
-  var datapoints2014 = datapoints.filter(function (d) {
-    return d.Year === '2014';
-  });
-  var nested2014 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2014);
-
-  var datapoints2015 = datapoints.filter(function (d) {
-    return d.Year === '2015';
-  });
-  var nested2015 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2015);
-
-  var datapoints2016 = datapoints.filter(function (d) {
-    return d.Year === '2016';
-  });
-  var nested2016 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2016);
-
-  var datapoints2017 = datapoints.filter(function (d) {
-    return d.Year === '2017';
-  });
-  var nested2017 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2017);
-
-  var datapoints2018 = datapoints.filter(function (d) {
-    return d.Year === '2018';
-  });
-  var nested2018 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2018);
-
-  svg.selectAll('.death-type').data(nested2016).enter().append('rect').attr('class', 'death-type').attr('y', function (d) {
-    return yPositionScale(d.key);
-  }).attr('x', 0).attr('height', yPositionScale.bandwidth()).attr('width', 0)
-  // .attr('width', d => {
-  //   var casualties2016 = d.values.map(function(d) {
-  //     return d.Casualties
-  //   })
-  //   let sumCasualties2016 = d3.sum(casualties2016)
-  //   // console.log(sumCasualties2016)
-  //   return xPositionScale(sumCasualties2016)
+  // .on('mouseover', function(d) {
+  //   d3.select(this)
+  //     .transition()
+  //     .duration(100)
+  //     .attr('opacity', 1)
+  //   // .attr('r', d => radiusScale(d.Casualties) * 1.2)
+  //   d3.select('#description').text(d.Description)
+  //   d3.select('#info').style('display', 'block')
   // })
-  .attr('fill', function (d) {
-    return colorScale(d.key);
-  }).attr('opacity', 0.5);
+  // .on('mouseout', function(d) {
+  //   d3.select(this)
+  //     .transition()
+  //     .duration(100)
+  //     .attr('opacity', 0.5)
+  //   // .attr('r', d => radiusScale(d.Casualties))
 
-  var yAxis = d3.axisLeft(yPositionScale).tickSize(0).tickFormat(function (d) {
-    return d;
+  //   d3.select('#info').style('display', 'none')
+  // })
+
+  d3.select('#start').on('stepin', function () {
+    // console.log('something happened')
+    // svg.selectAll('.label-industry').style('visibility', 'hidden')
+    // svg.selectAll('.label-gender').style('visibility', 'hidden')
+    // div.style('display', 'inline')
+
+    simulation.force('x', forceXCombine).force('y', forceYCombine).alphaTarget(0.01).restart();
   });
 
-  svg.append('g').attr('class', 'axis y-axis').call(yAxis);
+  d3.select('#split-death-type').on('stepin', function () {
+    // svg.selectAll('.label-industry').style('visibility', 'visible')
+    // svg.selectAll('.label-gender').style('visibility', 'hidden')
+    // div.style('opacity', 1)
 
-  svg.selectAll('.y-axis text').attr('fill', '#999999').attr('dx', -10);
-
-  var xAxis = d3.axisTop(xPositionScale).tickValues([10, 20, 30, 40]).tickFormat(function (d) {
-    return d;
-  }).tickSize(-height);
-
-  svg.append('g').attr('class', 'axis x-axis').call(xAxis).lower();
-
-  svg.selectAll('.axis line').attr('stroke', '#ccc');
-  svg.selectAll('.axis path').attr('stroke', 'none');
-
-  svg.selectAll('.axis text').attr('font-size', 15);
-  svg.selectAll('.x-axis text').attr('fill', '#999999');
-
-  // SCROLLYTELLING! steps
-
-  d3.select('#blank').on('stepin', function () {
-    svg.selectAll('.death-type').attr('width', 0);
+    simulation.force('x', forceXSeparate).force('y', forceYSeparate).alphaTarget(0.7).restart();
   });
 
-  d3.select('#eleven').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2011, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('width', function (d) {
-      var casualties2011 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2011 = d3.sum(casualties2011);
-      console.log('sum casualties 2011', sumCasualties2011);
-      return xPositionScale(sumCasualties2011);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
+  simulation.nodes(datapoints).on('tick', ticked);
+
+  // creation a function called ticked
+  // to grab the circles and automatically update their x and y based on datapoints
+  function ticked() {
+    circles.attr('cx', function (d) {
+      return d.x;
+    }).attr('cy', function (d) {
+      return d.y;
     });
-  });
-
-  d3.select('#thirteen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2013, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('height', yPositionScale.bandwidth()).attr('width', function (d) {
-      var casualties2013 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2013 = d3.sum(casualties2013);
-      console.log('sum casualties 2013', sumCasualties2013);
-      return xPositionScale(sumCasualties2013);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
-    });
-  });
-
-  d3.select('#fourteen').on('stepin', function () {
-    var bars = svg.selectAll('.death-type').data(nested2014, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('width', function (d) {
-      var casualties2014 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2014 = d3.sum(casualties2014);
-      return xPositionScale(sumCasualties2014);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
-    });
-    bars.exit().transition().attr('width', 0);
-  });
-
-  d3.select('#fifteen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2015, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('width', function (d) {
-      var casualties2015 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2015 = d3.sum(casualties2015);
-      return xPositionScale(sumCasualties2015);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
-    });
-  });
-
-  d3.select('#sixteen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2016, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('width', function (d) {
-      var casualties2016 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2016 = d3.sum(casualties2016);
-      return xPositionScale(sumCasualties2016);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
-    });
-  });
-
-  d3.select('#seventeen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2017, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('width', function (d) {
-      var casualties2017 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2017 = d3.sum(casualties2017);
-      return xPositionScale(sumCasualties2017);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
-    });
-  });
-
-  d3.select('#eighteen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2018, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('width', function (d) {
-      var casualties2018 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2018 = d3.sum(casualties2018);
-      // console.log('sum casualties 2018', sumCasualties2018)
-      return xPositionScale(sumCasualties2018);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
-    });
-  });
+  }
 }
 },{"d3":"../node_modules/d3/index.js","./data/selfiedeaths.csv":"data/selfiedeaths.csv"}],"../../../../.npm-global/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -27845,7 +27757,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '63412' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62796' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -27986,5 +27898,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},["../../../../.npm-global/lib/node_modules/parcel/src/builtins/hmr-runtime.js","01-chart.js"], null)
-//# sourceMappingURL=/01-chart.07db4483.map
+},{}]},{},["../../../../.npm-global/lib/node_modules/parcel/src/builtins/hmr-runtime.js","02-chart.js"], null)
+//# sourceMappingURL=/02-chart.c079954b.map

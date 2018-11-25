@@ -5,6 +5,13 @@
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
         <style>
+
+        body {
+          padding-bottom: 2rem;
+          background-color: #DDDDDD;
+          font-family: 'Roboto', sans-serif;
+          font-weight: lighter;
+        }
           .container {
             /*max-width: 60rem;*/
           }
@@ -19,7 +26,7 @@
             text-align: center;
           }
 
-          #chart-1 .axis line {
+          #bar-chart .axis line {
             stroke: #999;
             stroke-width: 0.5;
             stroke-dasharray: 3 2;
@@ -32,6 +39,29 @@
           .colored-text {
             padding: 1px 7px;
             display: inline-block;
+          }
+          .tooltip {	
+            position: absolute;			
+            text-align: center;							
+            padding: 10px;			
+            font-family: 'Helvetica', sans-serif;	
+            font: 15px sans-serif;		
+            background-color: #DDDDDD;	
+            border: 0px;		
+            border-radius: 8px;			
+            pointer-events: none;
+            vertical-align: middle;
+          }
+
+          hr { 
+              display: block;
+              margin-top: 0.5em;
+              margin-bottom: 0.5em;
+              margin-left: auto;
+              margin-right: auto;
+              border-width: 1px;
+              width:100px;
+              color:#999999;
           }
         </style>
         <style>
@@ -59,30 +89,51 @@
           }
 
           .step > p {
-            background: rgba(255,255,255,0.9);
+            background: rgba(221, 221, 221, 0.9);
             padding: 10px 0;
             margin-bottom: 0;
             padding-bottom: 1rem;
           }
 
           .step > ul, .step > h2, .step > h3 {
-            background: rgba(255,255,255,0.9);
+            background: rgba(221, 221, 221, 0.9);
           }
+
+          h1 { 
+            margin-bottom: 2rem; 
+            text-align: center;
+            letter-spacing: -0.5px;
+            }
+         h2 { 
+            margin-top: 3rem; 
+            margin-bottom: 1rem;
+            font-size: 24px;
+            text-align: center;
+            }
+        h3 { 
+            margin-top: 3rem; 
+            margin-bottom: 1rem;
+            font-size: 20px;
+            text-align: center;
+            }
         </style>
   </head>
   <body>
+
     <div class="container offset-1 col-10">
       <div class="row">
         <div class="col-sm-12 mt-5 mb-5">
-          <h1>📸 Selfie Casualties ⚰️</h1>
-          <br>
-          <h5> In the criminal justice system, selfie-based offenses are considered especially heinous. In New York City, the dedicated detectives who investigate these tragedies are members of an elite squad known as <a href='https://en.wikipedia.org/wiki/List_of_selfie-related_injuries_and_deaths'>random Wikipedia editors</a>. These are their stories.
-            <br><i>(Sorry, real story/text TK.)</i>
-          </h5>
+          <h1>Selfie Deaths are Another Hazard of the Modern Era</h1>
+          <center>
+          <h3>Hundreds of people have died — or been seriously injured — for the 'gram.</h3>
+            <br><br><i>By <a href="https://angelareplica.github.io">Angela Wang</a></i>
+            <br><br><br>
+         <hr> 📸 ⚰️ <hr>
+        </center>
         </div>
       </div>
 
-      <div class="row mt-5">
+      <!-- <div class="row mt-5">
           <div class="col-sm-12">
               <h1>At Least 159 People Have Departed This Life While Taking Selfies</h1>
               <center><h5>(Or were seriously injured in the act.)</h5>
@@ -92,35 +143,36 @@
         <div class="col-lg-6">
           <div id="chart-2"></div>
         </div>
-        <div class="offset-1 col-lg-4">
+        <div class="offset-1 col-lg-4"> -->
+            <div class="row mt-5 mb-5">
+                <div class="col-sm-12">
+                    <h2>Every selfie death ever recorded... on Wikipedia</h2>
+                </div>
+                <div class="col-lg-8 sticky">
+                  <div id="force-chart"></div>
+                </div>
+                <div class="col-lg-4">
+        
             <div  id="info" style="display: none; margin-top: 200px">
-                <p><strong>What happened!?</strong> <i id="description"></i><br>
+                <p><i id="description"></i><br>
                 </p>
               </div>
-          <!-- <div class='step' id='requirements-2'>
+              
+          <div class='step' id='start'>
           <p>Please work.</p>
-          </div> -->
-          <!-- <div class='step' id='lines'>
-            <p>Falls were the most common.</p>
           </div>
-          <div class='step' id='highlight-us'>
-            <p>Give the "U.S." line a highlight color, bold the text, and and grey out every other line/bubble/text.</p>
+          <div class='step' id='split-death-type'>
+            <p>TKTK.</p>
           </div>
-          <div class='step' id='highlight-regions'>
-            <p>Highlight the Mountain, Pacific, West South Central, South Atlantic regions (but in a different color than the average).</p>
-          </div>
-          <div class='step' id='winter'>
-            <p>Finally, draw the rectangle that represents winter.</p>
-          </div> -->
         </div>
       </div>
 
       <div class="row mt-5 mb-5">
           <div class="col-sm-12">
-              <h1>How Selfie-Takers Have Perished Over Time</h1>
+              <h2>How Selfie-Takers Have Perished Over Time</h2>
           </div>
           <div class="col-lg-8 sticky">
-            <div id="chart-1"></div>
+            <div id="bar-chart"></div>
           </div>
           <div class="col-lg-4">
             <div class='step' id='blank'>
@@ -161,10 +213,10 @@
 
       <div class="row mt-5">
         <div class="col-sm-12">
-          <h1>Where Selfie Deaths Happen The Most</h1>
+          <h2>Where Selfie Deaths Happen The Most</h2>
         </div>
         <div class="col-lg-12 sticky order-lg-2">
-          <div id="chart-3"></div>
+          <div id="choropleth-chart"></div>
         </div>
         <div class="col-lg-4">
       </div>
@@ -174,10 +226,10 @@
 
     </div>
 
-    <script src="01-chart.js"></script>
-    <script src="02-chart.js"></script>
-    <script src="03-chart.js"></script>
-    <script src="scrollytelling.js"></script>
+    <script src="bar-chart.js"></script>
+    <script src="force-chart.js"></script>
+    <script src="choropleth-chart.js"></script>
+    <script src="scrollytelling.js"b></script>
 
    </body>
 </html>

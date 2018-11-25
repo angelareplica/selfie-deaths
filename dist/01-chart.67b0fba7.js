@@ -27578,7 +27578,7 @@ Object.keys(_d3Zoom).forEach(function (key) {
 },{"./dist/package":"../node_modules/d3/dist/package.js","d3-array":"../node_modules/d3-array/src/index.js","d3-axis":"../node_modules/d3-axis/src/index.js","d3-brush":"../node_modules/d3-brush/src/index.js","d3-chord":"../node_modules/d3-chord/src/index.js","d3-collection":"../node_modules/d3-collection/src/index.js","d3-color":"../node_modules/d3-color/src/index.js","d3-contour":"../node_modules/d3-contour/src/index.js","d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-dsv":"../node_modules/d3-dsv/src/index.js","d3-ease":"../node_modules/d3-ease/src/index.js","d3-fetch":"../node_modules/d3-fetch/src/index.js","d3-force":"../node_modules/d3-force/src/index.js","d3-format":"../node_modules/d3-format/src/index.js","d3-geo":"../node_modules/d3-geo/src/index.js","d3-hierarchy":"../node_modules/d3-hierarchy/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-path":"../node_modules/d3-path/src/index.js","d3-polygon":"../node_modules/d3-polygon/src/index.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js","d3-random":"../node_modules/d3-random/src/index.js","d3-scale":"../node_modules/d3-scale/src/index.js","d3-scale-chromatic":"../node_modules/d3-scale-chromatic/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-shape":"../node_modules/d3-shape/src/index.js","d3-time":"../node_modules/d3-time/src/index.js","d3-time-format":"../node_modules/d3-time-format/src/index.js","d3-timer":"../node_modules/d3-timer/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","d3-voronoi":"../node_modules/d3-voronoi/src/index.js","d3-zoom":"../node_modules/d3-zoom/src/index.js"}],"data/selfiedeaths.csv":[function(require,module,exports) {
 "use strict";
 
-module.exports = "/selfiedeaths.eb7a97be.csv";
+module.exports = "/selfiedeaths.2ac6a4ac.csv";
 },{}],"01-chart.js":[function(require,module,exports) {
 'use strict';
 
@@ -27701,9 +27701,7 @@ function ready(datapoints) {
   });
 
   d3.select('#eleven').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2011, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
+    svg.selectAll('.death-type').data(nested2011).transition().attr('y', function (d) {
       return yPositionScale(d.key);
     }).attr('width', function (d) {
       var casualties2011 = d.values.map(function (d) {
@@ -27718,11 +27716,13 @@ function ready(datapoints) {
   });
 
   d3.select('#thirteen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2013, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
+    svg.selectAll('.death-type').remove();
+
+    svg.selectAll('.death-type').data(nested2013).enter().append('rect').attr('class', 'death-type');
+
+    svg.selectAll('.death-type').attr('x', 0).attr('opacity', 0.5).attr('y', function (d) {
       return yPositionScale(d.key);
-    }).attr('height', yPositionScale.bandwidth()).attr('width', function (d) {
+    }).attr('height', yPositionScale.bandwidth()).transition().attr('width', function (d) {
       var casualties2013 = d.values.map(function (d) {
         return d.Casualties;
       });
@@ -27735,11 +27735,12 @@ function ready(datapoints) {
   });
 
   d3.select('#fourteen').on('stepin', function () {
-    var bars = svg.selectAll('.death-type').data(nested2014, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
+    svg.selectAll('.death-type').remove();
+
+    svg.selectAll('.death-type').data(nested2014).enter().append('rect').attr('class', 'death-type');
+    svg.selectAll('.death-type').data(nested2014).attr('x', 0).attr('height', yPositionScale.bandwidth()).attr('opacity', 0.5).transition().attr('y', function (d) {
       return yPositionScale(d.key);
-    }).attr('width', function (d) {
+    }).transition().attr('width', function (d) {
       var casualties2014 = d.values.map(function (d) {
         return d.Casualties;
       });
@@ -27748,15 +27749,16 @@ function ready(datapoints) {
     }).attr('fill', function (d) {
       return colorScale(d.key);
     });
-    bars.exit().transition().attr('width', 0);
   });
 
   d3.select('#fifteen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2015, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
+    svg.selectAll('.death-type').remove();
+
+    svg.selectAll('.death-type').data(nested2015).enter().append('rect').attr('class', 'death-type');
+
+    svg.selectAll('.death-type').data(nested2015).attr('x', 0).attr('opacity', 0.5).attr('height', yPositionScale.bandwidth()).attr('y', function (d) {
       return yPositionScale(d.key);
-    }).attr('width', function (d) {
+    }).transition().attr('width', function (d) {
       var casualties2015 = d.values.map(function (d) {
         return d.Casualties;
       });
@@ -27768,11 +27770,13 @@ function ready(datapoints) {
   });
 
   d3.select('#sixteen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2016, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
+    svg.selectAll('.death-type').remove();
+
+    svg.selectAll('.death-type').data(nested2016).enter().append('rect').attr('class', 'death-type');
+
+    svg.selectAll('.death-type').data(nested2016).attr('x', 0).attr('opacity', 0.5).attr('height', yPositionScale.bandwidth()).attr('y', function (d) {
       return yPositionScale(d.key);
-    }).attr('width', function (d) {
+    }).transition().attr('width', function (d) {
       var casualties2016 = d.values.map(function (d) {
         return d.Casualties;
       });
@@ -27784,11 +27788,13 @@ function ready(datapoints) {
   });
 
   d3.select('#seventeen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2017, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
+    svg.selectAll('.death-type').remove();
+
+    // Yea so I'm rebinding everything,
+    // I know it's prob not the best way to do it
+    svg.selectAll('.death-type').data(nested2017).enter().append('rect').attr('class', 'death-type').attr('x', 0).attr('height', yPositionScale.bandwidth()).attr('opacity', 0.5).attr('y', function (d) {
       return yPositionScale(d.key);
-    }).attr('width', function (d) {
+    }).transition().attr('width', function (d) {
       var casualties2017 = d.values.map(function (d) {
         return d.Casualties;
       });
@@ -27800,11 +27806,13 @@ function ready(datapoints) {
   });
 
   d3.select('#eighteen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2018, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
+    svg.selectAll('.death-type').remove();
+
+    svg.selectAll('.death-type').data(nested2018).enter().append('rect').attr('class', 'death-type');
+
+    svg.selectAll('.death-type').attr('x', 0).attr('height', yPositionScale.bandwidth()).attr('opacity', 0.5).attr('y', function (d) {
       return yPositionScale(d.key);
-    }).attr('width', function (d) {
+    }).transition().attr('width', function (d) {
       var casualties2018 = d.values.map(function (d) {
         return d.Casualties;
       });
@@ -27845,7 +27853,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '63412' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62796' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -27987,4 +27995,4 @@ function hmrAccept(bundle, id) {
   });
 }
 },{}]},{},["../../../../.npm-global/lib/node_modules/parcel/src/builtins/hmr-runtime.js","01-chart.js"], null)
-//# sourceMappingURL=/01-chart.07db4483.map
+//# sourceMappingURL=/01-chart.67b0fba7.map

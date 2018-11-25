@@ -27575,248 +27575,8387 @@ Object.keys(_d3Zoom).forEach(function (key) {
     }
   });
 });
-},{"./dist/package":"../node_modules/d3/dist/package.js","d3-array":"../node_modules/d3-array/src/index.js","d3-axis":"../node_modules/d3-axis/src/index.js","d3-brush":"../node_modules/d3-brush/src/index.js","d3-chord":"../node_modules/d3-chord/src/index.js","d3-collection":"../node_modules/d3-collection/src/index.js","d3-color":"../node_modules/d3-color/src/index.js","d3-contour":"../node_modules/d3-contour/src/index.js","d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-dsv":"../node_modules/d3-dsv/src/index.js","d3-ease":"../node_modules/d3-ease/src/index.js","d3-fetch":"../node_modules/d3-fetch/src/index.js","d3-force":"../node_modules/d3-force/src/index.js","d3-format":"../node_modules/d3-format/src/index.js","d3-geo":"../node_modules/d3-geo/src/index.js","d3-hierarchy":"../node_modules/d3-hierarchy/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-path":"../node_modules/d3-path/src/index.js","d3-polygon":"../node_modules/d3-polygon/src/index.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js","d3-random":"../node_modules/d3-random/src/index.js","d3-scale":"../node_modules/d3-scale/src/index.js","d3-scale-chromatic":"../node_modules/d3-scale-chromatic/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-shape":"../node_modules/d3-shape/src/index.js","d3-time":"../node_modules/d3-time/src/index.js","d3-time-format":"../node_modules/d3-time-format/src/index.js","d3-timer":"../node_modules/d3-timer/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","d3-voronoi":"../node_modules/d3-voronoi/src/index.js","d3-zoom":"../node_modules/d3-zoom/src/index.js"}],"data/selfiedeaths.csv":[function(require,module,exports) {
+},{"./dist/package":"../node_modules/d3/dist/package.js","d3-array":"../node_modules/d3-array/src/index.js","d3-axis":"../node_modules/d3-axis/src/index.js","d3-brush":"../node_modules/d3-brush/src/index.js","d3-chord":"../node_modules/d3-chord/src/index.js","d3-collection":"../node_modules/d3-collection/src/index.js","d3-color":"../node_modules/d3-color/src/index.js","d3-contour":"../node_modules/d3-contour/src/index.js","d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-dsv":"../node_modules/d3-dsv/src/index.js","d3-ease":"../node_modules/d3-ease/src/index.js","d3-fetch":"../node_modules/d3-fetch/src/index.js","d3-force":"../node_modules/d3-force/src/index.js","d3-format":"../node_modules/d3-format/src/index.js","d3-geo":"../node_modules/d3-geo/src/index.js","d3-hierarchy":"../node_modules/d3-hierarchy/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-path":"../node_modules/d3-path/src/index.js","d3-polygon":"../node_modules/d3-polygon/src/index.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js","d3-random":"../node_modules/d3-random/src/index.js","d3-scale":"../node_modules/d3-scale/src/index.js","d3-scale-chromatic":"../node_modules/d3-scale-chromatic/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-shape":"../node_modules/d3-shape/src/index.js","d3-time":"../node_modules/d3-time/src/index.js","d3-time-format":"../node_modules/d3-time-format/src/index.js","d3-timer":"../node_modules/d3-timer/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","d3-voronoi":"../node_modules/d3-voronoi/src/index.js","d3-zoom":"../node_modules/d3-zoom/src/index.js"}],"../node_modules/topojson/node_modules/topojson-client/src/identity.js":[function(require,module,exports) {
 "use strict";
 
-module.exports = "/selfiedeaths.eb7a97be.csv";
-},{}],"01-chart.js":[function(require,module,exports) {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (x) {
+  return x;
+};
+},{}],"../node_modules/topojson/node_modules/topojson-client/src/transform.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (transform) {
+  if (transform == null) return _identity2.default;
+  var x0,
+      y0,
+      kx = transform.scale[0],
+      ky = transform.scale[1],
+      dx = transform.translate[0],
+      dy = transform.translate[1];
+  return function (input, i) {
+    if (!i) x0 = y0 = 0;
+    var j = 2,
+        n = input.length,
+        output = new Array(n);
+    output[0] = (x0 += input[0]) * kx + dx;
+    output[1] = (y0 += input[1]) * ky + dy;
+    while (j < n) output[j] = input[j], ++j;
+    return output;
+  };
+};
+
+var _identity = require("./identity");
+
+var _identity2 = _interopRequireDefault(_identity);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./identity":"../node_modules/topojson/node_modules/topojson-client/src/identity.js"}],"../node_modules/topojson/node_modules/topojson-client/src/bbox.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology) {
+  var t = (0, _transform2.default)(topology.transform),
+      key,
+      x0 = Infinity,
+      y0 = x0,
+      x1 = -x0,
+      y1 = -x0;
+
+  function bboxPoint(p) {
+    p = t(p);
+    if (p[0] < x0) x0 = p[0];
+    if (p[0] > x1) x1 = p[0];
+    if (p[1] < y0) y0 = p[1];
+    if (p[1] > y1) y1 = p[1];
+  }
+
+  function bboxGeometry(o) {
+    switch (o.type) {
+      case "GeometryCollection":
+        o.geometries.forEach(bboxGeometry);break;
+      case "Point":
+        bboxPoint(o.coordinates);break;
+      case "MultiPoint":
+        o.coordinates.forEach(bboxPoint);break;
+    }
+  }
+
+  topology.arcs.forEach(function (arc) {
+    var i = -1,
+        n = arc.length,
+        p;
+    while (++i < n) {
+      p = t(arc[i], i);
+      if (p[0] < x0) x0 = p[0];
+      if (p[0] > x1) x1 = p[0];
+      if (p[1] < y0) y0 = p[1];
+      if (p[1] > y1) y1 = p[1];
+    }
+  });
+
+  for (key in topology.objects) {
+    bboxGeometry(topology.objects[key]);
+  }
+
+  return [x0, y0, x1, y1];
+};
+
+var _transform = require("./transform");
+
+var _transform2 = _interopRequireDefault(_transform);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./transform":"../node_modules/topojson/node_modules/topojson-client/src/transform.js"}],"../node_modules/topojson/node_modules/topojson-client/src/reverse.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (array, n) {
+  var t,
+      j = array.length,
+      i = j - n;
+  while (i < --j) t = array[i], array[i++] = array[j], array[j] = t;
+};
+},{}],"../node_modules/topojson/node_modules/topojson-client/src/feature.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology, o) {
+  return o.type === "GeometryCollection" ? { type: "FeatureCollection", features: o.geometries.map(function (o) {
+      return feature(topology, o);
+    }) } : feature(topology, o);
+};
+
+exports.feature = feature;
+exports.object = object;
+
+var _reverse = require("./reverse");
+
+var _reverse2 = _interopRequireDefault(_reverse);
+
+var _transform = require("./transform");
+
+var _transform2 = _interopRequireDefault(_transform);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function feature(topology, o) {
+  var id = o.id,
+      bbox = o.bbox,
+      properties = o.properties == null ? {} : o.properties,
+      geometry = object(topology, o);
+  return id == null && bbox == null ? { type: "Feature", properties: properties, geometry: geometry } : bbox == null ? { type: "Feature", id: id, properties: properties, geometry: geometry } : { type: "Feature", id: id, bbox: bbox, properties: properties, geometry: geometry };
+}
+
+function object(topology, o) {
+  var transformPoint = (0, _transform2.default)(topology.transform),
+      arcs = topology.arcs;
+
+  function arc(i, points) {
+    if (points.length) points.pop();
+    for (var a = arcs[i < 0 ? ~i : i], k = 0, n = a.length; k < n; ++k) {
+      points.push(transformPoint(a[k], k));
+    }
+    if (i < 0) (0, _reverse2.default)(points, n);
+  }
+
+  function point(p) {
+    return transformPoint(p);
+  }
+
+  function line(arcs) {
+    var points = [];
+    for (var i = 0, n = arcs.length; i < n; ++i) arc(arcs[i], points);
+    if (points.length < 2) points.push(points[0]); // This should never happen per the specification.
+    return points;
+  }
+
+  function ring(arcs) {
+    var points = line(arcs);
+    while (points.length < 4) points.push(points[0]); // This may happen if an arc has only two points.
+    return points;
+  }
+
+  function polygon(arcs) {
+    return arcs.map(ring);
+  }
+
+  function geometry(o) {
+    var type = o.type,
+        coordinates;
+    switch (type) {
+      case "GeometryCollection":
+        return { type: type, geometries: o.geometries.map(geometry) };
+      case "Point":
+        coordinates = point(o.coordinates);break;
+      case "MultiPoint":
+        coordinates = o.coordinates.map(point);break;
+      case "LineString":
+        coordinates = line(o.arcs);break;
+      case "MultiLineString":
+        coordinates = o.arcs.map(line);break;
+      case "Polygon":
+        coordinates = polygon(o.arcs);break;
+      case "MultiPolygon":
+        coordinates = o.arcs.map(polygon);break;
+      default:
+        return null;
+    }
+    return { type: type, coordinates: coordinates };
+  }
+
+  return geometry(o);
+}
+},{"./reverse":"../node_modules/topojson/node_modules/topojson-client/src/reverse.js","./transform":"../node_modules/topojson/node_modules/topojson-client/src/transform.js"}],"../node_modules/topojson/node_modules/topojson-client/src/stitch.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology, arcs) {
+  var stitchedArcs = {},
+      fragmentByStart = {},
+      fragmentByEnd = {},
+      fragments = [],
+      emptyIndex = -1;
+
+  // Stitch empty arcs first, since they may be subsumed by other arcs.
+  arcs.forEach(function (i, j) {
+    var arc = topology.arcs[i < 0 ? ~i : i],
+        t;
+    if (arc.length < 3 && !arc[1][0] && !arc[1][1]) {
+      t = arcs[++emptyIndex], arcs[emptyIndex] = i, arcs[j] = t;
+    }
+  });
+
+  arcs.forEach(function (i) {
+    var e = ends(i),
+        start = e[0],
+        end = e[1],
+        f,
+        g;
+
+    if (f = fragmentByEnd[start]) {
+      delete fragmentByEnd[f.end];
+      f.push(i);
+      f.end = end;
+      if (g = fragmentByStart[end]) {
+        delete fragmentByStart[g.start];
+        var fg = g === f ? f : f.concat(g);
+        fragmentByStart[fg.start = f.start] = fragmentByEnd[fg.end = g.end] = fg;
+      } else {
+        fragmentByStart[f.start] = fragmentByEnd[f.end] = f;
+      }
+    } else if (f = fragmentByStart[end]) {
+      delete fragmentByStart[f.start];
+      f.unshift(i);
+      f.start = start;
+      if (g = fragmentByEnd[start]) {
+        delete fragmentByEnd[g.end];
+        var gf = g === f ? f : g.concat(f);
+        fragmentByStart[gf.start = g.start] = fragmentByEnd[gf.end = f.end] = gf;
+      } else {
+        fragmentByStart[f.start] = fragmentByEnd[f.end] = f;
+      }
+    } else {
+      f = [i];
+      fragmentByStart[f.start = start] = fragmentByEnd[f.end = end] = f;
+    }
+  });
+
+  function ends(i) {
+    var arc = topology.arcs[i < 0 ? ~i : i],
+        p0 = arc[0],
+        p1;
+    if (topology.transform) p1 = [0, 0], arc.forEach(function (dp) {
+      p1[0] += dp[0], p1[1] += dp[1];
+    });else p1 = arc[arc.length - 1];
+    return i < 0 ? [p1, p0] : [p0, p1];
+  }
+
+  function flush(fragmentByEnd, fragmentByStart) {
+    for (var k in fragmentByEnd) {
+      var f = fragmentByEnd[k];
+      delete fragmentByStart[f.start];
+      delete f.start;
+      delete f.end;
+      f.forEach(function (i) {
+        stitchedArcs[i < 0 ? ~i : i] = 1;
+      });
+      fragments.push(f);
+    }
+  }
+
+  flush(fragmentByEnd, fragmentByStart);
+  flush(fragmentByStart, fragmentByEnd);
+  arcs.forEach(function (i) {
+    if (!stitchedArcs[i < 0 ? ~i : i]) fragments.push([i]);
+  });
+
+  return fragments;
+};
+},{}],"../node_modules/topojson/node_modules/topojson-client/src/mesh.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology) {
+  return (0, _feature.object)(topology, meshArcs.apply(this, arguments));
+};
+
+exports.meshArcs = meshArcs;
+
+var _feature = require("./feature");
+
+var _stitch = require("./stitch");
+
+var _stitch2 = _interopRequireDefault(_stitch);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function meshArcs(topology, object, filter) {
+  var arcs, i, n;
+  if (arguments.length > 1) arcs = extractArcs(topology, object, filter);else for (i = 0, arcs = new Array(n = topology.arcs.length); i < n; ++i) arcs[i] = i;
+  return { type: "MultiLineString", arcs: (0, _stitch2.default)(topology, arcs) };
+}
+
+function extractArcs(topology, object, filter) {
+  var arcs = [],
+      geomsByArc = [],
+      geom;
+
+  function extract0(i) {
+    var j = i < 0 ? ~i : i;
+    (geomsByArc[j] || (geomsByArc[j] = [])).push({ i: i, g: geom });
+  }
+
+  function extract1(arcs) {
+    arcs.forEach(extract0);
+  }
+
+  function extract2(arcs) {
+    arcs.forEach(extract1);
+  }
+
+  function extract3(arcs) {
+    arcs.forEach(extract2);
+  }
+
+  function geometry(o) {
+    switch (geom = o, o.type) {
+      case "GeometryCollection":
+        o.geometries.forEach(geometry);break;
+      case "LineString":
+        extract1(o.arcs);break;
+      case "MultiLineString":case "Polygon":
+        extract2(o.arcs);break;
+      case "MultiPolygon":
+        extract3(o.arcs);break;
+    }
+  }
+
+  geometry(object);
+
+  geomsByArc.forEach(filter == null ? function (geoms) {
+    arcs.push(geoms[0].i);
+  } : function (geoms) {
+    if (filter(geoms[0].g, geoms[geoms.length - 1].g)) arcs.push(geoms[0].i);
+  });
+
+  return arcs;
+}
+},{"./feature":"../node_modules/topojson/node_modules/topojson-client/src/feature.js","./stitch":"../node_modules/topojson/node_modules/topojson-client/src/stitch.js"}],"../node_modules/topojson/node_modules/topojson-client/src/merge.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology) {
+  return (0, _feature.object)(topology, mergeArcs.apply(this, arguments));
+};
+
+exports.mergeArcs = mergeArcs;
+
+var _feature = require("./feature");
+
+var _stitch = require("./stitch");
+
+var _stitch2 = _interopRequireDefault(_stitch);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function planarRingArea(ring) {
+  var i = -1,
+      n = ring.length,
+      a,
+      b = ring[n - 1],
+      area = 0;
+  while (++i < n) a = b, b = ring[i], area += a[0] * b[1] - a[1] * b[0];
+  return Math.abs(area); // Note: doubled area!
+}
+
+function mergeArcs(topology, objects) {
+  var polygonsByArc = {},
+      polygons = [],
+      groups = [];
+
+  objects.forEach(geometry);
+
+  function geometry(o) {
+    switch (o.type) {
+      case "GeometryCollection":
+        o.geometries.forEach(geometry);break;
+      case "Polygon":
+        extract(o.arcs);break;
+      case "MultiPolygon":
+        o.arcs.forEach(extract);break;
+    }
+  }
+
+  function extract(polygon) {
+    polygon.forEach(function (ring) {
+      ring.forEach(function (arc) {
+        (polygonsByArc[arc = arc < 0 ? ~arc : arc] || (polygonsByArc[arc] = [])).push(polygon);
+      });
+    });
+    polygons.push(polygon);
+  }
+
+  function area(ring) {
+    return planarRingArea((0, _feature.object)(topology, { type: "Polygon", arcs: [ring] }).coordinates[0]);
+  }
+
+  polygons.forEach(function (polygon) {
+    if (!polygon._) {
+      var group = [],
+          neighbors = [polygon];
+      polygon._ = 1;
+      groups.push(group);
+      while (polygon = neighbors.pop()) {
+        group.push(polygon);
+        polygon.forEach(function (ring) {
+          ring.forEach(function (arc) {
+            polygonsByArc[arc < 0 ? ~arc : arc].forEach(function (polygon) {
+              if (!polygon._) {
+                polygon._ = 1;
+                neighbors.push(polygon);
+              }
+            });
+          });
+        });
+      }
+    }
+  });
+
+  polygons.forEach(function (polygon) {
+    delete polygon._;
+  });
+
+  return {
+    type: "MultiPolygon",
+    arcs: groups.map(function (polygons) {
+      var arcs = [],
+          n;
+
+      // Extract the exterior (unique) arcs.
+      polygons.forEach(function (polygon) {
+        polygon.forEach(function (ring) {
+          ring.forEach(function (arc) {
+            if (polygonsByArc[arc < 0 ? ~arc : arc].length < 2) {
+              arcs.push(arc);
+            }
+          });
+        });
+      });
+
+      // Stitch the arcs into one or more rings.
+      arcs = (0, _stitch2.default)(topology, arcs);
+
+      // If more than one ring is returned,
+      // at most one of these rings can be the exterior;
+      // choose the one with the greatest absolute area.
+      if ((n = arcs.length) > 1) {
+        for (var i = 1, k = area(arcs[0]), ki, t; i < n; ++i) {
+          if ((ki = area(arcs[i])) > k) {
+            t = arcs[0], arcs[0] = arcs[i], arcs[i] = t, k = ki;
+          }
+        }
+      }
+
+      return arcs;
+    })
+  };
+}
+},{"./feature":"../node_modules/topojson/node_modules/topojson-client/src/feature.js","./stitch":"../node_modules/topojson/node_modules/topojson-client/src/stitch.js"}],"../node_modules/topojson/node_modules/topojson-client/src/bisect.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (a, x) {
+  var lo = 0,
+      hi = a.length;
+  while (lo < hi) {
+    var mid = lo + hi >>> 1;
+    if (a[mid] < x) lo = mid + 1;else hi = mid;
+  }
+  return lo;
+};
+},{}],"../node_modules/topojson/node_modules/topojson-client/src/neighbors.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (objects) {
+  var indexesByArc = {},
+      // arc index -> array of object indexes
+  neighbors = objects.map(function () {
+    return [];
+  });
+
+  function line(arcs, i) {
+    arcs.forEach(function (a) {
+      if (a < 0) a = ~a;
+      var o = indexesByArc[a];
+      if (o) o.push(i);else indexesByArc[a] = [i];
+    });
+  }
+
+  function polygon(arcs, i) {
+    arcs.forEach(function (arc) {
+      line(arc, i);
+    });
+  }
+
+  function geometry(o, i) {
+    if (o.type === "GeometryCollection") o.geometries.forEach(function (o) {
+      geometry(o, i);
+    });else if (o.type in geometryType) geometryType[o.type](o.arcs, i);
+  }
+
+  var geometryType = {
+    LineString: line,
+    MultiLineString: polygon,
+    Polygon: polygon,
+    MultiPolygon: function (arcs, i) {
+      arcs.forEach(function (arc) {
+        polygon(arc, i);
+      });
+    }
+  };
+
+  objects.forEach(geometry);
+
+  for (var i in indexesByArc) {
+    for (var indexes = indexesByArc[i], m = indexes.length, j = 0; j < m; ++j) {
+      for (var k = j + 1; k < m; ++k) {
+        var ij = indexes[j],
+            ik = indexes[k],
+            n;
+        if ((n = neighbors[ij])[i = (0, _bisect2.default)(n, ik)] !== ik) n.splice(i, 0, ik);
+        if ((n = neighbors[ik])[i = (0, _bisect2.default)(n, ij)] !== ij) n.splice(i, 0, ij);
+      }
+    }
+  }
+
+  return neighbors;
+};
+
+var _bisect = require("./bisect");
+
+var _bisect2 = _interopRequireDefault(_bisect);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./bisect":"../node_modules/topojson/node_modules/topojson-client/src/bisect.js"}],"../node_modules/topojson/node_modules/topojson-client/src/untransform.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (transform) {
+    if (transform == null) return _identity2.default;
+    var x0,
+        y0,
+        kx = transform.scale[0],
+        ky = transform.scale[1],
+        dx = transform.translate[0],
+        dy = transform.translate[1];
+    return function (input, i) {
+        if (!i) x0 = y0 = 0;
+        var j = 2,
+            n = input.length,
+            output = new Array(n),
+            x1 = Math.round((input[0] - dx) / kx),
+            y1 = Math.round((input[1] - dy) / ky);
+        output[0] = x1 - x0, x0 = x1;
+        output[1] = y1 - y0, y0 = y1;
+        while (j < n) output[j] = input[j], ++j;
+        return output;
+    };
+};
+
+var _identity = require("./identity");
+
+var _identity2 = _interopRequireDefault(_identity);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./identity":"../node_modules/topojson/node_modules/topojson-client/src/identity.js"}],"../node_modules/topojson/node_modules/topojson-client/src/quantize.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology, transform) {
+  if (topology.transform) throw new Error("already quantized");
+
+  if (!transform || !transform.scale) {
+    if (!((n = Math.floor(transform)) >= 2)) throw new Error("n must be ≥2");
+    box = topology.bbox || (0, _bbox2.default)(topology);
+    var x0 = box[0],
+        y0 = box[1],
+        x1 = box[2],
+        y1 = box[3],
+        n;
+    transform = { scale: [x1 - x0 ? (x1 - x0) / (n - 1) : 1, y1 - y0 ? (y1 - y0) / (n - 1) : 1], translate: [x0, y0] };
+  } else {
+    box = topology.bbox;
+  }
+
+  var t = (0, _untransform2.default)(transform),
+      box,
+      key,
+      inputs = topology.objects,
+      outputs = {};
+
+  function quantizePoint(point) {
+    return t(point);
+  }
+
+  function quantizeGeometry(input) {
+    var output;
+    switch (input.type) {
+      case "GeometryCollection":
+        output = { type: "GeometryCollection", geometries: input.geometries.map(quantizeGeometry) };break;
+      case "Point":
+        output = { type: "Point", coordinates: quantizePoint(input.coordinates) };break;
+      case "MultiPoint":
+        output = { type: "MultiPoint", coordinates: input.coordinates.map(quantizePoint) };break;
+      default:
+        return input;
+    }
+    if (input.id != null) output.id = input.id;
+    if (input.bbox != null) output.bbox = input.bbox;
+    if (input.properties != null) output.properties = input.properties;
+    return output;
+  }
+
+  function quantizeArc(input) {
+    var i = 0,
+        j = 1,
+        n = input.length,
+        p,
+        output = new Array(n); // pessimistic
+    output[0] = t(input[0], 0);
+    while (++i < n) if ((p = t(input[i], i))[0] || p[1]) output[j++] = p; // non-coincident points
+    if (j === 1) output[j++] = [0, 0]; // an arc must have at least two points
+    output.length = j;
+    return output;
+  }
+
+  for (key in inputs) outputs[key] = quantizeGeometry(inputs[key]);
+
+  return {
+    type: "Topology",
+    bbox: box,
+    transform: transform,
+    objects: outputs,
+    arcs: topology.arcs.map(quantizeArc)
+  };
+};
+
+var _bbox = require("./bbox");
+
+var _bbox2 = _interopRequireDefault(_bbox);
+
+var _untransform = require("./untransform");
+
+var _untransform2 = _interopRequireDefault(_untransform);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./bbox":"../node_modules/topojson/node_modules/topojson-client/src/bbox.js","./untransform":"../node_modules/topojson/node_modules/topojson-client/src/untransform.js"}],"../node_modules/topojson/node_modules/topojson-client/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _bbox = require("./src/bbox");
+
+Object.defineProperty(exports, "bbox", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_bbox).default;
+  }
+});
+
+var _feature = require("./src/feature");
+
+Object.defineProperty(exports, "feature", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_feature).default;
+  }
+});
+
+var _mesh = require("./src/mesh");
+
+Object.defineProperty(exports, "mesh", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_mesh).default;
+  }
+});
+Object.defineProperty(exports, "meshArcs", {
+  enumerable: true,
+  get: function () {
+    return _mesh.meshArcs;
+  }
+});
+
+var _merge = require("./src/merge");
+
+Object.defineProperty(exports, "merge", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_merge).default;
+  }
+});
+Object.defineProperty(exports, "mergeArcs", {
+  enumerable: true,
+  get: function () {
+    return _merge.mergeArcs;
+  }
+});
+
+var _neighbors = require("./src/neighbors");
+
+Object.defineProperty(exports, "neighbors", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_neighbors).default;
+  }
+});
+
+var _quantize = require("./src/quantize");
+
+Object.defineProperty(exports, "quantize", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_quantize).default;
+  }
+});
+
+var _transform = require("./src/transform");
+
+Object.defineProperty(exports, "transform", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_transform).default;
+  }
+});
+
+var _untransform = require("./src/untransform");
+
+Object.defineProperty(exports, "untransform", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_untransform).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./src/bbox":"../node_modules/topojson/node_modules/topojson-client/src/bbox.js","./src/feature":"../node_modules/topojson/node_modules/topojson-client/src/feature.js","./src/mesh":"../node_modules/topojson/node_modules/topojson-client/src/mesh.js","./src/merge":"../node_modules/topojson/node_modules/topojson-client/src/merge.js","./src/neighbors":"../node_modules/topojson/node_modules/topojson-client/src/neighbors.js","./src/quantize":"../node_modules/topojson/node_modules/topojson-client/src/quantize.js","./src/transform":"../node_modules/topojson/node_modules/topojson-client/src/transform.js","./src/untransform":"../node_modules/topojson/node_modules/topojson-client/src/untransform.js"}],"../node_modules/topojson/node_modules/topojson-server/src/bounds.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (objects) {
+  var x0 = Infinity,
+      y0 = Infinity,
+      x1 = -Infinity,
+      y1 = -Infinity;
+
+  function boundGeometry(geometry) {
+    if (geometry != null && boundGeometryType.hasOwnProperty(geometry.type)) boundGeometryType[geometry.type](geometry);
+  }
+
+  var boundGeometryType = {
+    GeometryCollection: function (o) {
+      o.geometries.forEach(boundGeometry);
+    },
+    Point: function (o) {
+      boundPoint(o.coordinates);
+    },
+    MultiPoint: function (o) {
+      o.coordinates.forEach(boundPoint);
+    },
+    LineString: function (o) {
+      boundLine(o.arcs);
+    },
+    MultiLineString: function (o) {
+      o.arcs.forEach(boundLine);
+    },
+    Polygon: function (o) {
+      o.arcs.forEach(boundLine);
+    },
+    MultiPolygon: function (o) {
+      o.arcs.forEach(boundMultiLine);
+    }
+  };
+
+  function boundPoint(coordinates) {
+    var x = coordinates[0],
+        y = coordinates[1];
+    if (x < x0) x0 = x;
+    if (x > x1) x1 = x;
+    if (y < y0) y0 = y;
+    if (y > y1) y1 = y;
+  }
+
+  function boundLine(coordinates) {
+    coordinates.forEach(boundPoint);
+  }
+
+  function boundMultiLine(coordinates) {
+    coordinates.forEach(boundLine);
+  }
+
+  for (var key in objects) {
+    boundGeometry(objects[key]);
+  }
+
+  return x1 >= x0 && y1 >= y0 ? [x0, y0, x1, y1] : undefined;
+};
+},{}],"../node_modules/topojson/node_modules/topojson-server/src/hash/hashset.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (size, hash, equal, type, empty) {
+  if (arguments.length === 3) {
+    type = Array;
+    empty = null;
+  }
+
+  var store = new type(size = 1 << Math.max(4, Math.ceil(Math.log(size) / Math.LN2))),
+      mask = size - 1;
+
+  for (var i = 0; i < size; ++i) {
+    store[i] = empty;
+  }
+
+  function add(value) {
+    var index = hash(value) & mask,
+        match = store[index],
+        collisions = 0;
+    while (match != empty) {
+      if (equal(match, value)) return true;
+      if (++collisions >= size) throw new Error("full hashset");
+      match = store[index = index + 1 & mask];
+    }
+    store[index] = value;
+    return true;
+  }
+
+  function has(value) {
+    var index = hash(value) & mask,
+        match = store[index],
+        collisions = 0;
+    while (match != empty) {
+      if (equal(match, value)) return true;
+      if (++collisions >= size) break;
+      match = store[index = index + 1 & mask];
+    }
+    return false;
+  }
+
+  function values() {
+    var values = [];
+    for (var i = 0, n = store.length; i < n; ++i) {
+      var match = store[i];
+      if (match != empty) values.push(match);
+    }
+    return values;
+  }
+
+  return {
+    add: add,
+    has: has,
+    values: values
+  };
+};
+},{}],"../node_modules/topojson/node_modules/topojson-server/src/hash/hashmap.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (size, hash, equal, keyType, keyEmpty, valueType) {
+  if (arguments.length === 3) {
+    keyType = valueType = Array;
+    keyEmpty = null;
+  }
+
+  var keystore = new keyType(size = 1 << Math.max(4, Math.ceil(Math.log(size) / Math.LN2))),
+      valstore = new valueType(size),
+      mask = size - 1;
+
+  for (var i = 0; i < size; ++i) {
+    keystore[i] = keyEmpty;
+  }
+
+  function set(key, value) {
+    var index = hash(key) & mask,
+        matchKey = keystore[index],
+        collisions = 0;
+    while (matchKey != keyEmpty) {
+      if (equal(matchKey, key)) return valstore[index] = value;
+      if (++collisions >= size) throw new Error("full hashmap");
+      matchKey = keystore[index = index + 1 & mask];
+    }
+    keystore[index] = key;
+    valstore[index] = value;
+    return value;
+  }
+
+  function maybeSet(key, value) {
+    var index = hash(key) & mask,
+        matchKey = keystore[index],
+        collisions = 0;
+    while (matchKey != keyEmpty) {
+      if (equal(matchKey, key)) return valstore[index];
+      if (++collisions >= size) throw new Error("full hashmap");
+      matchKey = keystore[index = index + 1 & mask];
+    }
+    keystore[index] = key;
+    valstore[index] = value;
+    return value;
+  }
+
+  function get(key, missingValue) {
+    var index = hash(key) & mask,
+        matchKey = keystore[index],
+        collisions = 0;
+    while (matchKey != keyEmpty) {
+      if (equal(matchKey, key)) return valstore[index];
+      if (++collisions >= size) break;
+      matchKey = keystore[index = index + 1 & mask];
+    }
+    return missingValue;
+  }
+
+  function keys() {
+    var keys = [];
+    for (var i = 0, n = keystore.length; i < n; ++i) {
+      var matchKey = keystore[i];
+      if (matchKey != keyEmpty) keys.push(matchKey);
+    }
+    return keys;
+  }
+
+  return {
+    set: set,
+    maybeSet: maybeSet, // set if unset
+    get: get,
+    keys: keys
+  };
+};
+},{}],"../node_modules/topojson/node_modules/topojson-server/src/hash/point-equal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (pointA, pointB) {
+  return pointA[0] === pointB[0] && pointA[1] === pointB[1];
+};
+},{}],"../node_modules/topojson/node_modules/topojson-server/src/hash/point-hash.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (point) {
+  floats[0] = point[0];
+  floats[1] = point[1];
+  var hash = uints[0] ^ uints[1];
+  hash = hash << 5 ^ hash >> 7 ^ uints[2] ^ uints[3];
+  return hash & 0x7fffffff;
+};
+
+// TODO if quantized, use simpler Int32 hashing?
+
+var buffer = new ArrayBuffer(16),
+    floats = new Float64Array(buffer),
+    uints = new Uint32Array(buffer);
+},{}],"../node_modules/topojson/node_modules/topojson-server/src/join.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology) {
+  var coordinates = topology.coordinates,
+      lines = topology.lines,
+      rings = topology.rings,
+      indexes = index(),
+      visitedByIndex = new Int32Array(coordinates.length),
+      leftByIndex = new Int32Array(coordinates.length),
+      rightByIndex = new Int32Array(coordinates.length),
+      junctionByIndex = new Int8Array(coordinates.length),
+      junctionCount = 0,
+      // upper bound on number of junctions
+  i,
+      n,
+      previousIndex,
+      currentIndex,
+      nextIndex;
+
+  for (i = 0, n = coordinates.length; i < n; ++i) {
+    visitedByIndex[i] = leftByIndex[i] = rightByIndex[i] = -1;
+  }
+
+  for (i = 0, n = lines.length; i < n; ++i) {
+    var line = lines[i],
+        lineStart = line[0],
+        lineEnd = line[1];
+    currentIndex = indexes[lineStart];
+    nextIndex = indexes[++lineStart];
+    ++junctionCount, junctionByIndex[currentIndex] = 1; // start
+    while (++lineStart <= lineEnd) {
+      sequence(i, previousIndex = currentIndex, currentIndex = nextIndex, nextIndex = indexes[lineStart]);
+    }
+    ++junctionCount, junctionByIndex[nextIndex] = 1; // end
+  }
+
+  for (i = 0, n = coordinates.length; i < n; ++i) {
+    visitedByIndex[i] = -1;
+  }
+
+  for (i = 0, n = rings.length; i < n; ++i) {
+    var ring = rings[i],
+        ringStart = ring[0] + 1,
+        ringEnd = ring[1];
+    previousIndex = indexes[ringEnd - 1];
+    currentIndex = indexes[ringStart - 1];
+    nextIndex = indexes[ringStart];
+    sequence(i, previousIndex, currentIndex, nextIndex);
+    while (++ringStart <= ringEnd) {
+      sequence(i, previousIndex = currentIndex, currentIndex = nextIndex, nextIndex = indexes[ringStart]);
+    }
+  }
+
+  function sequence(i, previousIndex, currentIndex, nextIndex) {
+    if (visitedByIndex[currentIndex] === i) return; // ignore self-intersection
+    visitedByIndex[currentIndex] = i;
+    var leftIndex = leftByIndex[currentIndex];
+    if (leftIndex >= 0) {
+      var rightIndex = rightByIndex[currentIndex];
+      if ((leftIndex !== previousIndex || rightIndex !== nextIndex) && (leftIndex !== nextIndex || rightIndex !== previousIndex)) {
+        ++junctionCount, junctionByIndex[currentIndex] = 1;
+      }
+    } else {
+      leftByIndex[currentIndex] = previousIndex;
+      rightByIndex[currentIndex] = nextIndex;
+    }
+  }
+
+  function index() {
+    var indexByPoint = (0, _hashmap2.default)(coordinates.length * 1.4, hashIndex, equalIndex, Int32Array, -1, Int32Array),
+        indexes = new Int32Array(coordinates.length);
+
+    for (var i = 0, n = coordinates.length; i < n; ++i) {
+      indexes[i] = indexByPoint.maybeSet(i, i);
+    }
+
+    return indexes;
+  }
+
+  function hashIndex(i) {
+    return (0, _pointHash2.default)(coordinates[i]);
+  }
+
+  function equalIndex(i, j) {
+    return (0, _pointEqual2.default)(coordinates[i], coordinates[j]);
+  }
+
+  visitedByIndex = leftByIndex = rightByIndex = null;
+
+  var junctionByPoint = (0, _hashset2.default)(junctionCount * 1.4, _pointHash2.default, _pointEqual2.default),
+      j;
+
+  // Convert back to a standard hashset by point for caller convenience.
+  for (i = 0, n = coordinates.length; i < n; ++i) {
+    if (junctionByIndex[j = indexes[i]]) {
+      junctionByPoint.add(coordinates[j]);
+    }
+  }
+
+  return junctionByPoint;
+};
+
+var _hashset = require("./hash/hashset");
+
+var _hashset2 = _interopRequireDefault(_hashset);
+
+var _hashmap = require("./hash/hashmap");
+
+var _hashmap2 = _interopRequireDefault(_hashmap);
+
+var _pointEqual = require("./hash/point-equal");
+
+var _pointEqual2 = _interopRequireDefault(_pointEqual);
+
+var _pointHash = require("./hash/point-hash");
+
+var _pointHash2 = _interopRequireDefault(_pointHash);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./hash/hashset":"../node_modules/topojson/node_modules/topojson-server/src/hash/hashset.js","./hash/hashmap":"../node_modules/topojson/node_modules/topojson-server/src/hash/hashmap.js","./hash/point-equal":"../node_modules/topojson/node_modules/topojson-server/src/hash/point-equal.js","./hash/point-hash":"../node_modules/topojson/node_modules/topojson-server/src/hash/point-hash.js"}],"../node_modules/topojson/node_modules/topojson-server/src/cut.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology) {
+  var junctions = (0, _join2.default)(topology),
+      coordinates = topology.coordinates,
+      lines = topology.lines,
+      rings = topology.rings,
+      next,
+      i,
+      n;
+
+  for (i = 0, n = lines.length; i < n; ++i) {
+    var line = lines[i],
+        lineMid = line[0],
+        lineEnd = line[1];
+    while (++lineMid < lineEnd) {
+      if (junctions.has(coordinates[lineMid])) {
+        next = { 0: lineMid, 1: line[1] };
+        line[1] = lineMid;
+        line = line.next = next;
+      }
+    }
+  }
+
+  for (i = 0, n = rings.length; i < n; ++i) {
+    var ring = rings[i],
+        ringStart = ring[0],
+        ringMid = ringStart,
+        ringEnd = ring[1],
+        ringFixed = junctions.has(coordinates[ringStart]);
+    while (++ringMid < ringEnd) {
+      if (junctions.has(coordinates[ringMid])) {
+        if (ringFixed) {
+          next = { 0: ringMid, 1: ring[1] };
+          ring[1] = ringMid;
+          ring = ring.next = next;
+        } else {
+          // For the first junction, we can rotate rather than cut.
+          rotateArray(coordinates, ringStart, ringEnd, ringEnd - ringMid);
+          coordinates[ringEnd] = coordinates[ringStart];
+          ringFixed = true;
+          ringMid = ringStart; // restart; we may have skipped junctions
+        }
+      }
+    }
+  }
+
+  return topology;
+};
+
+var _join = require("./join");
+
+var _join2 = _interopRequireDefault(_join);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function rotateArray(array, start, end, offset) {
+  reverse(array, start, end);
+  reverse(array, start, start + offset);
+  reverse(array, start + offset, end);
+}
+
+// Given an extracted (pre-)topology, cuts (or rotates) arcs so that all shared
+// point sequences are identified. The topology can then be subsequently deduped
+// to remove exact duplicate arcs.
+
+
+function reverse(array, start, end) {
+  for (var mid = start + (end-- - start >> 1), t; start < mid; ++start, --end) {
+    t = array[start], array[start] = array[end], array[end] = t;
+  }
+}
+},{"./join":"../node_modules/topojson/node_modules/topojson-server/src/join.js"}],"../node_modules/topojson/node_modules/topojson-server/src/dedup.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology) {
+  var coordinates = topology.coordinates,
+      lines = topology.lines,
+      line,
+      rings = topology.rings,
+      ring,
+      arcCount = lines.length + rings.length,
+      i,
+      n;
+
+  delete topology.lines;
+  delete topology.rings;
+
+  // Count the number of (non-unique) arcs to initialize the hashmap safely.
+  for (i = 0, n = lines.length; i < n; ++i) {
+    line = lines[i];while (line = line.next) ++arcCount;
+  }
+  for (i = 0, n = rings.length; i < n; ++i) {
+    ring = rings[i];while (ring = ring.next) ++arcCount;
+  }
+
+  var arcsByEnd = (0, _hashmap2.default)(arcCount * 2 * 1.4, _pointHash2.default, _pointEqual2.default),
+      arcs = topology.arcs = [];
+
+  for (i = 0, n = lines.length; i < n; ++i) {
+    line = lines[i];
+    do {
+      dedupLine(line);
+    } while (line = line.next);
+  }
+
+  for (i = 0, n = rings.length; i < n; ++i) {
+    ring = rings[i];
+    if (ring.next) {
+      // arc is no longer closed
+      do {
+        dedupLine(ring);
+      } while (ring = ring.next);
+    } else {
+      dedupRing(ring);
+    }
+  }
+
+  function dedupLine(arc) {
+    var startPoint, endPoint, startArcs, startArc, endArcs, endArc, i, n;
+
+    // Does this arc match an existing arc in order?
+    if (startArcs = arcsByEnd.get(startPoint = coordinates[arc[0]])) {
+      for (i = 0, n = startArcs.length; i < n; ++i) {
+        startArc = startArcs[i];
+        if (equalLine(startArc, arc)) {
+          arc[0] = startArc[0];
+          arc[1] = startArc[1];
+          return;
+        }
+      }
+    }
+
+    // Does this arc match an existing arc in reverse order?
+    if (endArcs = arcsByEnd.get(endPoint = coordinates[arc[1]])) {
+      for (i = 0, n = endArcs.length; i < n; ++i) {
+        endArc = endArcs[i];
+        if (reverseEqualLine(endArc, arc)) {
+          arc[1] = endArc[0];
+          arc[0] = endArc[1];
+          return;
+        }
+      }
+    }
+
+    if (startArcs) startArcs.push(arc);else arcsByEnd.set(startPoint, [arc]);
+    if (endArcs) endArcs.push(arc);else arcsByEnd.set(endPoint, [arc]);
+    arcs.push(arc);
+  }
+
+  function dedupRing(arc) {
+    var endPoint, endArcs, endArc, i, n;
+
+    // Does this arc match an existing line in order, or reverse order?
+    // Rings are closed, so their start point and end point is the same.
+    if (endArcs = arcsByEnd.get(endPoint = coordinates[arc[0]])) {
+      for (i = 0, n = endArcs.length; i < n; ++i) {
+        endArc = endArcs[i];
+        if (equalRing(endArc, arc)) {
+          arc[0] = endArc[0];
+          arc[1] = endArc[1];
+          return;
+        }
+        if (reverseEqualRing(endArc, arc)) {
+          arc[0] = endArc[1];
+          arc[1] = endArc[0];
+          return;
+        }
+      }
+    }
+
+    // Otherwise, does this arc match an existing ring in order, or reverse order?
+    if (endArcs = arcsByEnd.get(endPoint = coordinates[arc[0] + findMinimumOffset(arc)])) {
+      for (i = 0, n = endArcs.length; i < n; ++i) {
+        endArc = endArcs[i];
+        if (equalRing(endArc, arc)) {
+          arc[0] = endArc[0];
+          arc[1] = endArc[1];
+          return;
+        }
+        if (reverseEqualRing(endArc, arc)) {
+          arc[0] = endArc[1];
+          arc[1] = endArc[0];
+          return;
+        }
+      }
+    }
+
+    if (endArcs) endArcs.push(arc);else arcsByEnd.set(endPoint, [arc]);
+    arcs.push(arc);
+  }
+
+  function equalLine(arcA, arcB) {
+    var ia = arcA[0],
+        ib = arcB[0],
+        ja = arcA[1],
+        jb = arcB[1];
+    if (ia - ja !== ib - jb) return false;
+    for (; ia <= ja; ++ia, ++ib) if (!(0, _pointEqual2.default)(coordinates[ia], coordinates[ib])) return false;
+    return true;
+  }
+
+  function reverseEqualLine(arcA, arcB) {
+    var ia = arcA[0],
+        ib = arcB[0],
+        ja = arcA[1],
+        jb = arcB[1];
+    if (ia - ja !== ib - jb) return false;
+    for (; ia <= ja; ++ia, --jb) if (!(0, _pointEqual2.default)(coordinates[ia], coordinates[jb])) return false;
+    return true;
+  }
+
+  function equalRing(arcA, arcB) {
+    var ia = arcA[0],
+        ib = arcB[0],
+        ja = arcA[1],
+        jb = arcB[1],
+        n = ja - ia;
+    if (n !== jb - ib) return false;
+    var ka = findMinimumOffset(arcA),
+        kb = findMinimumOffset(arcB);
+    for (var i = 0; i < n; ++i) {
+      if (!(0, _pointEqual2.default)(coordinates[ia + (i + ka) % n], coordinates[ib + (i + kb) % n])) return false;
+    }
+    return true;
+  }
+
+  function reverseEqualRing(arcA, arcB) {
+    var ia = arcA[0],
+        ib = arcB[0],
+        ja = arcA[1],
+        jb = arcB[1],
+        n = ja - ia;
+    if (n !== jb - ib) return false;
+    var ka = findMinimumOffset(arcA),
+        kb = n - findMinimumOffset(arcB);
+    for (var i = 0; i < n; ++i) {
+      if (!(0, _pointEqual2.default)(coordinates[ia + (i + ka) % n], coordinates[jb - (i + kb) % n])) return false;
+    }
+    return true;
+  }
+
+  // Rings are rotated to a consistent, but arbitrary, start point.
+  // This is necessary to detect when a ring and a rotated copy are dupes.
+  function findMinimumOffset(arc) {
+    var start = arc[0],
+        end = arc[1],
+        mid = start,
+        minimum = mid,
+        minimumPoint = coordinates[mid];
+    while (++mid < end) {
+      var point = coordinates[mid];
+      if (point[0] < minimumPoint[0] || point[0] === minimumPoint[0] && point[1] < minimumPoint[1]) {
+        minimum = mid;
+        minimumPoint = point;
+      }
+    }
+    return minimum - start;
+  }
+
+  return topology;
+};
+
+var _hashmap = require("./hash/hashmap");
+
+var _hashmap2 = _interopRequireDefault(_hashmap);
+
+var _pointEqual = require("./hash/point-equal");
+
+var _pointEqual2 = _interopRequireDefault(_pointEqual);
+
+var _pointHash = require("./hash/point-hash");
+
+var _pointHash2 = _interopRequireDefault(_pointHash);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./hash/hashmap":"../node_modules/topojson/node_modules/topojson-server/src/hash/hashmap.js","./hash/point-equal":"../node_modules/topojson/node_modules/topojson-server/src/hash/point-equal.js","./hash/point-hash":"../node_modules/topojson/node_modules/topojson-server/src/hash/point-hash.js"}],"../node_modules/topojson/node_modules/topojson-server/src/delta.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (arcs) {
+  var i = -1,
+      n = arcs.length;
+
+  while (++i < n) {
+    var arc = arcs[i],
+        j = 0,
+        k = 1,
+        m = arc.length,
+        point = arc[0],
+        x0 = point[0],
+        y0 = point[1],
+        x1,
+        y1;
+
+    while (++j < m) {
+      point = arc[j], x1 = point[0], y1 = point[1];
+      if (x1 !== x0 || y1 !== y0) arc[k++] = [x1 - x0, y1 - y0], x0 = x1, y0 = y1;
+    }
+
+    if (k === 1) arc[k++] = [0, 0]; // Each arc must be an array of two or more positions.
+
+    arc.length = k;
+  }
+
+  return arcs;
+};
+},{}],"../node_modules/topojson/node_modules/topojson-server/src/extract.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (objects) {
+  var index = -1,
+      lines = [],
+      rings = [],
+      coordinates = [];
+
+  function extractGeometry(geometry) {
+    if (geometry && extractGeometryType.hasOwnProperty(geometry.type)) extractGeometryType[geometry.type](geometry);
+  }
+
+  var extractGeometryType = {
+    GeometryCollection: function (o) {
+      o.geometries.forEach(extractGeometry);
+    },
+    LineString: function (o) {
+      o.arcs = extractLine(o.arcs);
+    },
+    MultiLineString: function (o) {
+      o.arcs = o.arcs.map(extractLine);
+    },
+    Polygon: function (o) {
+      o.arcs = o.arcs.map(extractRing);
+    },
+    MultiPolygon: function (o) {
+      o.arcs = o.arcs.map(extractMultiRing);
+    }
+  };
+
+  function extractLine(line) {
+    for (var i = 0, n = line.length; i < n; ++i) coordinates[++index] = line[i];
+    var arc = { 0: index - n + 1, 1: index };
+    lines.push(arc);
+    return arc;
+  }
+
+  function extractRing(ring) {
+    for (var i = 0, n = ring.length; i < n; ++i) coordinates[++index] = ring[i];
+    var arc = { 0: index - n + 1, 1: index };
+    rings.push(arc);
+    return arc;
+  }
+
+  function extractMultiRing(rings) {
+    return rings.map(extractRing);
+  }
+
+  for (var key in objects) {
+    extractGeometry(objects[key]);
+  }
+
+  return {
+    type: "Topology",
+    coordinates: coordinates,
+    lines: lines,
+    rings: rings,
+    objects: objects
+  };
+};
+},{}],"../node_modules/topojson/node_modules/topojson-server/src/geometry.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (inputs) {
+  var outputs = {},
+      key;
+  for (key in inputs) outputs[key] = geomifyObject(inputs[key]);
+  return outputs;
+};
+
+function geomifyObject(input) {
+  return input == null ? { type: null } : (input.type === "FeatureCollection" ? geomifyFeatureCollection : input.type === "Feature" ? geomifyFeature : geomifyGeometry)(input);
+} // Given a hash of GeoJSON objects, returns a hash of GeoJSON geometry objects.
+// Any null input geometry objects are represented as {type: null} in the output.
+// Any feature.{id,properties,bbox} are transferred to the output geometry object.
+// Each output geometry object is a shallow copy of the input (e.g., properties, coordinates)!
+
+
+function geomifyFeatureCollection(input) {
+  var output = { type: "GeometryCollection", geometries: input.features.map(geomifyFeature) };
+  if (input.bbox != null) output.bbox = input.bbox;
+  return output;
+}
+
+function geomifyFeature(input) {
+  var output = geomifyGeometry(input.geometry),
+      key; // eslint-disable-line no-unused-vars
+  if (input.id != null) output.id = input.id;
+  if (input.bbox != null) output.bbox = input.bbox;
+  for (key in input.properties) {
+    output.properties = input.properties;break;
+  }
+  return output;
+}
+
+function geomifyGeometry(input) {
+  if (input == null) return { type: null };
+  var output = input.type === "GeometryCollection" ? { type: "GeometryCollection", geometries: input.geometries.map(geomifyGeometry) } : input.type === "Point" || input.type === "MultiPoint" ? { type: input.type, coordinates: input.coordinates } : { type: input.type, arcs: input.coordinates }; // TODO Check for unknown types?
+  if (input.bbox != null) output.bbox = input.bbox;
+  return output;
+}
+},{}],"../node_modules/topojson/node_modules/topojson-server/src/prequantize.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (objects, bbox, n) {
+  var x0 = bbox[0],
+      y0 = bbox[1],
+      x1 = bbox[2],
+      y1 = bbox[3],
+      kx = x1 - x0 ? (n - 1) / (x1 - x0) : 1,
+      ky = y1 - y0 ? (n - 1) / (y1 - y0) : 1;
+
+  function quantizePoint(input) {
+    return [Math.round((input[0] - x0) * kx), Math.round((input[1] - y0) * ky)];
+  }
+
+  function quantizePoints(input, m) {
+    var i = -1,
+        j = 0,
+        n = input.length,
+        output = new Array(n),
+        // pessimistic
+    pi,
+        px,
+        py,
+        x,
+        y;
+
+    while (++i < n) {
+      pi = input[i];
+      x = Math.round((pi[0] - x0) * kx);
+      y = Math.round((pi[1] - y0) * ky);
+      if (x !== px || y !== py) output[j++] = [px = x, py = y]; // non-coincident points
+    }
+
+    output.length = j;
+    while (j < m) j = output.push([output[0][0], output[0][1]]);
+    return output;
+  }
+
+  function quantizeLine(input) {
+    return quantizePoints(input, 2);
+  }
+
+  function quantizeRing(input) {
+    return quantizePoints(input, 4);
+  }
+
+  function quantizePolygon(input) {
+    return input.map(quantizeRing);
+  }
+
+  function quantizeGeometry(o) {
+    if (o != null && quantizeGeometryType.hasOwnProperty(o.type)) quantizeGeometryType[o.type](o);
+  }
+
+  var quantizeGeometryType = {
+    GeometryCollection: function (o) {
+      o.geometries.forEach(quantizeGeometry);
+    },
+    Point: function (o) {
+      o.coordinates = quantizePoint(o.coordinates);
+    },
+    MultiPoint: function (o) {
+      o.coordinates = o.coordinates.map(quantizePoint);
+    },
+    LineString: function (o) {
+      o.arcs = quantizeLine(o.arcs);
+    },
+    MultiLineString: function (o) {
+      o.arcs = o.arcs.map(quantizeLine);
+    },
+    Polygon: function (o) {
+      o.arcs = quantizePolygon(o.arcs);
+    },
+    MultiPolygon: function (o) {
+      o.arcs = o.arcs.map(quantizePolygon);
+    }
+  };
+
+  for (var key in objects) {
+    quantizeGeometry(objects[key]);
+  }
+
+  return {
+    scale: [1 / kx, 1 / ky],
+    translate: [x0, y0]
+  };
+};
+},{}],"../node_modules/topojson/node_modules/topojson-server/src/topology.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (objects, quantization) {
+  var bbox = (0, _bounds2.default)(objects = (0, _geometry2.default)(objects)),
+      transform = quantization > 0 && bbox && (0, _prequantize2.default)(objects, bbox, quantization),
+      topology = (0, _dedup2.default)((0, _cut2.default)((0, _extract2.default)(objects))),
+      coordinates = topology.coordinates,
+      indexByArc = (0, _hashmap2.default)(topology.arcs.length * 1.4, hashArc, equalArc);
+
+  objects = topology.objects; // for garbage collection
+  topology.bbox = bbox;
+  topology.arcs = topology.arcs.map(function (arc, i) {
+    indexByArc.set(arc, i);
+    return coordinates.slice(arc[0], arc[1] + 1);
+  });
+
+  delete topology.coordinates;
+  coordinates = null;
+
+  function indexGeometry(geometry) {
+    if (geometry && indexGeometryType.hasOwnProperty(geometry.type)) indexGeometryType[geometry.type](geometry);
+  }
+
+  var indexGeometryType = {
+    GeometryCollection: function (o) {
+      o.geometries.forEach(indexGeometry);
+    },
+    LineString: function (o) {
+      o.arcs = indexArcs(o.arcs);
+    },
+    MultiLineString: function (o) {
+      o.arcs = o.arcs.map(indexArcs);
+    },
+    Polygon: function (o) {
+      o.arcs = o.arcs.map(indexArcs);
+    },
+    MultiPolygon: function (o) {
+      o.arcs = o.arcs.map(indexMultiArcs);
+    }
+  };
+
+  function indexArcs(arc) {
+    var indexes = [];
+    do {
+      var index = indexByArc.get(arc);
+      indexes.push(arc[0] < arc[1] ? index : ~index);
+    } while (arc = arc.next);
+    return indexes;
+  }
+
+  function indexMultiArcs(arcs) {
+    return arcs.map(indexArcs);
+  }
+
+  for (var key in objects) {
+    indexGeometry(objects[key]);
+  }
+
+  if (transform) {
+    topology.transform = transform;
+    topology.arcs = (0, _delta2.default)(topology.arcs);
+  }
+
+  return topology;
+};
+
+var _bounds = require("./bounds");
+
+var _bounds2 = _interopRequireDefault(_bounds);
+
+var _cut = require("./cut");
+
+var _cut2 = _interopRequireDefault(_cut);
+
+var _dedup = require("./dedup");
+
+var _dedup2 = _interopRequireDefault(_dedup);
+
+var _delta = require("./delta");
+
+var _delta2 = _interopRequireDefault(_delta);
+
+var _extract = require("./extract");
+
+var _extract2 = _interopRequireDefault(_extract);
+
+var _geometry = require("./geometry");
+
+var _geometry2 = _interopRequireDefault(_geometry);
+
+var _hashmap = require("./hash/hashmap");
+
+var _hashmap2 = _interopRequireDefault(_hashmap);
+
+var _prequantize = require("./prequantize");
+
+var _prequantize2 = _interopRequireDefault(_prequantize);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function hashArc(arc) {
+  var i = arc[0],
+      j = arc[1],
+      t;
+  if (j < i) t = i, i = j, j = t;
+  return i + 31 * j;
+}
+
+// Constructs the TopoJSON Topology for the specified hash of features.
+// Each object in the specified hash must be a GeoJSON object,
+// meaning FeatureCollection, a Feature or a geometry object.
+
+
+function equalArc(arcA, arcB) {
+  var ia = arcA[0],
+      ja = arcA[1],
+      ib = arcB[0],
+      jb = arcB[1],
+      t;
+  if (ja < ia) t = ia, ia = ja, ja = t;
+  if (jb < ib) t = ib, ib = jb, jb = t;
+  return ia === ib && ja === jb;
+}
+},{"./bounds":"../node_modules/topojson/node_modules/topojson-server/src/bounds.js","./cut":"../node_modules/topojson/node_modules/topojson-server/src/cut.js","./dedup":"../node_modules/topojson/node_modules/topojson-server/src/dedup.js","./delta":"../node_modules/topojson/node_modules/topojson-server/src/delta.js","./extract":"../node_modules/topojson/node_modules/topojson-server/src/extract.js","./geometry":"../node_modules/topojson/node_modules/topojson-server/src/geometry.js","./hash/hashmap":"../node_modules/topojson/node_modules/topojson-server/src/hash/hashmap.js","./prequantize":"../node_modules/topojson/node_modules/topojson-server/src/prequantize.js"}],"../node_modules/topojson/node_modules/topojson-server/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _topology = require("./src/topology");
+
+Object.defineProperty(exports, "topology", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_topology).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./src/topology":"../node_modules/topojson/node_modules/topojson-server/src/topology.js"}],"../node_modules/topojson/node_modules/topojson-simplify/src/prune.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology) {
+  var oldObjects = topology.objects,
+      newObjects = {},
+      oldArcs = topology.arcs,
+      oldArcsLength = oldArcs.length,
+      oldIndex = -1,
+      newIndexByOldIndex = new Array(oldArcsLength),
+      newArcsLength = 0,
+      newArcs,
+      newIndex = -1,
+      key;
+
+  function scanGeometry(input) {
+    switch (input.type) {
+      case "GeometryCollection":
+        input.geometries.forEach(scanGeometry);break;
+      case "LineString":
+        scanArcs(input.arcs);break;
+      case "MultiLineString":
+        input.arcs.forEach(scanArcs);break;
+      case "Polygon":
+        input.arcs.forEach(scanArcs);break;
+      case "MultiPolygon":
+        input.arcs.forEach(scanMultiArcs);break;
+    }
+  }
+
+  function scanArc(index) {
+    if (index < 0) index = ~index;
+    if (!newIndexByOldIndex[index]) newIndexByOldIndex[index] = 1, ++newArcsLength;
+  }
+
+  function scanArcs(arcs) {
+    arcs.forEach(scanArc);
+  }
+
+  function scanMultiArcs(arcs) {
+    arcs.forEach(scanArcs);
+  }
+
+  function reindexGeometry(input) {
+    var output;
+    switch (input.type) {
+      case "GeometryCollection":
+        output = { type: "GeometryCollection", geometries: input.geometries.map(reindexGeometry) };break;
+      case "LineString":
+        output = { type: "LineString", arcs: reindexArcs(input.arcs) };break;
+      case "MultiLineString":
+        output = { type: "MultiLineString", arcs: input.arcs.map(reindexArcs) };break;
+      case "Polygon":
+        output = { type: "Polygon", arcs: input.arcs.map(reindexArcs) };break;
+      case "MultiPolygon":
+        output = { type: "MultiPolygon", arcs: input.arcs.map(reindexMultiArcs) };break;
+      default:
+        return input;
+    }
+    if (input.id != null) output.id = input.id;
+    if (input.bbox != null) output.bbox = input.bbox;
+    if (input.properties != null) output.properties = input.properties;
+    return output;
+  }
+
+  function reindexArc(oldIndex) {
+    return oldIndex < 0 ? ~newIndexByOldIndex[~oldIndex] : newIndexByOldIndex[oldIndex];
+  }
+
+  function reindexArcs(arcs) {
+    return arcs.map(reindexArc);
+  }
+
+  function reindexMultiArcs(arcs) {
+    return arcs.map(reindexArcs);
+  }
+
+  for (key in oldObjects) {
+    scanGeometry(oldObjects[key]);
+  }
+
+  newArcs = new Array(newArcsLength);
+
+  while (++oldIndex < oldArcsLength) {
+    if (newIndexByOldIndex[oldIndex]) {
+      newIndexByOldIndex[oldIndex] = ++newIndex;
+      newArcs[newIndex] = oldArcs[oldIndex];
+    }
+  }
+
+  for (key in oldObjects) {
+    newObjects[key] = reindexGeometry(oldObjects[key]);
+  }
+
+  return {
+    type: "Topology",
+    bbox: topology.bbox,
+    transform: topology.transform,
+    objects: newObjects,
+    arcs: newArcs
+  };
+};
+},{}],"../node_modules/topojson/node_modules/topojson-simplify/src/filter.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology, filter) {
+  var oldObjects = topology.objects,
+      newObjects = {},
+      key;
+
+  if (filter == null) filter = filterTrue;
+
+  function filterGeometry(input) {
+    var output, arcs;
+    switch (input.type) {
+      case "Polygon":
+        {
+          arcs = filterRings(input.arcs);
+          output = arcs ? { type: "Polygon", arcs: arcs } : { type: null };
+          break;
+        }
+      case "MultiPolygon":
+        {
+          arcs = input.arcs.map(filterRings).filter(filterIdentity);
+          output = arcs.length ? { type: "MultiPolygon", arcs: arcs } : { type: null };
+          break;
+        }
+      case "GeometryCollection":
+        {
+          arcs = input.geometries.map(filterGeometry).filter(filterNotNull);
+          output = arcs.length ? { type: "GeometryCollection", geometries: arcs } : { type: null };
+          break;
+        }
+      default:
+        return input;
+    }
+    if (input.id != null) output.id = input.id;
+    if (input.bbox != null) output.bbox = input.bbox;
+    if (input.properties != null) output.properties = input.properties;
+    return output;
+  }
+
+  function filterRings(arcs) {
+    return arcs.length && filterExteriorRing(arcs[0]) // if the exterior is small, ignore any holes
+    ? [arcs[0]].concat(arcs.slice(1).filter(filterInteriorRing)) : null;
+  }
+
+  function filterExteriorRing(ring) {
+    return filter(ring, false);
+  }
+
+  function filterInteriorRing(ring) {
+    return filter(ring, true);
+  }
+
+  for (key in oldObjects) {
+    newObjects[key] = filterGeometry(oldObjects[key]);
+  }
+
+  return (0, _prune2.default)({
+    type: "Topology",
+    bbox: topology.bbox,
+    transform: topology.transform,
+    objects: newObjects,
+    arcs: topology.arcs
+  });
+};
+
+var _prune = require("./prune");
+
+var _prune2 = _interopRequireDefault(_prune);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function filterTrue() {
+  return true;
+}
+
+function filterIdentity(x) {
+  return x;
+}
+
+function filterNotNull(geometry) {
+  return geometry.type != null;
+}
+},{"./prune":"../node_modules/topojson/node_modules/topojson-simplify/src/prune.js"}],"../node_modules/topojson/node_modules/topojson-simplify/src/filterAttached.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology) {
+  var ownerByArc = new Array(topology.arcs.length),
+      // arc index -> index of unique associated ring, or -1 if used by multiple rings
+  ownerIndex = 0,
+      key;
+
+  function testGeometry(o) {
+    switch (o.type) {
+      case "GeometryCollection":
+        o.geometries.forEach(testGeometry);break;
+      case "Polygon":
+        testArcs(o.arcs);break;
+      case "MultiPolygon":
+        o.arcs.forEach(testArcs);break;
+    }
+  }
+
+  function testArcs(arcs) {
+    for (var i = 0, n = arcs.length; i < n; ++i, ++ownerIndex) {
+      for (var ring = arcs[i], j = 0, m = ring.length; j < m; ++j) {
+        var arc = ring[j];
+        if (arc < 0) arc = ~arc;
+        var owner = ownerByArc[arc];
+        if (owner == null) ownerByArc[arc] = ownerIndex;else if (owner !== ownerIndex) ownerByArc[arc] = -1;
+      }
+    }
+  }
+
+  for (key in topology.objects) {
+    testGeometry(topology.objects[key]);
+  }
+
+  return function (ring) {
+    for (var j = 0, m = ring.length, arc; j < m; ++j) {
+      if (ownerByArc[(arc = ring[j]) < 0 ? ~arc : arc] === -1) {
+        return true;
+      }
+    }
+    return false;
+  };
+};
+},{}],"../node_modules/topojson/node_modules/topojson-simplify/src/planar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.planarTriangleArea = planarTriangleArea;
+exports.planarRingArea = planarRingArea;
+function planarTriangleArea(triangle) {
+  var a = triangle[0],
+      b = triangle[1],
+      c = triangle[2];
+  return Math.abs((a[0] - c[0]) * (b[1] - a[1]) - (a[0] - b[0]) * (c[1] - a[1])) / 2;
+}
+
+function planarRingArea(ring) {
+  var i = -1,
+      n = ring.length,
+      a,
+      b = ring[n - 1],
+      area = 0;
+  while (++i < n) a = b, b = ring[i], area += a[0] * b[1] - a[1] * b[0];
+  return Math.abs(area) / 2;
+}
+},{}],"../node_modules/topojson/node_modules/topojson-simplify/src/filterWeight.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology, minWeight, weight) {
+  minWeight = minWeight == null ? Number.MIN_VALUE : +minWeight;
+
+  if (weight == null) weight = _planar.planarRingArea;
+
+  return function (ring, interior) {
+    return weight((0, _topojsonClient.feature)(topology, { type: "Polygon", arcs: [ring] }).geometry.coordinates[0], interior) >= minWeight;
+  };
+};
+
+var _topojsonClient = require("topojson-client");
+
+var _planar = require("./planar");
+},{"topojson-client":"../node_modules/topojson/node_modules/topojson-client/index.js","./planar":"../node_modules/topojson/node_modules/topojson-simplify/src/planar.js"}],"../node_modules/topojson/node_modules/topojson-simplify/src/filterAttachedWeight.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology, minWeight, weight) {
+  var a = (0, _filterAttached2.default)(topology),
+      w = (0, _filterWeight2.default)(topology, minWeight, weight);
+  return function (ring, interior) {
+    return a(ring, interior) || w(ring, interior);
+  };
+};
+
+var _filterAttached = require("./filterAttached");
+
+var _filterAttached2 = _interopRequireDefault(_filterAttached);
+
+var _filterWeight = require("./filterWeight");
+
+var _filterWeight2 = _interopRequireDefault(_filterWeight);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./filterAttached":"../node_modules/topojson/node_modules/topojson-simplify/src/filterAttached.js","./filterWeight":"../node_modules/topojson/node_modules/topojson-simplify/src/filterWeight.js"}],"../node_modules/topojson/node_modules/topojson-simplify/src/heap.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var heap = {},
+      array = [],
+      size = 0;
+
+  heap.push = function (object) {
+    up(array[object._ = size] = object, size++);
+    return size;
+  };
+
+  heap.pop = function () {
+    if (size <= 0) return;
+    var removed = array[0],
+        object;
+    if (--size > 0) object = array[size], down(array[object._ = 0] = object, 0);
+    return removed;
+  };
+
+  heap.remove = function (removed) {
+    var i = removed._,
+        object;
+    if (array[i] !== removed) return; // invalid request
+    if (i !== --size) object = array[size], (compare(object, removed) < 0 ? up : down)(array[object._ = i] = object, i);
+    return i;
+  };
+
+  function up(object, i) {
+    while (i > 0) {
+      var j = (i + 1 >> 1) - 1,
+          parent = array[j];
+      if (compare(object, parent) >= 0) break;
+      array[parent._ = i] = parent;
+      array[object._ = i = j] = object;
+    }
+  }
+
+  function down(object, i) {
+    while (true) {
+      var r = i + 1 << 1,
+          l = r - 1,
+          j = i,
+          child = array[j];
+      if (l < size && compare(array[l], child) < 0) child = array[j = l];
+      if (r < size && compare(array[r], child) < 0) child = array[j = r];
+      if (j === i) break;
+      array[child._ = i] = child;
+      array[object._ = i = j] = object;
+    }
+  }
+
+  return heap;
+};
+
+function compare(a, b) {
+  return a[1][2] - b[1][2];
+}
+},{}],"../node_modules/topojson/node_modules/topojson-simplify/src/presimplify.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology, weight) {
+  var point = topology.transform ? (0, _topojsonClient.transform)(topology.transform) : copy,
+      heap = (0, _heap2.default)();
+
+  if (weight == null) weight = _planar.planarTriangleArea;
+
+  var arcs = topology.arcs.map(function (arc) {
+    var triangles = [],
+        maxWeight = 0,
+        triangle,
+        i,
+        n;
+
+    arc = arc.map(point);
+
+    for (i = 1, n = arc.length - 1; i < n; ++i) {
+      triangle = [arc[i - 1], arc[i], arc[i + 1]];
+      triangle[1][2] = weight(triangle);
+      triangles.push(triangle);
+      heap.push(triangle);
+    }
+
+    // Always keep the arc endpoints!
+    arc[0][2] = arc[n][2] = Infinity;
+
+    for (i = 0, n = triangles.length; i < n; ++i) {
+      triangle = triangles[i];
+      triangle.previous = triangles[i - 1];
+      triangle.next = triangles[i + 1];
+    }
+
+    while (triangle = heap.pop()) {
+      var previous = triangle.previous,
+          next = triangle.next;
+
+      // If the weight of the current point is less than that of the previous
+      // point to be eliminated, use the latter’s weight instead. This ensures
+      // that the current point cannot be eliminated without eliminating
+      // previously- eliminated points.
+      if (triangle[1][2] < maxWeight) triangle[1][2] = maxWeight;else maxWeight = triangle[1][2];
+
+      if (previous) {
+        previous.next = next;
+        previous[2] = triangle[2];
+        update(previous);
+      }
+
+      if (next) {
+        next.previous = previous;
+        next[0] = triangle[0];
+        update(next);
+      }
+    }
+
+    return arc;
+  });
+
+  function update(triangle) {
+    heap.remove(triangle);
+    triangle[1][2] = weight(triangle);
+    heap.push(triangle);
+  }
+
+  return {
+    type: "Topology",
+    bbox: topology.bbox,
+    objects: topology.objects,
+    arcs: arcs
+  };
+};
+
+var _topojsonClient = require("topojson-client");
+
+var _heap = require("./heap");
+
+var _heap2 = _interopRequireDefault(_heap);
+
+var _planar = require("./planar");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function copy(point) {
+  return [point[0], point[1], 0];
+}
+},{"topojson-client":"../node_modules/topojson/node_modules/topojson-client/index.js","./heap":"../node_modules/topojson/node_modules/topojson-simplify/src/heap.js","./planar":"../node_modules/topojson/node_modules/topojson-simplify/src/planar.js"}],"../node_modules/topojson/node_modules/topojson-simplify/src/quantile.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology, p) {
+  var array = [];
+
+  topology.arcs.forEach(function (arc) {
+    arc.forEach(function (point) {
+      if (isFinite(point[2])) {
+        // Ignore endpoints, whose weight is Infinity.
+        array.push(point[2]);
+      }
+    });
+  });
+
+  return array.length && quantile(array.sort(descending), p);
+};
+
+function quantile(array, p) {
+  if (!(n = array.length)) return;
+  if ((p = +p) <= 0 || n < 2) return array[0];
+  if (p >= 1) return array[n - 1];
+  var n,
+      h = (n - 1) * p,
+      i = Math.floor(h),
+      a = array[i],
+      b = array[i + 1];
+  return a + (b - a) * (h - i);
+}
+
+function descending(a, b) {
+  return b - a;
+}
+},{}],"../node_modules/topojson/node_modules/topojson-simplify/src/simplify.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (topology, minWeight) {
+  minWeight = minWeight == null ? Number.MIN_VALUE : +minWeight;
+
+  // Remove points whose weight is less than the minimum weight.
+  var arcs = topology.arcs.map(function (input) {
+    var i = -1,
+        j = 0,
+        n = input.length,
+        output = new Array(n),
+        // pessimistic
+    point;
+
+    while (++i < n) {
+      if ((point = input[i])[2] >= minWeight) {
+        output[j++] = [point[0], point[1]];
+      }
+    }
+
+    output.length = j;
+    return output;
+  });
+
+  return {
+    type: "Topology",
+    transform: topology.transform,
+    bbox: topology.bbox,
+    objects: topology.objects,
+    arcs: arcs
+  };
+};
+},{}],"../node_modules/topojson/node_modules/topojson-simplify/src/spherical.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.sphericalRingArea = sphericalRingArea;
+exports.sphericalTriangleArea = sphericalTriangleArea;
+var pi = Math.PI,
+    tau = 2 * pi,
+    quarterPi = pi / 4,
+    radians = pi / 180,
+    abs = Math.abs,
+    atan2 = Math.atan2,
+    cos = Math.cos,
+    sin = Math.sin;
+
+function halfArea(ring, closed) {
+  var i = 0,
+      n = ring.length,
+      sum = 0,
+      point = ring[closed ? i++ : n - 1],
+      lambda0,
+      lambda1 = point[0] * radians,
+      phi1 = point[1] * radians / 2 + quarterPi,
+      cosPhi0,
+      cosPhi1 = cos(phi1),
+      sinPhi0,
+      sinPhi1 = sin(phi1);
+
+  for (; i < n; ++i) {
+    point = ring[i];
+    lambda0 = lambda1, lambda1 = point[0] * radians;
+    phi1 = point[1] * radians / 2 + quarterPi;
+    cosPhi0 = cosPhi1, cosPhi1 = cos(phi1);
+    sinPhi0 = sinPhi1, sinPhi1 = sin(phi1);
+
+    // Spherical excess E for a spherical triangle with vertices: south pole,
+    // previous point, current point.  Uses a formula derived from Cagnoli’s
+    // theorem.  See Todhunter, Spherical Trig. (1871), Sec. 103, Eq. (2).
+    // See https://github.com/d3/d3-geo/blob/master/README.md#geoArea
+    var dLambda = lambda1 - lambda0,
+        sdLambda = dLambda >= 0 ? 1 : -1,
+        adLambda = sdLambda * dLambda,
+        k = sinPhi0 * sinPhi1,
+        u = cosPhi0 * cosPhi1 + k * cos(adLambda),
+        v = k * sdLambda * sin(adLambda);
+    sum += atan2(v, u);
+  }
+
+  return sum;
+}
+
+function sphericalRingArea(ring, interior) {
+  var sum = halfArea(ring, true);
+  if (interior) sum *= -1;
+  return (sum < 0 ? tau + sum : sum) * 2;
+}
+
+function sphericalTriangleArea(t) {
+  return abs(halfArea(t, false)) * 2;
+}
+},{}],"../node_modules/topojson/node_modules/topojson-simplify/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _filter = require("./src/filter");
+
+Object.defineProperty(exports, "filter", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_filter).default;
+  }
+});
+
+var _filterAttached = require("./src/filterAttached");
+
+Object.defineProperty(exports, "filterAttached", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_filterAttached).default;
+  }
+});
+
+var _filterAttachedWeight = require("./src/filterAttachedWeight");
+
+Object.defineProperty(exports, "filterAttachedWeight", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_filterAttachedWeight).default;
+  }
+});
+
+var _filterWeight = require("./src/filterWeight");
+
+Object.defineProperty(exports, "filterWeight", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_filterWeight).default;
+  }
+});
+
+var _planar = require("./src/planar");
+
+Object.defineProperty(exports, "planarRingArea", {
+  enumerable: true,
+  get: function () {
+    return _planar.planarRingArea;
+  }
+});
+Object.defineProperty(exports, "planarTriangleArea", {
+  enumerable: true,
+  get: function () {
+    return _planar.planarTriangleArea;
+  }
+});
+
+var _presimplify = require("./src/presimplify");
+
+Object.defineProperty(exports, "presimplify", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_presimplify).default;
+  }
+});
+
+var _quantile = require("./src/quantile");
+
+Object.defineProperty(exports, "quantile", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_quantile).default;
+  }
+});
+
+var _simplify = require("./src/simplify");
+
+Object.defineProperty(exports, "simplify", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_simplify).default;
+  }
+});
+
+var _spherical = require("./src/spherical");
+
+Object.defineProperty(exports, "sphericalRingArea", {
+  enumerable: true,
+  get: function () {
+    return _spherical.sphericalRingArea;
+  }
+});
+Object.defineProperty(exports, "sphericalTriangleArea", {
+  enumerable: true,
+  get: function () {
+    return _spherical.sphericalTriangleArea;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./src/filter":"../node_modules/topojson/node_modules/topojson-simplify/src/filter.js","./src/filterAttached":"../node_modules/topojson/node_modules/topojson-simplify/src/filterAttached.js","./src/filterAttachedWeight":"../node_modules/topojson/node_modules/topojson-simplify/src/filterAttachedWeight.js","./src/filterWeight":"../node_modules/topojson/node_modules/topojson-simplify/src/filterWeight.js","./src/planar":"../node_modules/topojson/node_modules/topojson-simplify/src/planar.js","./src/presimplify":"../node_modules/topojson/node_modules/topojson-simplify/src/presimplify.js","./src/quantile":"../node_modules/topojson/node_modules/topojson-simplify/src/quantile.js","./src/simplify":"../node_modules/topojson/node_modules/topojson-simplify/src/simplify.js","./src/spherical":"../node_modules/topojson/node_modules/topojson-simplify/src/spherical.js"}],"../node_modules/topojson/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _topojsonClient = require("topojson-client");
+
+Object.keys(_topojsonClient).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _topojsonClient[key];
+    }
+  });
+});
+
+var _topojsonServer = require("topojson-server");
+
+Object.keys(_topojsonServer).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _topojsonServer[key];
+    }
+  });
+});
+
+var _topojsonSimplify = require("topojson-simplify");
+
+Object.keys(_topojsonSimplify).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _topojsonSimplify[key];
+    }
+  });
+});
+},{"topojson-client":"../node_modules/topojson/node_modules/topojson-client/index.js","topojson-server":"../node_modules/topojson/node_modules/topojson-server/index.js","topojson-simplify":"../node_modules/topojson/node_modules/topojson-simplify/index.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/namespaces.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var xhtml = exports.xhtml = "http://www.w3.org/1999/xhtml";
+
+exports.default = {
+  svg: "http://www.w3.org/2000/svg",
+  xhtml: xhtml,
+  xlink: "http://www.w3.org/1999/xlink",
+  xml: "http://www.w3.org/XML/1998/namespace",
+  xmlns: "http://www.w3.org/2000/xmlns/"
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/namespace.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (name) {
+  var prefix = name += "",
+      i = prefix.indexOf(":");
+  if (i >= 0 && (prefix = name.slice(0, i)) !== "xmlns") name = name.slice(i + 1);
+  return _namespaces2.default.hasOwnProperty(prefix) ? { space: _namespaces2.default[prefix], local: name } : name;
+};
+
+var _namespaces = require("./namespaces");
+
+var _namespaces2 = _interopRequireDefault(_namespaces);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./namespaces":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/namespaces.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/creator.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (name) {
+  var fullname = (0, _namespace2.default)(name);
+  return (fullname.local ? creatorFixed : creatorInherit)(fullname);
+};
+
+var _namespace = require("./namespace");
+
+var _namespace2 = _interopRequireDefault(_namespace);
+
+var _namespaces = require("./namespaces");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function creatorInherit(name) {
+  return function () {
+    var document = this.ownerDocument,
+        uri = this.namespaceURI;
+    return uri === _namespaces.xhtml && document.documentElement.namespaceURI === _namespaces.xhtml ? document.createElement(name) : document.createElementNS(uri, name);
+  };
+}
+
+function creatorFixed(fullname) {
+  return function () {
+    return this.ownerDocument.createElementNS(fullname.space, fullname.local);
+  };
+}
+},{"./namespace":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/namespace.js","./namespaces":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/namespaces.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/local.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = local;
+var nextId = 0;
+
+function local() {
+  return new Local();
+}
+
+function Local() {
+  this._ = "@" + (++nextId).toString(36);
+}
+
+Local.prototype = local.prototype = {
+  constructor: Local,
+  get: function (node) {
+    var id = this._;
+    while (!(id in node)) if (!(node = node.parentNode)) return;
+    return node[id];
+  },
+  set: function (node, value) {
+    return node[this._] = value;
+  },
+  remove: function (node) {
+    return this._ in node && delete node[this._];
+  },
+  toString: function () {
+    return this._;
+  }
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/matcher.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var matcher = function (selector) {
+  return function () {
+    return this.matches(selector);
+  };
+};
+
+if (typeof document !== "undefined") {
+  var element = document.documentElement;
+  if (!element.matches) {
+    var vendorMatches = element.webkitMatchesSelector || element.msMatchesSelector || element.mozMatchesSelector || element.oMatchesSelector;
+    matcher = function (selector) {
+      return function () {
+        return vendorMatches.call(this, selector);
+      };
+    };
+  }
+}
+
+exports.default = matcher;
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/on.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (typename, value, capture) {
+  var typenames = parseTypenames(typename + ""),
+      i,
+      n = typenames.length,
+      t;
+
+  if (arguments.length < 2) {
+    var on = this.node().__on;
+    if (on) for (var j = 0, m = on.length, o; j < m; ++j) {
+      for (i = 0, o = on[j]; i < n; ++i) {
+        if ((t = typenames[i]).type === o.type && t.name === o.name) {
+          return o.value;
+        }
+      }
+    }
+    return;
+  }
+
+  on = value ? onAdd : onRemove;
+  if (capture == null) capture = false;
+  for (i = 0; i < n; ++i) this.each(on(typenames[i], value, capture));
+  return this;
+};
+
+exports.customEvent = customEvent;
+var filterEvents = {};
+
+var event = exports.event = null;
+
+if (typeof document !== "undefined") {
+  var element = document.documentElement;
+  if (!("onmouseenter" in element)) {
+    filterEvents = { mouseenter: "mouseover", mouseleave: "mouseout" };
+  }
+}
+
+function filterContextListener(listener, index, group) {
+  listener = contextListener(listener, index, group);
+  return function (event) {
+    var related = event.relatedTarget;
+    if (!related || related !== this && !(related.compareDocumentPosition(this) & 8)) {
+      listener.call(this, event);
+    }
+  };
+}
+
+function contextListener(listener, index, group) {
+  return function (event1) {
+    var event0 = event; // Events can be reentrant (e.g., focus).
+    exports.event = event = event1;
+    try {
+      listener.call(this, this.__data__, index, group);
+    } finally {
+      exports.event = event = event0;
+    }
+  };
+}
+
+function parseTypenames(typenames) {
+  return typenames.trim().split(/^|\s+/).map(function (t) {
+    var name = "",
+        i = t.indexOf(".");
+    if (i >= 0) name = t.slice(i + 1), t = t.slice(0, i);
+    return { type: t, name: name };
+  });
+}
+
+function onRemove(typename) {
+  return function () {
+    var on = this.__on;
+    if (!on) return;
+    for (var j = 0, i = -1, m = on.length, o; j < m; ++j) {
+      if (o = on[j], (!typename.type || o.type === typename.type) && o.name === typename.name) {
+        this.removeEventListener(o.type, o.listener, o.capture);
+      } else {
+        on[++i] = o;
+      }
+    }
+    if (++i) on.length = i;else delete this.__on;
+  };
+}
+
+function onAdd(typename, value, capture) {
+  var wrap = filterEvents.hasOwnProperty(typename.type) ? filterContextListener : contextListener;
+  return function (d, i, group) {
+    var on = this.__on,
+        o,
+        listener = wrap(value, i, group);
+    if (on) for (var j = 0, m = on.length; j < m; ++j) {
+      if ((o = on[j]).type === typename.type && o.name === typename.name) {
+        this.removeEventListener(o.type, o.listener, o.capture);
+        this.addEventListener(o.type, o.listener = listener, o.capture = capture);
+        o.value = value;
+        return;
+      }
+    }
+    this.addEventListener(typename.type, listener, capture);
+    o = { type: typename.type, name: typename.name, value: value, listener: listener, capture: capture };
+    if (!on) this.__on = [o];else on.push(o);
+  };
+}
+
+function customEvent(event1, listener, that, args) {
+  var event0 = event;
+  event1.sourceEvent = event;
+  exports.event = event = event1;
+  try {
+    return listener.apply(that, args);
+  } finally {
+    exports.event = event = event0;
+  }
+}
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/sourceEvent.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var current = _on.event,
+      source;
+  while (source = current.sourceEvent) current = source;
+  return current;
+};
+
+var _on = require("./selection/on");
+},{"./selection/on":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/on.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/point.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (node, event) {
+  var svg = node.ownerSVGElement || node;
+
+  if (svg.createSVGPoint) {
+    var point = svg.createSVGPoint();
+    point.x = event.clientX, point.y = event.clientY;
+    point = point.matrixTransform(node.getScreenCTM().inverse());
+    return [point.x, point.y];
+  }
+
+  var rect = node.getBoundingClientRect();
+  return [event.clientX - rect.left - node.clientLeft, event.clientY - rect.top - node.clientTop];
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/mouse.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (node) {
+  var event = (0, _sourceEvent2.default)();
+  if (event.changedTouches) event = event.changedTouches[0];
+  return (0, _point2.default)(node, event);
+};
+
+var _sourceEvent = require("./sourceEvent");
+
+var _sourceEvent2 = _interopRequireDefault(_sourceEvent);
+
+var _point = require("./point");
+
+var _point2 = _interopRequireDefault(_point);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./sourceEvent":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/sourceEvent.js","./point":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/point.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selector.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (selector) {
+  return selector == null ? none : function () {
+    return this.querySelector(selector);
+  };
+};
+
+function none() {}
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/select.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (select) {
+  if (typeof select !== "function") select = (0, _selector2.default)(select);
+
+  for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
+    for (var group = groups[j], n = group.length, subgroup = subgroups[j] = new Array(n), node, subnode, i = 0; i < n; ++i) {
+      if ((node = group[i]) && (subnode = select.call(node, node.__data__, i, group))) {
+        if ("__data__" in node) subnode.__data__ = node.__data__;
+        subgroup[i] = subnode;
+      }
+    }
+  }
+
+  return new _index.Selection(subgroups, this._parents);
+};
+
+var _index = require("./index");
+
+var _selector = require("../selector");
+
+var _selector2 = _interopRequireDefault(_selector);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./index":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/index.js","../selector":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selector.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selectorAll.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (selector) {
+  return selector == null ? empty : function () {
+    return this.querySelectorAll(selector);
+  };
+};
+
+function empty() {
+  return [];
+}
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/selectAll.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (select) {
+  if (typeof select !== "function") select = (0, _selectorAll2.default)(select);
+
+  for (var groups = this._groups, m = groups.length, subgroups = [], parents = [], j = 0; j < m; ++j) {
+    for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) {
+      if (node = group[i]) {
+        subgroups.push(select.call(node, node.__data__, i, group));
+        parents.push(node);
+      }
+    }
+  }
+
+  return new _index.Selection(subgroups, parents);
+};
+
+var _index = require("./index");
+
+var _selectorAll = require("../selectorAll");
+
+var _selectorAll2 = _interopRequireDefault(_selectorAll);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./index":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/index.js","../selectorAll":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selectorAll.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/filter.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (match) {
+  if (typeof match !== "function") match = (0, _matcher2.default)(match);
+
+  for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
+    for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i = 0; i < n; ++i) {
+      if ((node = group[i]) && match.call(node, node.__data__, i, group)) {
+        subgroup.push(node);
+      }
+    }
+  }
+
+  return new _index.Selection(subgroups, this._parents);
+};
+
+var _index = require("./index");
+
+var _matcher = require("../matcher");
+
+var _matcher2 = _interopRequireDefault(_matcher);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./index":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/index.js","../matcher":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/matcher.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/sparse.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (update) {
+  return new Array(update.length);
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/enter.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return new _index.Selection(this._enter || this._groups.map(_sparse2.default), this._parents);
+};
+
+exports.EnterNode = EnterNode;
+
+var _sparse = require("./sparse");
+
+var _sparse2 = _interopRequireDefault(_sparse);
+
+var _index = require("./index");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function EnterNode(parent, datum) {
+  this.ownerDocument = parent.ownerDocument;
+  this.namespaceURI = parent.namespaceURI;
+  this._next = null;
+  this._parent = parent;
+  this.__data__ = datum;
+}
+
+EnterNode.prototype = {
+  constructor: EnterNode,
+  appendChild: function (child) {
+    return this._parent.insertBefore(child, this._next);
+  },
+  insertBefore: function (child, next) {
+    return this._parent.insertBefore(child, next);
+  },
+  querySelector: function (selector) {
+    return this._parent.querySelector(selector);
+  },
+  querySelectorAll: function (selector) {
+    return this._parent.querySelectorAll(selector);
+  }
+};
+},{"./sparse":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/sparse.js","./index":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/index.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/constant.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (x) {
+  return function () {
+    return x;
+  };
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/data.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (value, key) {
+  if (!value) {
+    data = new Array(this.size()), j = -1;
+    this.each(function (d) {
+      data[++j] = d;
+    });
+    return data;
+  }
+
+  var bind = key ? bindKey : bindIndex,
+      parents = this._parents,
+      groups = this._groups;
+
+  if (typeof value !== "function") value = (0, _constant2.default)(value);
+
+  for (var m = groups.length, update = new Array(m), enter = new Array(m), exit = new Array(m), j = 0; j < m; ++j) {
+    var parent = parents[j],
+        group = groups[j],
+        groupLength = group.length,
+        data = value.call(parent, parent && parent.__data__, j, parents),
+        dataLength = data.length,
+        enterGroup = enter[j] = new Array(dataLength),
+        updateGroup = update[j] = new Array(dataLength),
+        exitGroup = exit[j] = new Array(groupLength);
+
+    bind(parent, group, enterGroup, updateGroup, exitGroup, data, key);
+
+    // Now connect the enter nodes to their following update node, such that
+    // appendChild can insert the materialized enter node before this node,
+    // rather than at the end of the parent node.
+    for (var i0 = 0, i1 = 0, previous, next; i0 < dataLength; ++i0) {
+      if (previous = enterGroup[i0]) {
+        if (i0 >= i1) i1 = i0 + 1;
+        while (!(next = updateGroup[i1]) && ++i1 < dataLength);
+        previous._next = next || null;
+      }
+    }
+  }
+
+  update = new _index.Selection(update, parents);
+  update._enter = enter;
+  update._exit = exit;
+  return update;
+};
+
+var _index = require("./index");
+
+var _enter = require("./enter");
+
+var _constant = require("../constant");
+
+var _constant2 = _interopRequireDefault(_constant);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var keyPrefix = "$"; // Protect against keys like “__proto__”.
+
+function bindIndex(parent, group, enter, update, exit, data) {
+  var i = 0,
+      node,
+      groupLength = group.length,
+      dataLength = data.length;
+
+  // Put any non-null nodes that fit into update.
+  // Put any null nodes into enter.
+  // Put any remaining data into enter.
+  for (; i < dataLength; ++i) {
+    if (node = group[i]) {
+      node.__data__ = data[i];
+      update[i] = node;
+    } else {
+      enter[i] = new _enter.EnterNode(parent, data[i]);
+    }
+  }
+
+  // Put any non-null nodes that don’t fit into exit.
+  for (; i < groupLength; ++i) {
+    if (node = group[i]) {
+      exit[i] = node;
+    }
+  }
+}
+
+function bindKey(parent, group, enter, update, exit, data, key) {
+  var i,
+      node,
+      nodeByKeyValue = {},
+      groupLength = group.length,
+      dataLength = data.length,
+      keyValues = new Array(groupLength),
+      keyValue;
+
+  // Compute the key for each node.
+  // If multiple nodes have the same key, the duplicates are added to exit.
+  for (i = 0; i < groupLength; ++i) {
+    if (node = group[i]) {
+      keyValues[i] = keyValue = keyPrefix + key.call(node, node.__data__, i, group);
+      if (keyValue in nodeByKeyValue) {
+        exit[i] = node;
+      } else {
+        nodeByKeyValue[keyValue] = node;
+      }
+    }
+  }
+
+  // Compute the key for each datum.
+  // If there a node associated with this key, join and add it to update.
+  // If there is not (or the key is a duplicate), add it to enter.
+  for (i = 0; i < dataLength; ++i) {
+    keyValue = keyPrefix + key.call(parent, data[i], i, data);
+    if (node = nodeByKeyValue[keyValue]) {
+      update[i] = node;
+      node.__data__ = data[i];
+      nodeByKeyValue[keyValue] = null;
+    } else {
+      enter[i] = new _enter.EnterNode(parent, data[i]);
+    }
+  }
+
+  // Add any remaining nodes that were not bound to data to exit.
+  for (i = 0; i < groupLength; ++i) {
+    if ((node = group[i]) && nodeByKeyValue[keyValues[i]] === node) {
+      exit[i] = node;
+    }
+  }
+}
+},{"./index":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/index.js","./enter":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/enter.js","../constant":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/constant.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/exit.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return new _index.Selection(this._exit || this._groups.map(_sparse2.default), this._parents);
+};
+
+var _sparse = require("./sparse");
+
+var _sparse2 = _interopRequireDefault(_sparse);
+
+var _index = require("./index");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./sparse":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/sparse.js","./index":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/index.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/merge.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (selection) {
+
+  for (var groups0 = this._groups, groups1 = selection._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) {
+    for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) {
+      if (node = group0[i] || group1[i]) {
+        merge[i] = node;
+      }
+    }
+  }
+
+  for (; j < m0; ++j) {
+    merges[j] = groups0[j];
+  }
+
+  return new _index.Selection(merges, this._parents);
+};
+
+var _index = require("./index");
+},{"./index":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/index.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/order.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+
+  for (var groups = this._groups, j = -1, m = groups.length; ++j < m;) {
+    for (var group = groups[j], i = group.length - 1, next = group[i], node; --i >= 0;) {
+      if (node = group[i]) {
+        if (next && next !== node.nextSibling) next.parentNode.insertBefore(node, next);
+        next = node;
+      }
+    }
+  }
+
+  return this;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/sort.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (compare) {
+  if (!compare) compare = ascending;
+
+  function compareNode(a, b) {
+    return a && b ? compare(a.__data__, b.__data__) : !a - !b;
+  }
+
+  for (var groups = this._groups, m = groups.length, sortgroups = new Array(m), j = 0; j < m; ++j) {
+    for (var group = groups[j], n = group.length, sortgroup = sortgroups[j] = new Array(n), node, i = 0; i < n; ++i) {
+      if (node = group[i]) {
+        sortgroup[i] = node;
+      }
+    }
+    sortgroup.sort(compareNode);
+  }
+
+  return new _index.Selection(sortgroups, this._parents).order();
+};
+
+var _index = require("./index");
+
+function ascending(a, b) {
+  return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
+}
+},{"./index":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/index.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/call.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var callback = arguments[0];
+  arguments[0] = this;
+  callback.apply(null, arguments);
+  return this;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/nodes.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var nodes = new Array(this.size()),
+      i = -1;
+  this.each(function () {
+    nodes[++i] = this;
+  });
+  return nodes;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/node.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+
+  for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) {
+    for (var group = groups[j], i = 0, n = group.length; i < n; ++i) {
+      var node = group[i];
+      if (node) return node;
+    }
+  }
+
+  return null;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/size.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var size = 0;
+  this.each(function () {
+    ++size;
+  });
+  return size;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/empty.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return !this.node();
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/each.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (callback) {
+
+  for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) {
+    for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) {
+      if (node = group[i]) callback.call(node, node.__data__, i, group);
+    }
+  }
+
+  return this;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/attr.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (name, value) {
+  var fullname = (0, _namespace2.default)(name);
+
+  if (arguments.length < 2) {
+    var node = this.node();
+    return fullname.local ? node.getAttributeNS(fullname.space, fullname.local) : node.getAttribute(fullname);
+  }
+
+  return this.each((value == null ? fullname.local ? attrRemoveNS : attrRemove : typeof value === "function" ? fullname.local ? attrFunctionNS : attrFunction : fullname.local ? attrConstantNS : attrConstant)(fullname, value));
+};
+
+var _namespace = require("../namespace");
+
+var _namespace2 = _interopRequireDefault(_namespace);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function attrRemove(name) {
+  return function () {
+    this.removeAttribute(name);
+  };
+}
+
+function attrRemoveNS(fullname) {
+  return function () {
+    this.removeAttributeNS(fullname.space, fullname.local);
+  };
+}
+
+function attrConstant(name, value) {
+  return function () {
+    this.setAttribute(name, value);
+  };
+}
+
+function attrConstantNS(fullname, value) {
+  return function () {
+    this.setAttributeNS(fullname.space, fullname.local, value);
+  };
+}
+
+function attrFunction(name, value) {
+  return function () {
+    var v = value.apply(this, arguments);
+    if (v == null) this.removeAttribute(name);else this.setAttribute(name, v);
+  };
+}
+
+function attrFunctionNS(fullname, value) {
+  return function () {
+    var v = value.apply(this, arguments);
+    if (v == null) this.removeAttributeNS(fullname.space, fullname.local);else this.setAttributeNS(fullname.space, fullname.local, v);
+  };
+}
+},{"../namespace":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/namespace.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/window.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (node) {
+    return node.ownerDocument && node.ownerDocument.defaultView || // node is a Node
+    node.document && node // node is a Window
+    || node.defaultView; // node is a Document
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/style.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (name, value, priority) {
+  var node;
+  return arguments.length > 1 ? this.each((value == null ? styleRemove : typeof value === "function" ? styleFunction : styleConstant)(name, value, priority == null ? "" : priority)) : (0, _window2.default)(node = this.node()).getComputedStyle(node, null).getPropertyValue(name);
+};
+
+var _window = require("../window");
+
+var _window2 = _interopRequireDefault(_window);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function styleRemove(name) {
+  return function () {
+    this.style.removeProperty(name);
+  };
+}
+
+function styleConstant(name, value, priority) {
+  return function () {
+    this.style.setProperty(name, value, priority);
+  };
+}
+
+function styleFunction(name, value, priority) {
+  return function () {
+    var v = value.apply(this, arguments);
+    if (v == null) this.style.removeProperty(name);else this.style.setProperty(name, v, priority);
+  };
+}
+},{"../window":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/window.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/property.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (name, value) {
+  return arguments.length > 1 ? this.each((value == null ? propertyRemove : typeof value === "function" ? propertyFunction : propertyConstant)(name, value)) : this.node()[name];
+};
+
+function propertyRemove(name) {
+  return function () {
+    delete this[name];
+  };
+}
+
+function propertyConstant(name, value) {
+  return function () {
+    this[name] = value;
+  };
+}
+
+function propertyFunction(name, value) {
+  return function () {
+    var v = value.apply(this, arguments);
+    if (v == null) delete this[name];else this[name] = v;
+  };
+}
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/classed.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (name, value) {
+  var names = classArray(name + "");
+
+  if (arguments.length < 2) {
+    var list = classList(this.node()),
+        i = -1,
+        n = names.length;
+    while (++i < n) if (!list.contains(names[i])) return false;
+    return true;
+  }
+
+  return this.each((typeof value === "function" ? classedFunction : value ? classedTrue : classedFalse)(names, value));
+};
+
+function classArray(string) {
+  return string.trim().split(/^|\s+/);
+}
+
+function classList(node) {
+  return node.classList || new ClassList(node);
+}
+
+function ClassList(node) {
+  this._node = node;
+  this._names = classArray(node.getAttribute("class") || "");
+}
+
+ClassList.prototype = {
+  add: function (name) {
+    var i = this._names.indexOf(name);
+    if (i < 0) {
+      this._names.push(name);
+      this._node.setAttribute("class", this._names.join(" "));
+    }
+  },
+  remove: function (name) {
+    var i = this._names.indexOf(name);
+    if (i >= 0) {
+      this._names.splice(i, 1);
+      this._node.setAttribute("class", this._names.join(" "));
+    }
+  },
+  contains: function (name) {
+    return this._names.indexOf(name) >= 0;
+  }
+};
+
+function classedAdd(node, names) {
+  var list = classList(node),
+      i = -1,
+      n = names.length;
+  while (++i < n) list.add(names[i]);
+}
+
+function classedRemove(node, names) {
+  var list = classList(node),
+      i = -1,
+      n = names.length;
+  while (++i < n) list.remove(names[i]);
+}
+
+function classedTrue(names) {
+  return function () {
+    classedAdd(this, names);
+  };
+}
+
+function classedFalse(names) {
+  return function () {
+    classedRemove(this, names);
+  };
+}
+
+function classedFunction(names, value) {
+  return function () {
+    (value.apply(this, arguments) ? classedAdd : classedRemove)(this, names);
+  };
+}
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/text.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (value) {
+  return arguments.length ? this.each(value == null ? textRemove : (typeof value === "function" ? textFunction : textConstant)(value)) : this.node().textContent;
+};
+
+function textRemove() {
+  this.textContent = "";
+}
+
+function textConstant(value) {
+  return function () {
+    this.textContent = value;
+  };
+}
+
+function textFunction(value) {
+  return function () {
+    var v = value.apply(this, arguments);
+    this.textContent = v == null ? "" : v;
+  };
+}
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/html.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (value) {
+  return arguments.length ? this.each(value == null ? htmlRemove : (typeof value === "function" ? htmlFunction : htmlConstant)(value)) : this.node().innerHTML;
+};
+
+function htmlRemove() {
+  this.innerHTML = "";
+}
+
+function htmlConstant(value) {
+  return function () {
+    this.innerHTML = value;
+  };
+}
+
+function htmlFunction(value) {
+  return function () {
+    var v = value.apply(this, arguments);
+    this.innerHTML = v == null ? "" : v;
+  };
+}
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/raise.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return this.each(raise);
+};
+
+function raise() {
+  if (this.nextSibling) this.parentNode.appendChild(this);
+}
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/lower.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return this.each(lower);
+};
+
+function lower() {
+  if (this.previousSibling) this.parentNode.insertBefore(this, this.parentNode.firstChild);
+}
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/append.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (name) {
+  var create = typeof name === "function" ? name : (0, _creator2.default)(name);
+  return this.select(function () {
+    return this.appendChild(create.apply(this, arguments));
+  });
+};
+
+var _creator = require("../creator");
+
+var _creator2 = _interopRequireDefault(_creator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"../creator":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/creator.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/insert.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (name, before) {
+  var create = typeof name === "function" ? name : (0, _creator2.default)(name),
+      select = before == null ? constantNull : typeof before === "function" ? before : (0, _selector2.default)(before);
+  return this.select(function () {
+    return this.insertBefore(create.apply(this, arguments), select.apply(this, arguments) || null);
+  });
+};
+
+var _creator = require("../creator");
+
+var _creator2 = _interopRequireDefault(_creator);
+
+var _selector = require("../selector");
+
+var _selector2 = _interopRequireDefault(_selector);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function constantNull() {
+  return null;
+}
+},{"../creator":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/creator.js","../selector":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selector.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/remove.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return this.each(remove);
+};
+
+function remove() {
+  var parent = this.parentNode;
+  if (parent) parent.removeChild(this);
+}
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/datum.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (value) {
+    return arguments.length ? this.property("__data__", value) : this.node().__data__;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/dispatch.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (type, params) {
+  return this.each((typeof params === "function" ? dispatchFunction : dispatchConstant)(type, params));
+};
+
+var _window = require("../window");
+
+var _window2 = _interopRequireDefault(_window);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function dispatchEvent(node, type, params) {
+  var window = (0, _window2.default)(node),
+      event = window.CustomEvent;
+
+  if (event) {
+    event = new event(type, params);
+  } else {
+    event = window.document.createEvent("Event");
+    if (params) event.initEvent(type, params.bubbles, params.cancelable), event.detail = params.detail;else event.initEvent(type, false, false);
+  }
+
+  node.dispatchEvent(event);
+}
+
+function dispatchConstant(type, params) {
+  return function () {
+    return dispatchEvent(this, type, params);
+  };
+}
+
+function dispatchFunction(type, params) {
+  return function () {
+    return dispatchEvent(this, type, params.apply(this, arguments));
+  };
+}
+},{"../window":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/window.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.root = undefined;
+exports.Selection = Selection;
+
+var _select = require("./select");
+
+var _select2 = _interopRequireDefault(_select);
+
+var _selectAll = require("./selectAll");
+
+var _selectAll2 = _interopRequireDefault(_selectAll);
+
+var _filter = require("./filter");
+
+var _filter2 = _interopRequireDefault(_filter);
+
+var _data = require("./data");
+
+var _data2 = _interopRequireDefault(_data);
+
+var _enter = require("./enter");
+
+var _enter2 = _interopRequireDefault(_enter);
+
+var _exit = require("./exit");
+
+var _exit2 = _interopRequireDefault(_exit);
+
+var _merge = require("./merge");
+
+var _merge2 = _interopRequireDefault(_merge);
+
+var _order = require("./order");
+
+var _order2 = _interopRequireDefault(_order);
+
+var _sort = require("./sort");
+
+var _sort2 = _interopRequireDefault(_sort);
+
+var _call = require("./call");
+
+var _call2 = _interopRequireDefault(_call);
+
+var _nodes = require("./nodes");
+
+var _nodes2 = _interopRequireDefault(_nodes);
+
+var _node = require("./node");
+
+var _node2 = _interopRequireDefault(_node);
+
+var _size = require("./size");
+
+var _size2 = _interopRequireDefault(_size);
+
+var _empty = require("./empty");
+
+var _empty2 = _interopRequireDefault(_empty);
+
+var _each = require("./each");
+
+var _each2 = _interopRequireDefault(_each);
+
+var _attr = require("./attr");
+
+var _attr2 = _interopRequireDefault(_attr);
+
+var _style = require("./style");
+
+var _style2 = _interopRequireDefault(_style);
+
+var _property = require("./property");
+
+var _property2 = _interopRequireDefault(_property);
+
+var _classed = require("./classed");
+
+var _classed2 = _interopRequireDefault(_classed);
+
+var _text = require("./text");
+
+var _text2 = _interopRequireDefault(_text);
+
+var _html = require("./html");
+
+var _html2 = _interopRequireDefault(_html);
+
+var _raise = require("./raise");
+
+var _raise2 = _interopRequireDefault(_raise);
+
+var _lower = require("./lower");
+
+var _lower2 = _interopRequireDefault(_lower);
+
+var _append = require("./append");
+
+var _append2 = _interopRequireDefault(_append);
+
+var _insert = require("./insert");
+
+var _insert2 = _interopRequireDefault(_insert);
+
+var _remove = require("./remove");
+
+var _remove2 = _interopRequireDefault(_remove);
+
+var _datum = require("./datum");
+
+var _datum2 = _interopRequireDefault(_datum);
+
+var _on = require("./on");
+
+var _on2 = _interopRequireDefault(_on);
+
+var _dispatch = require("./dispatch");
+
+var _dispatch2 = _interopRequireDefault(_dispatch);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var root = exports.root = [null];
+
+function Selection(groups, parents) {
+  this._groups = groups;
+  this._parents = parents;
+}
+
+function selection() {
+  return new Selection([[document.documentElement]], root);
+}
+
+Selection.prototype = selection.prototype = {
+  constructor: Selection,
+  select: _select2.default,
+  selectAll: _selectAll2.default,
+  filter: _filter2.default,
+  data: _data2.default,
+  enter: _enter2.default,
+  exit: _exit2.default,
+  merge: _merge2.default,
+  order: _order2.default,
+  sort: _sort2.default,
+  call: _call2.default,
+  nodes: _nodes2.default,
+  node: _node2.default,
+  size: _size2.default,
+  empty: _empty2.default,
+  each: _each2.default,
+  attr: _attr2.default,
+  style: _style2.default,
+  property: _property2.default,
+  classed: _classed2.default,
+  text: _text2.default,
+  html: _html2.default,
+  raise: _raise2.default,
+  lower: _lower2.default,
+  append: _append2.default,
+  insert: _insert2.default,
+  remove: _remove2.default,
+  datum: _datum2.default,
+  on: _on2.default,
+  dispatch: _dispatch2.default
+};
+
+exports.default = selection;
+},{"./select":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/select.js","./selectAll":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/selectAll.js","./filter":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/filter.js","./data":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/data.js","./enter":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/enter.js","./exit":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/exit.js","./merge":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/merge.js","./order":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/order.js","./sort":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/sort.js","./call":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/call.js","./nodes":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/nodes.js","./node":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/node.js","./size":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/size.js","./empty":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/empty.js","./each":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/each.js","./attr":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/attr.js","./style":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/style.js","./property":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/property.js","./classed":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/classed.js","./text":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/text.js","./html":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/html.js","./raise":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/raise.js","./lower":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/lower.js","./append":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/append.js","./insert":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/insert.js","./remove":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/remove.js","./datum":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/datum.js","./on":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/on.js","./dispatch":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/dispatch.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/select.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (selector) {
+    return typeof selector === "string" ? new _index.Selection([[document.querySelector(selector)]], [document.documentElement]) : new _index.Selection([[selector]], _index.root);
+};
+
+var _index = require("./selection/index");
+},{"./selection/index":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/index.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selectAll.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (selector) {
+    return typeof selector === "string" ? new _index.Selection([document.querySelectorAll(selector)], [document.documentElement]) : new _index.Selection([selector == null ? [] : selector], _index.root);
+};
+
+var _index = require("./selection/index");
+},{"./selection/index":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/index.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/touch.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (node, touches, identifier) {
+  if (arguments.length < 3) identifier = touches, touches = (0, _sourceEvent2.default)().changedTouches;
+
+  for (var i = 0, n = touches ? touches.length : 0, touch; i < n; ++i) {
+    if ((touch = touches[i]).identifier === identifier) {
+      return (0, _point2.default)(node, touch);
+    }
+  }
+
+  return null;
+};
+
+var _sourceEvent = require("./sourceEvent");
+
+var _sourceEvent2 = _interopRequireDefault(_sourceEvent);
+
+var _point = require("./point");
+
+var _point2 = _interopRequireDefault(_point);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./sourceEvent":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/sourceEvent.js","./point":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/point.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/src/touches.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (node, touches) {
+  if (touches == null) touches = (0, _sourceEvent2.default)().touches;
+
+  for (var i = 0, n = touches ? touches.length : 0, points = new Array(n); i < n; ++i) {
+    points[i] = (0, _point2.default)(node, touches[i]);
+  }
+
+  return points;
+};
+
+var _sourceEvent = require("./sourceEvent");
+
+var _sourceEvent2 = _interopRequireDefault(_sourceEvent);
+
+var _point = require("./point");
+
+var _point2 = _interopRequireDefault(_point);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./sourceEvent":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/sourceEvent.js","./point":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/point.js"}],"../node_modules/d3-svg-legend/node_modules/d3-selection/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _creator = require("./src/creator");
+
+Object.defineProperty(exports, "creator", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_creator).default;
+  }
+});
+
+var _local = require("./src/local");
+
+Object.defineProperty(exports, "local", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_local).default;
+  }
+});
+
+var _matcher = require("./src/matcher");
+
+Object.defineProperty(exports, "matcher", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_matcher).default;
+  }
+});
+
+var _mouse = require("./src/mouse");
+
+Object.defineProperty(exports, "mouse", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_mouse).default;
+  }
+});
+
+var _namespace = require("./src/namespace");
+
+Object.defineProperty(exports, "namespace", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_namespace).default;
+  }
+});
+
+var _namespaces = require("./src/namespaces");
+
+Object.defineProperty(exports, "namespaces", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_namespaces).default;
+  }
+});
+
+var _select = require("./src/select");
+
+Object.defineProperty(exports, "select", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_select).default;
+  }
+});
+
+var _selectAll = require("./src/selectAll");
+
+Object.defineProperty(exports, "selectAll", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_selectAll).default;
+  }
+});
+
+var _index = require("./src/selection/index");
+
+Object.defineProperty(exports, "selection", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_index).default;
+  }
+});
+
+var _selector = require("./src/selector");
+
+Object.defineProperty(exports, "selector", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_selector).default;
+  }
+});
+
+var _selectorAll = require("./src/selectorAll");
+
+Object.defineProperty(exports, "selectorAll", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_selectorAll).default;
+  }
+});
+
+var _touch = require("./src/touch");
+
+Object.defineProperty(exports, "touch", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_touch).default;
+  }
+});
+
+var _touches = require("./src/touches");
+
+Object.defineProperty(exports, "touches", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_touches).default;
+  }
+});
+
+var _window = require("./src/window");
+
+Object.defineProperty(exports, "window", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_window).default;
+  }
+});
+
+var _on = require("./src/selection/on");
+
+Object.defineProperty(exports, "event", {
+  enumerable: true,
+  get: function () {
+    return _on.event;
+  }
+});
+Object.defineProperty(exports, "customEvent", {
+  enumerable: true,
+  get: function () {
+    return _on.customEvent;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./src/creator":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/creator.js","./src/local":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/local.js","./src/matcher":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/matcher.js","./src/mouse":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/mouse.js","./src/namespace":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/namespace.js","./src/namespaces":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/namespaces.js","./src/select":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/select.js","./src/selectAll":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selectAll.js","./src/selection/index":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/index.js","./src/selector":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selector.js","./src/selectorAll":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selectorAll.js","./src/touch":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/touch.js","./src/touches":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/touches.js","./src/window":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/window.js","./src/selection/on":"../node_modules/d3-svg-legend/node_modules/d3-selection/src/selection/on.js"}],"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatDecimal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (x, p) {
+  if ((i = (x = p ? x.toExponential(p - 1) : x.toExponential()).indexOf("e")) < 0) return null; // NaN, ±Infinity
+  var i,
+      coefficient = x.slice(0, i);
+
+  // The string returned by toExponential either has the form \d\.\d+e[-+]\d+
+  // (e.g., 1.2e+3) or the form \de[-+]\d+ (e.g., 1e+3).
+  return [coefficient.length > 1 ? coefficient[0] + coefficient.slice(2) : coefficient, +x.slice(i + 1)];
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-format/src/exponent.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (x) {
+  return x = (0, _formatDecimal2.default)(Math.abs(x)), x ? x[1] : NaN;
+};
+
+var _formatDecimal = require("./formatDecimal");
+
+var _formatDecimal2 = _interopRequireDefault(_formatDecimal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./formatDecimal":"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatDecimal.js"}],"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatGroup.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (grouping, thousands) {
+  return function (value, width) {
+    var i = value.length,
+        t = [],
+        j = 0,
+        g = grouping[0],
+        length = 0;
+
+    while (i > 0 && g > 0) {
+      if (length + g + 1 > width) g = Math.max(1, width - length);
+      t.push(value.substring(i -= g, i + g));
+      if ((length += g + 1) > width) break;
+      g = grouping[j = (j + 1) % grouping.length];
+    }
+
+    return t.reverse().join(thousands);
+  };
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatDefault.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (x, p) {
+  x = x.toPrecision(p);
+
+  out: for (var n = x.length, i = 1, i0 = -1, i1; i < n; ++i) {
+    switch (x[i]) {
+      case ".":
+        i0 = i1 = i;break;
+      case "0":
+        if (i0 === 0) i0 = i;i1 = i;break;
+      case "e":
+        break out;
+      default:
+        if (i0 > 0) i0 = 0;break;
+    }
+  }
+
+  return i0 > 0 ? x.slice(0, i0) + x.slice(i1 + 1) : x;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatPrefixAuto.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.prefixExponent = undefined;
+
+exports.default = function (x, p) {
+    var d = (0, _formatDecimal2.default)(x, p);
+    if (!d) return x + "";
+    var coefficient = d[0],
+        exponent = d[1],
+        i = exponent - (exports.prefixExponent = prefixExponent = Math.max(-8, Math.min(8, Math.floor(exponent / 3))) * 3) + 1,
+        n = coefficient.length;
+    return i === n ? coefficient : i > n ? coefficient + new Array(i - n + 1).join("0") : i > 0 ? coefficient.slice(0, i) + "." + coefficient.slice(i) : "0." + new Array(1 - i).join("0") + (0, _formatDecimal2.default)(x, Math.max(0, p + i - 1))[0]; // less than 1y!
+};
+
+var _formatDecimal = require("./formatDecimal");
+
+var _formatDecimal2 = _interopRequireDefault(_formatDecimal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var prefixExponent = exports.prefixExponent = undefined;
+},{"./formatDecimal":"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatDecimal.js"}],"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatRounded.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (x, p) {
+    var d = (0, _formatDecimal2.default)(x, p);
+    if (!d) return x + "";
+    var coefficient = d[0],
+        exponent = d[1];
+    return exponent < 0 ? "0." + new Array(-exponent).join("0") + coefficient : coefficient.length > exponent + 1 ? coefficient.slice(0, exponent + 1) + "." + coefficient.slice(exponent + 1) : coefficient + new Array(exponent - coefficient.length + 2).join("0");
+};
+
+var _formatDecimal = require("./formatDecimal");
+
+var _formatDecimal2 = _interopRequireDefault(_formatDecimal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./formatDecimal":"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatDecimal.js"}],"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatTypes.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _formatDefault = require("./formatDefault");
+
+var _formatDefault2 = _interopRequireDefault(_formatDefault);
+
+var _formatPrefixAuto = require("./formatPrefixAuto");
+
+var _formatPrefixAuto2 = _interopRequireDefault(_formatPrefixAuto);
+
+var _formatRounded = require("./formatRounded");
+
+var _formatRounded2 = _interopRequireDefault(_formatRounded);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  "": _formatDefault2.default,
+  "%": function (x, p) {
+    return (x * 100).toFixed(p);
+  },
+  "b": function (x) {
+    return Math.round(x).toString(2);
+  },
+  "c": function (x) {
+    return x + "";
+  },
+  "d": function (x) {
+    return Math.round(x).toString(10);
+  },
+  "e": function (x, p) {
+    return x.toExponential(p);
+  },
+  "f": function (x, p) {
+    return x.toFixed(p);
+  },
+  "g": function (x, p) {
+    return x.toPrecision(p);
+  },
+  "o": function (x) {
+    return Math.round(x).toString(8);
+  },
+  "p": function (x, p) {
+    return (0, _formatRounded2.default)(x * 100, p);
+  },
+  "r": _formatRounded2.default,
+  "s": _formatPrefixAuto2.default,
+  "X": function (x) {
+    return Math.round(x).toString(16).toUpperCase();
+  },
+  "x": function (x) {
+    return Math.round(x).toString(16);
+  }
+};
+},{"./formatDefault":"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatDefault.js","./formatPrefixAuto":"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatPrefixAuto.js","./formatRounded":"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatRounded.js"}],"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatSpecifier.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (specifier) {
+  return new FormatSpecifier(specifier);
+};
+
+var _formatTypes = require("./formatTypes");
+
+var _formatTypes2 = _interopRequireDefault(_formatTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// [[fill]align][sign][symbol][0][width][,][.precision][type]
+var re = /^(?:(.)?([<>=^]))?([+\-\( ])?([$#])?(0)?(\d+)?(,)?(\.\d+)?([a-z%])?$/i;
+
+function FormatSpecifier(specifier) {
+  if (!(match = re.exec(specifier))) throw new Error("invalid format: " + specifier);
+
+  var match,
+      fill = match[1] || " ",
+      align = match[2] || ">",
+      sign = match[3] || "-",
+      symbol = match[4] || "",
+      zero = !!match[5],
+      width = match[6] && +match[6],
+      comma = !!match[7],
+      precision = match[8] && +match[8].slice(1),
+      type = match[9] || "";
+
+  // The "n" type is an alias for ",g".
+  if (type === "n") comma = true, type = "g";
+
+  // Map invalid types to the default format.
+  else if (!_formatTypes2.default[type]) type = "";
+
+  // If zero fill is specified, padding goes after sign and before digits.
+  if (zero || fill === "0" && align === "=") zero = true, fill = "0", align = "=";
+
+  this.fill = fill;
+  this.align = align;
+  this.sign = sign;
+  this.symbol = symbol;
+  this.zero = zero;
+  this.width = width;
+  this.comma = comma;
+  this.precision = precision;
+  this.type = type;
+}
+
+FormatSpecifier.prototype.toString = function () {
+  return this.fill + this.align + this.sign + this.symbol + (this.zero ? "0" : "") + (this.width == null ? "" : Math.max(1, this.width | 0)) + (this.comma ? "," : "") + (this.precision == null ? "" : "." + Math.max(0, this.precision | 0)) + this.type;
+};
+},{"./formatTypes":"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatTypes.js"}],"../node_modules/d3-svg-legend/node_modules/d3-format/src/locale.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (locale) {
+  var group = locale.grouping && locale.thousands ? (0, _formatGroup2.default)(locale.grouping, locale.thousands) : identity,
+      currency = locale.currency,
+      decimal = locale.decimal;
+
+  function newFormat(specifier) {
+    specifier = (0, _formatSpecifier2.default)(specifier);
+
+    var fill = specifier.fill,
+        align = specifier.align,
+        sign = specifier.sign,
+        symbol = specifier.symbol,
+        zero = specifier.zero,
+        width = specifier.width,
+        comma = specifier.comma,
+        precision = specifier.precision,
+        type = specifier.type;
+
+    // Compute the prefix and suffix.
+    // For SI-prefix, the suffix is lazily computed.
+    var prefix = symbol === "$" ? currency[0] : symbol === "#" && /[boxX]/.test(type) ? "0" + type.toLowerCase() : "",
+        suffix = symbol === "$" ? currency[1] : /[%p]/.test(type) ? "%" : "";
+
+    // What format function should we use?
+    // Is this an integer type?
+    // Can this type generate exponential notation?
+    var formatType = _formatTypes2.default[type],
+        maybeSuffix = !type || /[defgprs%]/.test(type);
+
+    // Set the default precision if not specified,
+    // or clamp the specified precision to the supported range.
+    // For significant precision, it must be in [1, 21].
+    // For fixed precision, it must be in [0, 20].
+    precision = precision == null ? type ? 6 : 12 : /[gprs]/.test(type) ? Math.max(1, Math.min(21, precision)) : Math.max(0, Math.min(20, precision));
+
+    function format(value) {
+      var valuePrefix = prefix,
+          valueSuffix = suffix,
+          i,
+          n,
+          c;
+
+      if (type === "c") {
+        valueSuffix = formatType(value) + valueSuffix;
+        value = "";
+      } else {
+        value = +value;
+
+        // Convert negative to positive, and compute the prefix.
+        // Note that -0 is not less than 0, but 1 / -0 is!
+        var valueNegative = (value < 0 || 1 / value < 0) && (value *= -1, true);
+
+        // Perform the initial formatting.
+        value = formatType(value, precision);
+
+        // If the original value was negative, it may be rounded to zero during
+        // formatting; treat this as (positive) zero.
+        if (valueNegative) {
+          i = -1, n = value.length;
+          valueNegative = false;
+          while (++i < n) {
+            if (c = value.charCodeAt(i), 48 < c && c < 58 || type === "x" && 96 < c && c < 103 || type === "X" && 64 < c && c < 71) {
+              valueNegative = true;
+              break;
+            }
+          }
+        }
+
+        // Compute the prefix and suffix.
+        valuePrefix = (valueNegative ? sign === "(" ? sign : "-" : sign === "-" || sign === "(" ? "" : sign) + valuePrefix;
+        valueSuffix = valueSuffix + (type === "s" ? prefixes[8 + _formatPrefixAuto.prefixExponent / 3] : "") + (valueNegative && sign === "(" ? ")" : "");
+
+        // Break the formatted value into the integer “value” part that can be
+        // grouped, and fractional or exponential “suffix” part that is not.
+        if (maybeSuffix) {
+          i = -1, n = value.length;
+          while (++i < n) {
+            if (c = value.charCodeAt(i), 48 > c || c > 57) {
+              valueSuffix = (c === 46 ? decimal + value.slice(i + 1) : value.slice(i)) + valueSuffix;
+              value = value.slice(0, i);
+              break;
+            }
+          }
+        }
+      }
+
+      // If the fill character is not "0", grouping is applied before padding.
+      if (comma && !zero) value = group(value, Infinity);
+
+      // Compute the padding.
+      var length = valuePrefix.length + value.length + valueSuffix.length,
+          padding = length < width ? new Array(width - length + 1).join(fill) : "";
+
+      // If the fill character is "0", grouping is applied after padding.
+      if (comma && zero) value = group(padding + value, padding.length ? width - valueSuffix.length : Infinity), padding = "";
+
+      // Reconstruct the final output based on the desired alignment.
+      switch (align) {
+        case "<":
+          return valuePrefix + value + valueSuffix + padding;
+        case "=":
+          return valuePrefix + padding + value + valueSuffix;
+        case "^":
+          return padding.slice(0, length = padding.length >> 1) + valuePrefix + value + valueSuffix + padding.slice(length);
+      }
+      return padding + valuePrefix + value + valueSuffix;
+    }
+
+    format.toString = function () {
+      return specifier + "";
+    };
+
+    return format;
+  }
+
+  function formatPrefix(specifier, value) {
+    var f = newFormat((specifier = (0, _formatSpecifier2.default)(specifier), specifier.type = "f", specifier)),
+        e = Math.max(-8, Math.min(8, Math.floor((0, _exponent2.default)(value) / 3))) * 3,
+        k = Math.pow(10, -e),
+        prefix = prefixes[8 + e / 3];
+    return function (value) {
+      return f(k * value) + prefix;
+    };
+  }
+
+  return {
+    format: newFormat,
+    formatPrefix: formatPrefix
+  };
+};
+
+var _exponent = require("./exponent");
+
+var _exponent2 = _interopRequireDefault(_exponent);
+
+var _formatGroup = require("./formatGroup");
+
+var _formatGroup2 = _interopRequireDefault(_formatGroup);
+
+var _formatSpecifier = require("./formatSpecifier");
+
+var _formatSpecifier2 = _interopRequireDefault(_formatSpecifier);
+
+var _formatTypes = require("./formatTypes");
+
+var _formatTypes2 = _interopRequireDefault(_formatTypes);
+
+var _formatPrefixAuto = require("./formatPrefixAuto");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var prefixes = ["y", "z", "a", "f", "p", "n", "µ", "m", "", "k", "M", "G", "T", "P", "E", "Z", "Y"];
+
+function identity(x) {
+  return x;
+}
+},{"./exponent":"../node_modules/d3-svg-legend/node_modules/d3-format/src/exponent.js","./formatGroup":"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatGroup.js","./formatSpecifier":"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatSpecifier.js","./formatTypes":"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatTypes.js","./formatPrefixAuto":"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatPrefixAuto.js"}],"../node_modules/d3-svg-legend/node_modules/d3-format/src/defaultLocale.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.formatPrefix = exports.format = undefined;
+exports.default = defaultLocale;
+
+var _locale = require("./locale");
+
+var _locale2 = _interopRequireDefault(_locale);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var locale;
+var format = exports.format = undefined;
+var formatPrefix = exports.formatPrefix = undefined;
+
+defaultLocale({
+  decimal: ".",
+  thousands: ",",
+  grouping: [3],
+  currency: ["$", ""]
+});
+
+function defaultLocale(definition) {
+  locale = (0, _locale2.default)(definition);
+  exports.format = format = locale.format;
+  exports.formatPrefix = formatPrefix = locale.formatPrefix;
+  return locale;
+}
+},{"./locale":"../node_modules/d3-svg-legend/node_modules/d3-format/src/locale.js"}],"../node_modules/d3-svg-legend/node_modules/d3-format/src/precisionFixed.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (step) {
+  return Math.max(0, -(0, _exponent2.default)(Math.abs(step)));
+};
+
+var _exponent = require("./exponent");
+
+var _exponent2 = _interopRequireDefault(_exponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./exponent":"../node_modules/d3-svg-legend/node_modules/d3-format/src/exponent.js"}],"../node_modules/d3-svg-legend/node_modules/d3-format/src/precisionPrefix.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (step, value) {
+  return Math.max(0, Math.max(-8, Math.min(8, Math.floor((0, _exponent2.default)(value) / 3))) * 3 - (0, _exponent2.default)(Math.abs(step)));
+};
+
+var _exponent = require("./exponent");
+
+var _exponent2 = _interopRequireDefault(_exponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./exponent":"../node_modules/d3-svg-legend/node_modules/d3-format/src/exponent.js"}],"../node_modules/d3-svg-legend/node_modules/d3-format/src/precisionRound.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (step, max) {
+  step = Math.abs(step), max = Math.abs(max) - step;
+  return Math.max(0, (0, _exponent2.default)(max) - (0, _exponent2.default)(step)) + 1;
+};
+
+var _exponent = require("./exponent");
+
+var _exponent2 = _interopRequireDefault(_exponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./exponent":"../node_modules/d3-svg-legend/node_modules/d3-format/src/exponent.js"}],"../node_modules/d3-svg-legend/node_modules/d3-format/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _defaultLocale = require("./src/defaultLocale");
+
+Object.defineProperty(exports, "formatDefaultLocale", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_defaultLocale).default;
+  }
+});
+Object.defineProperty(exports, "format", {
+  enumerable: true,
+  get: function () {
+    return _defaultLocale.format;
+  }
+});
+Object.defineProperty(exports, "formatPrefix", {
+  enumerable: true,
+  get: function () {
+    return _defaultLocale.formatPrefix;
+  }
+});
+
+var _locale = require("./src/locale");
+
+Object.defineProperty(exports, "formatLocale", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_locale).default;
+  }
+});
+
+var _formatSpecifier = require("./src/formatSpecifier");
+
+Object.defineProperty(exports, "formatSpecifier", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_formatSpecifier).default;
+  }
+});
+
+var _precisionFixed = require("./src/precisionFixed");
+
+Object.defineProperty(exports, "precisionFixed", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_precisionFixed).default;
+  }
+});
+
+var _precisionPrefix = require("./src/precisionPrefix");
+
+Object.defineProperty(exports, "precisionPrefix", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_precisionPrefix).default;
+  }
+});
+
+var _precisionRound = require("./src/precisionRound");
+
+Object.defineProperty(exports, "precisionRound", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_precisionRound).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./src/defaultLocale":"../node_modules/d3-svg-legend/node_modules/d3-format/src/defaultLocale.js","./src/locale":"../node_modules/d3-svg-legend/node_modules/d3-format/src/locale.js","./src/formatSpecifier":"../node_modules/d3-svg-legend/node_modules/d3-format/src/formatSpecifier.js","./src/precisionFixed":"../node_modules/d3-svg-legend/node_modules/d3-format/src/precisionFixed.js","./src/precisionPrefix":"../node_modules/d3-svg-legend/node_modules/d3-format/src/precisionPrefix.js","./src/precisionRound":"../node_modules/d3-svg-legend/node_modules/d3-format/src/precisionRound.js"}],"../node_modules/d3-svg-legend/node_modules/d3-dispatch/src/dispatch.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var noop = { value: function () {} };
+
+function dispatch() {
+  for (var i = 0, n = arguments.length, _ = {}, t; i < n; ++i) {
+    if (!(t = arguments[i] + "") || t in _) throw new Error("illegal type: " + t);
+    _[t] = [];
+  }
+  return new Dispatch(_);
+}
+
+function Dispatch(_) {
+  this._ = _;
+}
+
+function parseTypenames(typenames, types) {
+  return typenames.trim().split(/^|\s+/).map(function (t) {
+    var name = "",
+        i = t.indexOf(".");
+    if (i >= 0) name = t.slice(i + 1), t = t.slice(0, i);
+    if (t && !types.hasOwnProperty(t)) throw new Error("unknown type: " + t);
+    return { type: t, name: name };
+  });
+}
+
+Dispatch.prototype = dispatch.prototype = {
+  constructor: Dispatch,
+  on: function (typename, callback) {
+    var _ = this._,
+        T = parseTypenames(typename + "", _),
+        t,
+        i = -1,
+        n = T.length;
+
+    // If no callback was specified, return the callback of the given type and name.
+    if (arguments.length < 2) {
+      while (++i < n) if ((t = (typename = T[i]).type) && (t = get(_[t], typename.name))) return t;
+      return;
+    }
+
+    // If a type was specified, set the callback for the given type and name.
+    // Otherwise, if a null callback was specified, remove callbacks of the given name.
+    if (callback != null && typeof callback !== "function") throw new Error("invalid callback: " + callback);
+    while (++i < n) {
+      if (t = (typename = T[i]).type) _[t] = set(_[t], typename.name, callback);else if (callback == null) for (t in _) _[t] = set(_[t], typename.name, null);
+    }
+
+    return this;
+  },
+  copy: function () {
+    var copy = {},
+        _ = this._;
+    for (var t in _) copy[t] = _[t].slice();
+    return new Dispatch(copy);
+  },
+  call: function (type, that) {
+    if ((n = arguments.length - 2) > 0) for (var args = new Array(n), i = 0, n, t; i < n; ++i) args[i] = arguments[i + 2];
+    if (!this._.hasOwnProperty(type)) throw new Error("unknown type: " + type);
+    for (t = this._[type], i = 0, n = t.length; i < n; ++i) t[i].value.apply(that, args);
+  },
+  apply: function (type, that, args) {
+    if (!this._.hasOwnProperty(type)) throw new Error("unknown type: " + type);
+    for (var t = this._[type], i = 0, n = t.length; i < n; ++i) t[i].value.apply(that, args);
+  }
+};
+
+function get(type, name) {
+  for (var i = 0, n = type.length, c; i < n; ++i) {
+    if ((c = type[i]).name === name) {
+      return c.value;
+    }
+  }
+}
+
+function set(type, name, callback) {
+  for (var i = 0, n = type.length; i < n; ++i) {
+    if (type[i].name === name) {
+      type[i] = noop, type = type.slice(0, i).concat(type.slice(i + 1));
+      break;
+    }
+  }
+  if (callback != null) type.push({ name: name, value: callback });
+  return type;
+}
+
+exports.default = dispatch;
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-dispatch/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _dispatch = require("./src/dispatch");
+
+Object.defineProperty(exports, "dispatch", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_dispatch).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./src/dispatch":"../node_modules/d3-svg-legend/node_modules/d3-dispatch/src/dispatch.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/ascending.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (a, b) {
+  return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/bisector.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (compare) {
+  if (compare.length === 1) compare = ascendingComparator(compare);
+  return {
+    left: function (a, x, lo, hi) {
+      if (lo == null) lo = 0;
+      if (hi == null) hi = a.length;
+      while (lo < hi) {
+        var mid = lo + hi >>> 1;
+        if (compare(a[mid], x) < 0) lo = mid + 1;else hi = mid;
+      }
+      return lo;
+    },
+    right: function (a, x, lo, hi) {
+      if (lo == null) lo = 0;
+      if (hi == null) hi = a.length;
+      while (lo < hi) {
+        var mid = lo + hi >>> 1;
+        if (compare(a[mid], x) > 0) hi = mid;else lo = mid + 1;
+      }
+      return lo;
+    }
+  };
+};
+
+var _ascending = require("./ascending");
+
+var _ascending2 = _interopRequireDefault(_ascending);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ascendingComparator(f) {
+  return function (d, x) {
+    return (0, _ascending2.default)(f(d), x);
+  };
+}
+},{"./ascending":"../node_modules/d3-svg-legend/node_modules/d3-array/src/ascending.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/bisect.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.bisectLeft = exports.bisectRight = undefined;
+
+var _ascending = require("./ascending");
+
+var _ascending2 = _interopRequireDefault(_ascending);
+
+var _bisector = require("./bisector");
+
+var _bisector2 = _interopRequireDefault(_bisector);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ascendingBisect = (0, _bisector2.default)(_ascending2.default);
+var bisectRight = exports.bisectRight = ascendingBisect.right;
+var bisectLeft = exports.bisectLeft = ascendingBisect.left;
+exports.default = bisectRight;
+},{"./ascending":"../node_modules/d3-svg-legend/node_modules/d3-array/src/ascending.js","./bisector":"../node_modules/d3-svg-legend/node_modules/d3-array/src/bisector.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/descending.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (a, b) {
+  return b < a ? -1 : b > a ? 1 : b >= a ? 0 : NaN;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/number.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (x) {
+  return x === null ? NaN : +x;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/variance.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (array, f) {
+  var n = array.length,
+      m = 0,
+      a,
+      d,
+      s = 0,
+      i = -1,
+      j = 0;
+
+  if (f == null) {
+    while (++i < n) {
+      if (!isNaN(a = (0, _number2.default)(array[i]))) {
+        d = a - m;
+        m += d / ++j;
+        s += d * (a - m);
+      }
+    }
+  } else {
+    while (++i < n) {
+      if (!isNaN(a = (0, _number2.default)(f(array[i], i, array)))) {
+        d = a - m;
+        m += d / ++j;
+        s += d * (a - m);
+      }
+    }
+  }
+
+  if (j > 1) return s / (j - 1);
+};
+
+var _number = require("./number");
+
+var _number2 = _interopRequireDefault(_number);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./number":"../node_modules/d3-svg-legend/node_modules/d3-array/src/number.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/deviation.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (array, f) {
+  var v = (0, _variance2.default)(array, f);
+  return v ? Math.sqrt(v) : v;
+};
+
+var _variance = require("./variance");
+
+var _variance2 = _interopRequireDefault(_variance);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./variance":"../node_modules/d3-svg-legend/node_modules/d3-array/src/variance.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/extent.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (array, f) {
+  var i = -1,
+      n = array.length,
+      a,
+      b,
+      c;
+
+  if (f == null) {
+    while (++i < n) if ((b = array[i]) != null && b >= b) {
+      a = c = b;break;
+    }
+    while (++i < n) if ((b = array[i]) != null) {
+      if (a > b) a = b;
+      if (c < b) c = b;
+    }
+  } else {
+    while (++i < n) if ((b = f(array[i], i, array)) != null && b >= b) {
+      a = c = b;break;
+    }
+    while (++i < n) if ((b = f(array[i], i, array)) != null) {
+      if (a > b) a = b;
+      if (c < b) c = b;
+    }
+  }
+
+  return [a, c];
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/array.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var array = Array.prototype;
+
+var slice = exports.slice = array.slice;
+var map = exports.map = array.map;
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/constant.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (x) {
+  return function () {
+    return x;
+  };
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/identity.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (x) {
+  return x;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/range.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (start, stop, step) {
+  start = +start, stop = +stop, step = (n = arguments.length) < 2 ? (stop = start, start = 0, 1) : n < 3 ? 1 : +step;
+
+  var i = -1,
+      n = Math.max(0, Math.ceil((stop - start) / step)) | 0,
+      range = new Array(n);
+
+  while (++i < n) {
+    range[i] = start + i * step;
+  }
+
+  return range;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/ticks.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (start, stop, count) {
+  var step = tickStep(start, stop, count);
+  return (0, _range2.default)(Math.ceil(start / step) * step, Math.floor(stop / step) * step + step / 2, // inclusive
+  step);
+};
+
+exports.tickStep = tickStep;
+
+var _range = require("./range");
+
+var _range2 = _interopRequireDefault(_range);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var e10 = Math.sqrt(50),
+    e5 = Math.sqrt(10),
+    e2 = Math.sqrt(2);
+
+function tickStep(start, stop, count) {
+  var step0 = Math.abs(stop - start) / Math.max(0, count),
+      step1 = Math.pow(10, Math.floor(Math.log(step0) / Math.LN10)),
+      error = step0 / step1;
+  if (error >= e10) step1 *= 10;else if (error >= e5) step1 *= 5;else if (error >= e2) step1 *= 2;
+  return stop < start ? -step1 : step1;
+}
+},{"./range":"../node_modules/d3-svg-legend/node_modules/d3-array/src/range.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/threshold/sturges.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (values) {
+  return Math.ceil(Math.log(values.length) / Math.LN2) + 1;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/histogram.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var value = _identity2.default,
+      domain = _extent2.default,
+      threshold = _sturges2.default;
+
+  function histogram(data) {
+    var i,
+        n = data.length,
+        x,
+        values = new Array(n);
+
+    for (i = 0; i < n; ++i) {
+      values[i] = value(data[i], i, data);
+    }
+
+    var xz = domain(values),
+        x0 = xz[0],
+        x1 = xz[1],
+        tz = threshold(values, x0, x1);
+
+    // Convert number of thresholds into uniform thresholds.
+    if (!Array.isArray(tz)) tz = (0, _ticks2.default)(x0, x1, tz);
+
+    // Remove any thresholds outside the domain.
+    var m = tz.length;
+    while (tz[0] <= x0) tz.shift(), --m;
+    while (tz[m - 1] >= x1) tz.pop(), --m;
+
+    var bins = new Array(m + 1),
+        bin;
+
+    // Initialize bins.
+    for (i = 0; i <= m; ++i) {
+      bin = bins[i] = [];
+      bin.x0 = i > 0 ? tz[i - 1] : x0;
+      bin.x1 = i < m ? tz[i] : x1;
+    }
+
+    // Assign data to bins by value, ignoring any outside the domain.
+    for (i = 0; i < n; ++i) {
+      x = values[i];
+      if (x0 <= x && x <= x1) {
+        bins[(0, _bisect2.default)(tz, x, 0, m)].push(data[i]);
+      }
+    }
+
+    return bins;
+  }
+
+  histogram.value = function (_) {
+    return arguments.length ? (value = typeof _ === "function" ? _ : (0, _constant2.default)(_), histogram) : value;
+  };
+
+  histogram.domain = function (_) {
+    return arguments.length ? (domain = typeof _ === "function" ? _ : (0, _constant2.default)([_[0], _[1]]), histogram) : domain;
+  };
+
+  histogram.thresholds = function (_) {
+    return arguments.length ? (threshold = typeof _ === "function" ? _ : Array.isArray(_) ? (0, _constant2.default)(_array.slice.call(_)) : (0, _constant2.default)(_), histogram) : threshold;
+  };
+
+  return histogram;
+};
+
+var _array = require("./array");
+
+var _bisect = require("./bisect");
+
+var _bisect2 = _interopRequireDefault(_bisect);
+
+var _constant = require("./constant");
+
+var _constant2 = _interopRequireDefault(_constant);
+
+var _extent = require("./extent");
+
+var _extent2 = _interopRequireDefault(_extent);
+
+var _identity = require("./identity");
+
+var _identity2 = _interopRequireDefault(_identity);
+
+var _ticks = require("./ticks");
+
+var _ticks2 = _interopRequireDefault(_ticks);
+
+var _sturges = require("./threshold/sturges");
+
+var _sturges2 = _interopRequireDefault(_sturges);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./array":"../node_modules/d3-svg-legend/node_modules/d3-array/src/array.js","./bisect":"../node_modules/d3-svg-legend/node_modules/d3-array/src/bisect.js","./constant":"../node_modules/d3-svg-legend/node_modules/d3-array/src/constant.js","./extent":"../node_modules/d3-svg-legend/node_modules/d3-array/src/extent.js","./identity":"../node_modules/d3-svg-legend/node_modules/d3-array/src/identity.js","./ticks":"../node_modules/d3-svg-legend/node_modules/d3-array/src/ticks.js","./threshold/sturges":"../node_modules/d3-svg-legend/node_modules/d3-array/src/threshold/sturges.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/quantile.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (array, p, f) {
+  if (f == null) f = _number2.default;
+  if (!(n = array.length)) return;
+  if ((p = +p) <= 0 || n < 2) return +f(array[0], 0, array);
+  if (p >= 1) return +f(array[n - 1], n - 1, array);
+  var n,
+      h = (n - 1) * p,
+      i = Math.floor(h),
+      a = +f(array[i], i, array),
+      b = +f(array[i + 1], i + 1, array);
+  return a + (b - a) * (h - i);
+};
+
+var _number = require("./number");
+
+var _number2 = _interopRequireDefault(_number);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./number":"../node_modules/d3-svg-legend/node_modules/d3-array/src/number.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/threshold/freedmanDiaconis.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (values, min, max) {
+  values = _array.map.call(values, _number2.default).sort(_ascending2.default);
+  return Math.ceil((max - min) / (2 * ((0, _quantile2.default)(values, 0.75) - (0, _quantile2.default)(values, 0.25)) * Math.pow(values.length, -1 / 3)));
+};
+
+var _array = require("../array");
+
+var _ascending = require("../ascending");
+
+var _ascending2 = _interopRequireDefault(_ascending);
+
+var _number = require("../number");
+
+var _number2 = _interopRequireDefault(_number);
+
+var _quantile = require("../quantile");
+
+var _quantile2 = _interopRequireDefault(_quantile);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"../array":"../node_modules/d3-svg-legend/node_modules/d3-array/src/array.js","../ascending":"../node_modules/d3-svg-legend/node_modules/d3-array/src/ascending.js","../number":"../node_modules/d3-svg-legend/node_modules/d3-array/src/number.js","../quantile":"../node_modules/d3-svg-legend/node_modules/d3-array/src/quantile.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/threshold/scott.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (values, min, max) {
+  return Math.ceil((max - min) / (3.5 * (0, _deviation2.default)(values) * Math.pow(values.length, -1 / 3)));
+};
+
+var _deviation = require("../deviation");
+
+var _deviation2 = _interopRequireDefault(_deviation);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"../deviation":"../node_modules/d3-svg-legend/node_modules/d3-array/src/deviation.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/max.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (array, f) {
+  var i = -1,
+      n = array.length,
+      a,
+      b;
+
+  if (f == null) {
+    while (++i < n) if ((b = array[i]) != null && b >= b) {
+      a = b;break;
+    }
+    while (++i < n) if ((b = array[i]) != null && b > a) a = b;
+  } else {
+    while (++i < n) if ((b = f(array[i], i, array)) != null && b >= b) {
+      a = b;break;
+    }
+    while (++i < n) if ((b = f(array[i], i, array)) != null && b > a) a = b;
+  }
+
+  return a;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/mean.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (array, f) {
+  var s = 0,
+      n = array.length,
+      a,
+      i = -1,
+      j = n;
+
+  if (f == null) {
+    while (++i < n) if (!isNaN(a = (0, _number2.default)(array[i]))) s += a;else --j;
+  } else {
+    while (++i < n) if (!isNaN(a = (0, _number2.default)(f(array[i], i, array)))) s += a;else --j;
+  }
+
+  if (j) return s / j;
+};
+
+var _number = require("./number");
+
+var _number2 = _interopRequireDefault(_number);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./number":"../node_modules/d3-svg-legend/node_modules/d3-array/src/number.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/median.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (array, f) {
+  var numbers = [],
+      n = array.length,
+      a,
+      i = -1;
+
+  if (f == null) {
+    while (++i < n) if (!isNaN(a = (0, _number2.default)(array[i]))) numbers.push(a);
+  } else {
+    while (++i < n) if (!isNaN(a = (0, _number2.default)(f(array[i], i, array)))) numbers.push(a);
+  }
+
+  return (0, _quantile2.default)(numbers.sort(_ascending2.default), 0.5);
+};
+
+var _ascending = require("./ascending");
+
+var _ascending2 = _interopRequireDefault(_ascending);
+
+var _number = require("./number");
+
+var _number2 = _interopRequireDefault(_number);
+
+var _quantile = require("./quantile");
+
+var _quantile2 = _interopRequireDefault(_quantile);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./ascending":"../node_modules/d3-svg-legend/node_modules/d3-array/src/ascending.js","./number":"../node_modules/d3-svg-legend/node_modules/d3-array/src/number.js","./quantile":"../node_modules/d3-svg-legend/node_modules/d3-array/src/quantile.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/merge.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (arrays) {
+  var n = arrays.length,
+      m,
+      i = -1,
+      j = 0,
+      merged,
+      array;
+
+  while (++i < n) j += arrays[i].length;
+  merged = new Array(j);
+
+  while (--n >= 0) {
+    array = arrays[n];
+    m = array.length;
+    while (--m >= 0) {
+      merged[--j] = array[m];
+    }
+  }
+
+  return merged;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/min.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (array, f) {
+  var i = -1,
+      n = array.length,
+      a,
+      b;
+
+  if (f == null) {
+    while (++i < n) if ((b = array[i]) != null && b >= b) {
+      a = b;break;
+    }
+    while (++i < n) if ((b = array[i]) != null && a > b) a = b;
+  } else {
+    while (++i < n) if ((b = f(array[i], i, array)) != null && b >= b) {
+      a = b;break;
+    }
+    while (++i < n) if ((b = f(array[i], i, array)) != null && a > b) a = b;
+  }
+
+  return a;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/pairs.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (array) {
+  var i = 0,
+      n = array.length - 1,
+      p = array[0],
+      pairs = new Array(n < 0 ? 0 : n);
+  while (i < n) pairs[i] = [p, p = array[++i]];
+  return pairs;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/permute.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (array, indexes) {
+  var i = indexes.length,
+      permutes = new Array(i);
+  while (i--) permutes[i] = array[indexes[i]];
+  return permutes;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/scan.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (array, compare) {
+    if (!(n = array.length)) return;
+    var i = 0,
+        n,
+        j = 0,
+        xi,
+        xj = array[j];
+
+    if (!compare) compare = _ascending2.default;
+
+    while (++i < n) if (compare(xi = array[i], xj) < 0 || compare(xj, xj) !== 0) xj = xi, j = i;
+
+    if (compare(xj, xj) === 0) return j;
+};
+
+var _ascending = require("./ascending");
+
+var _ascending2 = _interopRequireDefault(_ascending);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./ascending":"../node_modules/d3-svg-legend/node_modules/d3-array/src/ascending.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/shuffle.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (array, i0, i1) {
+  var m = (i1 == null ? array.length : i1) - (i0 = i0 == null ? 0 : +i0),
+      t,
+      i;
+
+  while (m) {
+    i = Math.random() * m-- | 0;
+    t = array[m + i0];
+    array[m + i0] = array[i + i0];
+    array[i + i0] = t;
+  }
+
+  return array;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/sum.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (array, f) {
+  var s = 0,
+      n = array.length,
+      a,
+      i = -1;
+
+  if (f == null) {
+    while (++i < n) if (a = +array[i]) s += a; // Note: zero and null are equivalent.
+  } else {
+    while (++i < n) if (a = +f(array[i], i, array)) s += a;
+  }
+
+  return s;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/transpose.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (matrix) {
+  if (!(n = matrix.length)) return [];
+  for (var i = -1, m = (0, _min2.default)(matrix, length), transpose = new Array(m); ++i < m;) {
+    for (var j = -1, n, row = transpose[i] = new Array(n); ++j < n;) {
+      row[j] = matrix[j][i];
+    }
+  }
+  return transpose;
+};
+
+var _min = require("./min");
+
+var _min2 = _interopRequireDefault(_min);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function length(d) {
+  return d.length;
+}
+},{"./min":"../node_modules/d3-svg-legend/node_modules/d3-array/src/min.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/src/zip.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return (0, _transpose2.default)(arguments);
+};
+
+var _transpose = require("./transpose");
+
+var _transpose2 = _interopRequireDefault(_transpose);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./transpose":"../node_modules/d3-svg-legend/node_modules/d3-array/src/transpose.js"}],"../node_modules/d3-svg-legend/node_modules/d3-array/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _bisect = require("./src/bisect");
+
+Object.defineProperty(exports, "bisect", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_bisect).default;
+  }
+});
+Object.defineProperty(exports, "bisectRight", {
+  enumerable: true,
+  get: function () {
+    return _bisect.bisectRight;
+  }
+});
+Object.defineProperty(exports, "bisectLeft", {
+  enumerable: true,
+  get: function () {
+    return _bisect.bisectLeft;
+  }
+});
+
+var _ascending = require("./src/ascending");
+
+Object.defineProperty(exports, "ascending", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_ascending).default;
+  }
+});
+
+var _bisector = require("./src/bisector");
+
+Object.defineProperty(exports, "bisector", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_bisector).default;
+  }
+});
+
+var _descending = require("./src/descending");
+
+Object.defineProperty(exports, "descending", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_descending).default;
+  }
+});
+
+var _deviation = require("./src/deviation");
+
+Object.defineProperty(exports, "deviation", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_deviation).default;
+  }
+});
+
+var _extent = require("./src/extent");
+
+Object.defineProperty(exports, "extent", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_extent).default;
+  }
+});
+
+var _histogram = require("./src/histogram");
+
+Object.defineProperty(exports, "histogram", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_histogram).default;
+  }
+});
+
+var _freedmanDiaconis = require("./src/threshold/freedmanDiaconis");
+
+Object.defineProperty(exports, "thresholdFreedmanDiaconis", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_freedmanDiaconis).default;
+  }
+});
+
+var _scott = require("./src/threshold/scott");
+
+Object.defineProperty(exports, "thresholdScott", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_scott).default;
+  }
+});
+
+var _sturges = require("./src/threshold/sturges");
+
+Object.defineProperty(exports, "thresholdSturges", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_sturges).default;
+  }
+});
+
+var _max = require("./src/max");
+
+Object.defineProperty(exports, "max", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_max).default;
+  }
+});
+
+var _mean = require("./src/mean");
+
+Object.defineProperty(exports, "mean", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_mean).default;
+  }
+});
+
+var _median = require("./src/median");
+
+Object.defineProperty(exports, "median", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_median).default;
+  }
+});
+
+var _merge = require("./src/merge");
+
+Object.defineProperty(exports, "merge", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_merge).default;
+  }
+});
+
+var _min = require("./src/min");
+
+Object.defineProperty(exports, "min", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_min).default;
+  }
+});
+
+var _pairs = require("./src/pairs");
+
+Object.defineProperty(exports, "pairs", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_pairs).default;
+  }
+});
+
+var _permute = require("./src/permute");
+
+Object.defineProperty(exports, "permute", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_permute).default;
+  }
+});
+
+var _quantile = require("./src/quantile");
+
+Object.defineProperty(exports, "quantile", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_quantile).default;
+  }
+});
+
+var _range = require("./src/range");
+
+Object.defineProperty(exports, "range", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_range).default;
+  }
+});
+
+var _scan = require("./src/scan");
+
+Object.defineProperty(exports, "scan", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_scan).default;
+  }
+});
+
+var _shuffle = require("./src/shuffle");
+
+Object.defineProperty(exports, "shuffle", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_shuffle).default;
+  }
+});
+
+var _sum = require("./src/sum");
+
+Object.defineProperty(exports, "sum", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_sum).default;
+  }
+});
+
+var _ticks = require("./src/ticks");
+
+Object.defineProperty(exports, "ticks", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_ticks).default;
+  }
+});
+Object.defineProperty(exports, "tickStep", {
+  enumerable: true,
+  get: function () {
+    return _ticks.tickStep;
+  }
+});
+
+var _transpose = require("./src/transpose");
+
+Object.defineProperty(exports, "transpose", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_transpose).default;
+  }
+});
+
+var _variance = require("./src/variance");
+
+Object.defineProperty(exports, "variance", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_variance).default;
+  }
+});
+
+var _zip = require("./src/zip");
+
+Object.defineProperty(exports, "zip", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_zip).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./src/bisect":"../node_modules/d3-svg-legend/node_modules/d3-array/src/bisect.js","./src/ascending":"../node_modules/d3-svg-legend/node_modules/d3-array/src/ascending.js","./src/bisector":"../node_modules/d3-svg-legend/node_modules/d3-array/src/bisector.js","./src/descending":"../node_modules/d3-svg-legend/node_modules/d3-array/src/descending.js","./src/deviation":"../node_modules/d3-svg-legend/node_modules/d3-array/src/deviation.js","./src/extent":"../node_modules/d3-svg-legend/node_modules/d3-array/src/extent.js","./src/histogram":"../node_modules/d3-svg-legend/node_modules/d3-array/src/histogram.js","./src/threshold/freedmanDiaconis":"../node_modules/d3-svg-legend/node_modules/d3-array/src/threshold/freedmanDiaconis.js","./src/threshold/scott":"../node_modules/d3-svg-legend/node_modules/d3-array/src/threshold/scott.js","./src/threshold/sturges":"../node_modules/d3-svg-legend/node_modules/d3-array/src/threshold/sturges.js","./src/max":"../node_modules/d3-svg-legend/node_modules/d3-array/src/max.js","./src/mean":"../node_modules/d3-svg-legend/node_modules/d3-array/src/mean.js","./src/median":"../node_modules/d3-svg-legend/node_modules/d3-array/src/median.js","./src/merge":"../node_modules/d3-svg-legend/node_modules/d3-array/src/merge.js","./src/min":"../node_modules/d3-svg-legend/node_modules/d3-array/src/min.js","./src/pairs":"../node_modules/d3-svg-legend/node_modules/d3-array/src/pairs.js","./src/permute":"../node_modules/d3-svg-legend/node_modules/d3-array/src/permute.js","./src/quantile":"../node_modules/d3-svg-legend/node_modules/d3-array/src/quantile.js","./src/range":"../node_modules/d3-svg-legend/node_modules/d3-array/src/range.js","./src/scan":"../node_modules/d3-svg-legend/node_modules/d3-array/src/scan.js","./src/shuffle":"../node_modules/d3-svg-legend/node_modules/d3-array/src/shuffle.js","./src/sum":"../node_modules/d3-svg-legend/node_modules/d3-array/src/sum.js","./src/ticks":"../node_modules/d3-svg-legend/node_modules/d3-array/src/ticks.js","./src/transpose":"../node_modules/d3-svg-legend/node_modules/d3-array/src/transpose.js","./src/variance":"../node_modules/d3-svg-legend/node_modules/d3-array/src/variance.js","./src/zip":"../node_modules/d3-svg-legend/node_modules/d3-array/src/zip.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/array.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var array = Array.prototype;
+
+var map = exports.map = array.map;
+var slice = exports.slice = array.slice;
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/ordinal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.implicit = undefined;
+exports.default = ordinal;
+
+var _d3Collection = require("d3-collection");
+
+var _array = require("./array");
+
+var implicit = exports.implicit = { name: "implicit" };
+
+function ordinal(range) {
+  var index = (0, _d3Collection.map)(),
+      domain = [],
+      unknown = implicit;
+
+  range = range == null ? [] : _array.slice.call(range);
+
+  function scale(d) {
+    var key = d + "",
+        i = index.get(key);
+    if (!i) {
+      if (unknown !== implicit) return unknown;
+      index.set(key, i = domain.push(d));
+    }
+    return range[(i - 1) % range.length];
+  }
+
+  scale.domain = function (_) {
+    if (!arguments.length) return domain.slice();
+    domain = [], index = (0, _d3Collection.map)();
+    var i = -1,
+        n = _.length,
+        d,
+        key;
+    while (++i < n) if (!index.has(key = (d = _[i]) + "")) index.set(key, domain.push(d));
+    return scale;
+  };
+
+  scale.range = function (_) {
+    return arguments.length ? (range = _array.slice.call(_), scale) : range.slice();
+  };
+
+  scale.unknown = function (_) {
+    return arguments.length ? (unknown = _, scale) : unknown;
+  };
+
+  scale.copy = function () {
+    return ordinal().domain(domain).range(range).unknown(unknown);
+  };
+
+  return scale;
+}
+},{"d3-collection":"../node_modules/d3-collection/src/index.js","./array":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/array.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/band.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = band;
+exports.point = point;
+
+var _d3Array = require("d3-array");
+
+var _ordinal = require("./ordinal");
+
+var _ordinal2 = _interopRequireDefault(_ordinal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function band() {
+  var scale = (0, _ordinal2.default)().unknown(undefined),
+      domain = scale.domain,
+      ordinalRange = scale.range,
+      range = [0, 1],
+      step,
+      bandwidth,
+      round = false,
+      paddingInner = 0,
+      paddingOuter = 0,
+      align = 0.5;
+
+  delete scale.unknown;
+
+  function rescale() {
+    var n = domain().length,
+        reverse = range[1] < range[0],
+        start = range[reverse - 0],
+        stop = range[1 - reverse];
+    step = (stop - start) / Math.max(1, n - paddingInner + paddingOuter * 2);
+    if (round) step = Math.floor(step);
+    start += (stop - start - step * (n - paddingInner)) * align;
+    bandwidth = step * (1 - paddingInner);
+    if (round) start = Math.round(start), bandwidth = Math.round(bandwidth);
+    var values = (0, _d3Array.range)(n).map(function (i) {
+      return start + step * i;
+    });
+    return ordinalRange(reverse ? values.reverse() : values);
+  }
+
+  scale.domain = function (_) {
+    return arguments.length ? (domain(_), rescale()) : domain();
+  };
+
+  scale.range = function (_) {
+    return arguments.length ? (range = [+_[0], +_[1]], rescale()) : range.slice();
+  };
+
+  scale.rangeRound = function (_) {
+    return range = [+_[0], +_[1]], round = true, rescale();
+  };
+
+  scale.bandwidth = function () {
+    return bandwidth;
+  };
+
+  scale.step = function () {
+    return step;
+  };
+
+  scale.round = function (_) {
+    return arguments.length ? (round = !!_, rescale()) : round;
+  };
+
+  scale.padding = function (_) {
+    return arguments.length ? (paddingInner = paddingOuter = Math.max(0, Math.min(1, _)), rescale()) : paddingInner;
+  };
+
+  scale.paddingInner = function (_) {
+    return arguments.length ? (paddingInner = Math.max(0, Math.min(1, _)), rescale()) : paddingInner;
+  };
+
+  scale.paddingOuter = function (_) {
+    return arguments.length ? (paddingOuter = Math.max(0, Math.min(1, _)), rescale()) : paddingOuter;
+  };
+
+  scale.align = function (_) {
+    return arguments.length ? (align = Math.max(0, Math.min(1, _)), rescale()) : align;
+  };
+
+  scale.copy = function () {
+    return band().domain(domain()).range(range).round(round).paddingInner(paddingInner).paddingOuter(paddingOuter).align(align);
+  };
+
+  return rescale();
+}
+
+function pointish(scale) {
+  var copy = scale.copy;
+
+  scale.padding = scale.paddingOuter;
+  delete scale.paddingInner;
+  delete scale.paddingOuter;
+
+  scale.copy = function () {
+    return pointish(copy());
+  };
+
+  return scale;
+}
+
+function point() {
+  return pointish(band().paddingInner(1));
+}
+},{"d3-array":"../node_modules/d3-svg-legend/node_modules/d3-array/index.js","./ordinal":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/ordinal.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/constant.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (x) {
+  return function () {
+    return x;
+  };
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/number.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (x) {
+  return +x;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/continuous.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.deinterpolateLinear = deinterpolateLinear;
+exports.copy = copy;
+exports.default = continuous;
+
+var _d3Array = require("d3-array");
+
+var _d3Interpolate = require("d3-interpolate");
+
+var _array = require("./array");
+
+var _constant = require("./constant");
+
+var _constant2 = _interopRequireDefault(_constant);
+
+var _number = require("./number");
+
+var _number2 = _interopRequireDefault(_number);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var unit = [0, 1];
+
+function deinterpolateLinear(a, b) {
+  return (b -= a = +a) ? function (x) {
+    return (x - a) / b;
+  } : (0, _constant2.default)(b);
+}
+
+function deinterpolateClamp(deinterpolate) {
+  return function (a, b) {
+    var d = deinterpolate(a = +a, b = +b);
+    return function (x) {
+      return x <= a ? 0 : x >= b ? 1 : d(x);
+    };
+  };
+}
+
+function reinterpolateClamp(reinterpolate) {
+  return function (a, b) {
+    var r = reinterpolate(a = +a, b = +b);
+    return function (t) {
+      return t <= 0 ? a : t >= 1 ? b : r(t);
+    };
+  };
+}
+
+function bimap(domain, range, deinterpolate, reinterpolate) {
+  var d0 = domain[0],
+      d1 = domain[1],
+      r0 = range[0],
+      r1 = range[1];
+  if (d1 < d0) d0 = deinterpolate(d1, d0), r0 = reinterpolate(r1, r0);else d0 = deinterpolate(d0, d1), r0 = reinterpolate(r0, r1);
+  return function (x) {
+    return r0(d0(x));
+  };
+}
+
+function polymap(domain, range, deinterpolate, reinterpolate) {
+  var j = Math.min(domain.length, range.length) - 1,
+      d = new Array(j),
+      r = new Array(j),
+      i = -1;
+
+  // Reverse descending domains.
+  if (domain[j] < domain[0]) {
+    domain = domain.slice().reverse();
+    range = range.slice().reverse();
+  }
+
+  while (++i < j) {
+    d[i] = deinterpolate(domain[i], domain[i + 1]);
+    r[i] = reinterpolate(range[i], range[i + 1]);
+  }
+
+  return function (x) {
+    var i = (0, _d3Array.bisect)(domain, x, 1, j) - 1;
+    return r[i](d[i](x));
+  };
+}
+
+function copy(source, target) {
+  return target.domain(source.domain()).range(source.range()).interpolate(source.interpolate()).clamp(source.clamp());
+}
+
+// deinterpolate(a, b)(x) takes a domain value x in [a,b] and returns the corresponding parameter t in [0,1].
+// reinterpolate(a, b)(t) takes a parameter t in [0,1] and returns the corresponding domain value x in [a,b].
+function continuous(deinterpolate, reinterpolate) {
+  var domain = unit,
+      range = unit,
+      interpolate = _d3Interpolate.interpolate,
+      clamp = false,
+      piecewise,
+      output,
+      input;
+
+  function rescale() {
+    piecewise = Math.min(domain.length, range.length) > 2 ? polymap : bimap;
+    output = input = null;
+    return scale;
+  }
+
+  function scale(x) {
+    return (output || (output = piecewise(domain, range, clamp ? deinterpolateClamp(deinterpolate) : deinterpolate, interpolate)))(+x);
+  }
+
+  scale.invert = function (y) {
+    return (input || (input = piecewise(range, domain, deinterpolateLinear, clamp ? reinterpolateClamp(reinterpolate) : reinterpolate)))(+y);
+  };
+
+  scale.domain = function (_) {
+    return arguments.length ? (domain = _array.map.call(_, _number2.default), rescale()) : domain.slice();
+  };
+
+  scale.range = function (_) {
+    return arguments.length ? (range = _array.slice.call(_), rescale()) : range.slice();
+  };
+
+  scale.rangeRound = function (_) {
+    return range = _array.slice.call(_), interpolate = _d3Interpolate.interpolateRound, rescale();
+  };
+
+  scale.clamp = function (_) {
+    return arguments.length ? (clamp = !!_, rescale()) : clamp;
+  };
+
+  scale.interpolate = function (_) {
+    return arguments.length ? (interpolate = _, rescale()) : interpolate;
+  };
+
+  return rescale();
+}
+},{"d3-array":"../node_modules/d3-svg-legend/node_modules/d3-array/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","./array":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/array.js","./constant":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/constant.js","./number":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/number.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/tickFormat.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (domain, count, specifier) {
+  var start = domain[0],
+      stop = domain[domain.length - 1],
+      step = (0, _d3Array.tickStep)(start, stop, count == null ? 10 : count),
+      precision;
+  specifier = (0, _d3Format.formatSpecifier)(specifier == null ? ",f" : specifier);
+  switch (specifier.type) {
+    case "s":
+      {
+        var value = Math.max(Math.abs(start), Math.abs(stop));
+        if (specifier.precision == null && !isNaN(precision = (0, _d3Format.precisionPrefix)(step, value))) specifier.precision = precision;
+        return (0, _d3Format.formatPrefix)(specifier, value);
+      }
+    case "":
+    case "e":
+    case "g":
+    case "p":
+    case "r":
+      {
+        if (specifier.precision == null && !isNaN(precision = (0, _d3Format.precisionRound)(step, Math.max(Math.abs(start), Math.abs(stop))))) specifier.precision = precision - (specifier.type === "e");
+        break;
+      }
+    case "f":
+    case "%":
+      {
+        if (specifier.precision == null && !isNaN(precision = (0, _d3Format.precisionFixed)(step))) specifier.precision = precision - (specifier.type === "%") * 2;
+        break;
+      }
+  }
+  return (0, _d3Format.format)(specifier);
+};
+
+var _d3Array = require("d3-array");
+
+var _d3Format = require("d3-format");
+},{"d3-array":"../node_modules/d3-svg-legend/node_modules/d3-array/index.js","d3-format":"../node_modules/d3-svg-legend/node_modules/d3-format/index.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/linear.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.linearish = linearish;
+exports.default = linear;
+
+var _d3Array = require("d3-array");
+
+var _d3Interpolate = require("d3-interpolate");
+
+var _continuous = require("./continuous");
+
+var _continuous2 = _interopRequireDefault(_continuous);
+
+var _tickFormat = require("./tickFormat");
+
+var _tickFormat2 = _interopRequireDefault(_tickFormat);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function linearish(scale) {
+  var domain = scale.domain;
+
+  scale.ticks = function (count) {
+    var d = domain();
+    return (0, _d3Array.ticks)(d[0], d[d.length - 1], count == null ? 10 : count);
+  };
+
+  scale.tickFormat = function (count, specifier) {
+    return (0, _tickFormat2.default)(domain(), count, specifier);
+  };
+
+  scale.nice = function (count) {
+    var d = domain(),
+        i = d.length - 1,
+        n = count == null ? 10 : count,
+        start = d[0],
+        stop = d[i],
+        step = (0, _d3Array.tickStep)(start, stop, n);
+
+    if (step) {
+      step = (0, _d3Array.tickStep)(Math.floor(start / step) * step, Math.ceil(stop / step) * step, n);
+      d[0] = Math.floor(start / step) * step;
+      d[i] = Math.ceil(stop / step) * step;
+      domain(d);
+    }
+
+    return scale;
+  };
+
+  return scale;
+}
+
+function linear() {
+  var scale = (0, _continuous2.default)(_continuous.deinterpolateLinear, _d3Interpolate.interpolateNumber);
+
+  scale.copy = function () {
+    return (0, _continuous.copy)(scale, linear());
+  };
+
+  return linearish(scale);
+}
+},{"d3-array":"../node_modules/d3-svg-legend/node_modules/d3-array/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","./continuous":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/continuous.js","./tickFormat":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/tickFormat.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/identity.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = identity;
+
+var _array = require("./array");
+
+var _linear = require("./linear");
+
+var _number = require("./number");
+
+var _number2 = _interopRequireDefault(_number);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function identity() {
+  var domain = [0, 1];
+
+  function scale(x) {
+    return +x;
+  }
+
+  scale.invert = scale;
+
+  scale.domain = scale.range = function (_) {
+    return arguments.length ? (domain = _array.map.call(_, _number2.default), scale) : domain.slice();
+  };
+
+  scale.copy = function () {
+    return identity().domain(domain);
+  };
+
+  return (0, _linear.linearish)(scale);
+}
+},{"./array":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/array.js","./linear":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/linear.js","./number":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/number.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/nice.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (domain, interval) {
+  domain = domain.slice();
+
+  var i0 = 0,
+      i1 = domain.length - 1,
+      x0 = domain[i0],
+      x1 = domain[i1],
+      t;
+
+  if (x1 < x0) {
+    t = i0, i0 = i1, i1 = t;
+    t = x0, x0 = x1, x1 = t;
+  }
+
+  domain[i0] = interval.floor(x0);
+  domain[i1] = interval.ceil(x1);
+  return domain;
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/log.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = log;
+
+var _d3Array = require("d3-array");
+
+var _d3Format = require("d3-format");
+
+var _constant = require("./constant");
+
+var _constant2 = _interopRequireDefault(_constant);
+
+var _nice = require("./nice");
+
+var _nice2 = _interopRequireDefault(_nice);
+
+var _continuous = require("./continuous");
+
+var _continuous2 = _interopRequireDefault(_continuous);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function deinterpolate(a, b) {
+  return (b = Math.log(b / a)) ? function (x) {
+    return Math.log(x / a) / b;
+  } : (0, _constant2.default)(b);
+}
+
+function reinterpolate(a, b) {
+  return a < 0 ? function (t) {
+    return -Math.pow(-b, t) * Math.pow(-a, 1 - t);
+  } : function (t) {
+    return Math.pow(b, t) * Math.pow(a, 1 - t);
+  };
+}
+
+function pow10(x) {
+  return isFinite(x) ? +("1e" + x) : x < 0 ? 0 : x;
+}
+
+function powp(base) {
+  return base === 10 ? pow10 : base === Math.E ? Math.exp : function (x) {
+    return Math.pow(base, x);
+  };
+}
+
+function logp(base) {
+  return base === Math.E ? Math.log : base === 10 && Math.log10 || base === 2 && Math.log2 || (base = Math.log(base), function (x) {
+    return Math.log(x) / base;
+  });
+}
+
+function reflect(f) {
+  return function (x) {
+    return -f(-x);
+  };
+}
+
+function log() {
+  var scale = (0, _continuous2.default)(deinterpolate, reinterpolate).domain([1, 10]),
+      domain = scale.domain,
+      base = 10,
+      logs = logp(10),
+      pows = powp(10);
+
+  function rescale() {
+    logs = logp(base), pows = powp(base);
+    if (domain()[0] < 0) logs = reflect(logs), pows = reflect(pows);
+    return scale;
+  }
+
+  scale.base = function (_) {
+    return arguments.length ? (base = +_, rescale()) : base;
+  };
+
+  scale.domain = function (_) {
+    return arguments.length ? (domain(_), rescale()) : domain();
+  };
+
+  scale.ticks = function (count) {
+    var d = domain(),
+        u = d[0],
+        v = d[d.length - 1],
+        r;
+
+    if (r = v < u) i = u, u = v, v = i;
+
+    var i = logs(u),
+        j = logs(v),
+        p,
+        k,
+        t,
+        n = count == null ? 10 : +count,
+        z = [];
+
+    if (!(base % 1) && j - i < n) {
+      i = Math.round(i) - 1, j = Math.round(j) + 1;
+      if (u > 0) for (; i < j; ++i) {
+        for (k = 1, p = pows(i); k < base; ++k) {
+          t = p * k;
+          if (t < u) continue;
+          if (t > v) break;
+          z.push(t);
+        }
+      } else for (; i < j; ++i) {
+        for (k = base - 1, p = pows(i); k >= 1; --k) {
+          t = p * k;
+          if (t < u) continue;
+          if (t > v) break;
+          z.push(t);
+        }
+      }
+    } else {
+      z = (0, _d3Array.ticks)(i, j, Math.min(j - i, n)).map(pows);
+    }
+
+    return r ? z.reverse() : z;
+  };
+
+  scale.tickFormat = function (count, specifier) {
+    if (specifier == null) specifier = base === 10 ? ".0e" : ",";
+    if (typeof specifier !== "function") specifier = (0, _d3Format.format)(specifier);
+    if (count === Infinity) return specifier;
+    if (count == null) count = 10;
+    var k = Math.max(1, base * count / scale.ticks().length); // TODO fast estimate?
+    return function (d) {
+      var i = d / pows(Math.round(logs(d)));
+      if (i * base < base - 0.5) i *= base;
+      return i <= k ? specifier(d) : "";
+    };
+  };
+
+  scale.nice = function () {
+    return domain((0, _nice2.default)(domain(), {
+      floor: function (x) {
+        return pows(Math.floor(logs(x)));
+      },
+      ceil: function (x) {
+        return pows(Math.ceil(logs(x)));
+      }
+    }));
+  };
+
+  scale.copy = function () {
+    return (0, _continuous.copy)(scale, log().base(base));
+  };
+
+  return scale;
+}
+},{"d3-array":"../node_modules/d3-svg-legend/node_modules/d3-array/index.js","d3-format":"../node_modules/d3-svg-legend/node_modules/d3-format/index.js","./constant":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/constant.js","./nice":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/nice.js","./continuous":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/continuous.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/pow.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = pow;
+exports.sqrt = sqrt;
+
+var _constant = require("./constant");
+
+var _constant2 = _interopRequireDefault(_constant);
+
+var _linear = require("./linear");
+
+var _continuous = require("./continuous");
+
+var _continuous2 = _interopRequireDefault(_continuous);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function raise(x, exponent) {
+  return x < 0 ? -Math.pow(-x, exponent) : Math.pow(x, exponent);
+}
+
+function pow() {
+  var exponent = 1,
+      scale = (0, _continuous2.default)(deinterpolate, reinterpolate),
+      domain = scale.domain;
+
+  function deinterpolate(a, b) {
+    return (b = raise(b, exponent) - (a = raise(a, exponent))) ? function (x) {
+      return (raise(x, exponent) - a) / b;
+    } : (0, _constant2.default)(b);
+  }
+
+  function reinterpolate(a, b) {
+    b = raise(b, exponent) - (a = raise(a, exponent));
+    return function (t) {
+      return raise(a + b * t, 1 / exponent);
+    };
+  }
+
+  scale.exponent = function (_) {
+    return arguments.length ? (exponent = +_, domain(domain())) : exponent;
+  };
+
+  scale.copy = function () {
+    return (0, _continuous.copy)(scale, pow().exponent(exponent));
+  };
+
+  return (0, _linear.linearish)(scale);
+}
+
+function sqrt() {
+  return pow().exponent(0.5);
+}
+},{"./constant":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/constant.js","./linear":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/linear.js","./continuous":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/continuous.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/quantile.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = quantile;
+
+var _d3Array = require("d3-array");
+
+var _array = require("./array");
+
+function quantile() {
+  var domain = [],
+      range = [],
+      thresholds = [];
+
+  function rescale() {
+    var i = 0,
+        n = Math.max(1, range.length);
+    thresholds = new Array(n - 1);
+    while (++i < n) thresholds[i - 1] = (0, _d3Array.quantile)(domain, i / n);
+    return scale;
+  }
+
+  function scale(x) {
+    if (!isNaN(x = +x)) return range[(0, _d3Array.bisect)(thresholds, x)];
+  }
+
+  scale.invertExtent = function (y) {
+    var i = range.indexOf(y);
+    return i < 0 ? [NaN, NaN] : [i > 0 ? thresholds[i - 1] : domain[0], i < thresholds.length ? thresholds[i] : domain[domain.length - 1]];
+  };
+
+  scale.domain = function (_) {
+    if (!arguments.length) return domain.slice();
+    domain = [];
+    for (var i = 0, n = _.length, d; i < n; ++i) if (d = _[i], d != null && !isNaN(d = +d)) domain.push(d);
+    domain.sort(_d3Array.ascending);
+    return rescale();
+  };
+
+  scale.range = function (_) {
+    return arguments.length ? (range = _array.slice.call(_), rescale()) : range.slice();
+  };
+
+  scale.quantiles = function () {
+    return thresholds.slice();
+  };
+
+  scale.copy = function () {
+    return quantile().domain(domain).range(range);
+  };
+
+  return scale;
+}
+},{"d3-array":"../node_modules/d3-svg-legend/node_modules/d3-array/index.js","./array":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/array.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/quantize.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = quantize;
+
+var _d3Array = require("d3-array");
+
+var _array = require("./array");
+
+var _linear = require("./linear");
+
+function quantize() {
+  var x0 = 0,
+      x1 = 1,
+      n = 1,
+      domain = [0.5],
+      range = [0, 1];
+
+  function scale(x) {
+    if (x <= x) return range[(0, _d3Array.bisect)(domain, x, 0, n)];
+  }
+
+  function rescale() {
+    var i = -1;
+    domain = new Array(n);
+    while (++i < n) domain[i] = ((i + 1) * x1 - (i - n) * x0) / (n + 1);
+    return scale;
+  }
+
+  scale.domain = function (_) {
+    return arguments.length ? (x0 = +_[0], x1 = +_[1], rescale()) : [x0, x1];
+  };
+
+  scale.range = function (_) {
+    return arguments.length ? (n = (range = _array.slice.call(_)).length - 1, rescale()) : range.slice();
+  };
+
+  scale.invertExtent = function (y) {
+    var i = range.indexOf(y);
+    return i < 0 ? [NaN, NaN] : i < 1 ? [x0, domain[0]] : i >= n ? [domain[n - 1], x1] : [domain[i - 1], domain[i]];
+  };
+
+  scale.copy = function () {
+    return quantize().domain([x0, x1]).range(range);
+  };
+
+  return (0, _linear.linearish)(scale);
+}
+},{"d3-array":"../node_modules/d3-svg-legend/node_modules/d3-array/index.js","./array":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/array.js","./linear":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/linear.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/threshold.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = threshold;
+
+var _d3Array = require("d3-array");
+
+var _array = require("./array");
+
+function threshold() {
+  var domain = [0.5],
+      range = [0, 1],
+      n = 1;
+
+  function scale(x) {
+    if (x <= x) return range[(0, _d3Array.bisect)(domain, x, 0, n)];
+  }
+
+  scale.domain = function (_) {
+    return arguments.length ? (domain = _array.slice.call(_), n = Math.min(domain.length, range.length - 1), scale) : domain.slice();
+  };
+
+  scale.range = function (_) {
+    return arguments.length ? (range = _array.slice.call(_), n = Math.min(domain.length, range.length - 1), scale) : range.slice();
+  };
+
+  scale.invertExtent = function (y) {
+    var i = range.indexOf(y);
+    return [domain[i - 1], domain[i]];
+  };
+
+  scale.copy = function () {
+    return threshold().domain(domain).range(range);
+  };
+
+  return scale;
+}
+},{"d3-array":"../node_modules/d3-svg-legend/node_modules/d3-array/index.js","./array":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/array.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/time.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.calendar = calendar;
+
+exports.default = function () {
+  return calendar(_d3Time.timeYear, _d3Time.timeMonth, _d3Time.timeWeek, _d3Time.timeDay, _d3Time.timeHour, _d3Time.timeMinute, _d3Time.timeSecond, _d3Time.timeMillisecond, _d3TimeFormat.timeFormat).domain([new Date(2000, 0, 1), new Date(2000, 0, 2)]);
+};
+
+var _d3Array = require("d3-array");
+
+var _d3Interpolate = require("d3-interpolate");
+
+var _d3Time = require("d3-time");
+
+var _d3TimeFormat = require("d3-time-format");
+
+var _array = require("./array");
+
+var _continuous = require("./continuous");
+
+var _continuous2 = _interopRequireDefault(_continuous);
+
+var _nice = require("./nice");
+
+var _nice2 = _interopRequireDefault(_nice);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var durationSecond = 1000,
+    durationMinute = durationSecond * 60,
+    durationHour = durationMinute * 60,
+    durationDay = durationHour * 24,
+    durationWeek = durationDay * 7,
+    durationMonth = durationDay * 30,
+    durationYear = durationDay * 365;
+
+function date(t) {
+  return new Date(t);
+}
+
+function number(t) {
+  return t instanceof Date ? +t : +new Date(+t);
+}
+
+function calendar(year, month, week, day, hour, minute, second, millisecond, format) {
+  var scale = (0, _continuous2.default)(_continuous.deinterpolateLinear, _d3Interpolate.interpolateNumber),
+      invert = scale.invert,
+      domain = scale.domain;
+
+  var formatMillisecond = format(".%L"),
+      formatSecond = format(":%S"),
+      formatMinute = format("%I:%M"),
+      formatHour = format("%I %p"),
+      formatDay = format("%a %d"),
+      formatWeek = format("%b %d"),
+      formatMonth = format("%B"),
+      formatYear = format("%Y");
+
+  var tickIntervals = [[second, 1, durationSecond], [second, 5, 5 * durationSecond], [second, 15, 15 * durationSecond], [second, 30, 30 * durationSecond], [minute, 1, durationMinute], [minute, 5, 5 * durationMinute], [minute, 15, 15 * durationMinute], [minute, 30, 30 * durationMinute], [hour, 1, durationHour], [hour, 3, 3 * durationHour], [hour, 6, 6 * durationHour], [hour, 12, 12 * durationHour], [day, 1, durationDay], [day, 2, 2 * durationDay], [week, 1, durationWeek], [month, 1, durationMonth], [month, 3, 3 * durationMonth], [year, 1, durationYear]];
+
+  function tickFormat(date) {
+    return (second(date) < date ? formatMillisecond : minute(date) < date ? formatSecond : hour(date) < date ? formatMinute : day(date) < date ? formatHour : month(date) < date ? week(date) < date ? formatDay : formatWeek : year(date) < date ? formatMonth : formatYear)(date);
+  }
+
+  function tickInterval(interval, start, stop, step) {
+    if (interval == null) interval = 10;
+
+    // If a desired tick count is specified, pick a reasonable tick interval
+    // based on the extent of the domain and a rough estimate of tick size.
+    // Otherwise, assume interval is already a time interval and use it.
+    if (typeof interval === "number") {
+      var target = Math.abs(stop - start) / interval,
+          i = (0, _d3Array.bisector)(function (i) {
+        return i[2];
+      }).right(tickIntervals, target);
+      if (i === tickIntervals.length) {
+        step = (0, _d3Array.tickStep)(start / durationYear, stop / durationYear, interval);
+        interval = year;
+      } else if (i) {
+        i = tickIntervals[target / tickIntervals[i - 1][2] < tickIntervals[i][2] / target ? i - 1 : i];
+        step = i[1];
+        interval = i[0];
+      } else {
+        step = (0, _d3Array.tickStep)(start, stop, interval);
+        interval = millisecond;
+      }
+    }
+
+    return step == null ? interval : interval.every(step);
+  }
+
+  scale.invert = function (y) {
+    return new Date(invert(y));
+  };
+
+  scale.domain = function (_) {
+    return arguments.length ? domain(_array.map.call(_, number)) : domain().map(date);
+  };
+
+  scale.ticks = function (interval, step) {
+    var d = domain(),
+        t0 = d[0],
+        t1 = d[d.length - 1],
+        r = t1 < t0,
+        t;
+    if (r) t = t0, t0 = t1, t1 = t;
+    t = tickInterval(interval, t0, t1, step);
+    t = t ? t.range(t0, t1 + 1) : []; // inclusive stop
+    return r ? t.reverse() : t;
+  };
+
+  scale.tickFormat = function (count, specifier) {
+    return specifier == null ? tickFormat : format(specifier);
+  };
+
+  scale.nice = function (interval, step) {
+    var d = domain();
+    return (interval = tickInterval(interval, d[0], d[d.length - 1], step)) ? domain((0, _nice2.default)(d, interval)) : scale;
+  };
+
+  scale.copy = function () {
+    return (0, _continuous.copy)(scale, calendar(year, month, week, day, hour, minute, second, millisecond, format));
+  };
+
+  return scale;
+}
+},{"d3-array":"../node_modules/d3-svg-legend/node_modules/d3-array/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-time":"../node_modules/d3-time/src/index.js","d3-time-format":"../node_modules/d3-time-format/src/index.js","./array":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/array.js","./continuous":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/continuous.js","./nice":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/nice.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/utcTime.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return (0, _time.calendar)(_d3Time.utcYear, _d3Time.utcMonth, _d3Time.utcWeek, _d3Time.utcDay, _d3Time.utcHour, _d3Time.utcMinute, _d3Time.utcSecond, _d3Time.utcMillisecond, _d3TimeFormat.utcFormat).domain([Date.UTC(2000, 0, 1), Date.UTC(2000, 0, 2)]);
+};
+
+var _time = require("./time");
+
+var _d3TimeFormat = require("d3-time-format");
+
+var _d3Time = require("d3-time");
+},{"./time":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/time.js","d3-time-format":"../node_modules/d3-time-format/src/index.js","d3-time":"../node_modules/d3-time/src/index.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/colors.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (s) {
+  return s.match(/.{6}/g).map(function (x) {
+    return "#" + x;
+  });
+};
+},{}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/category10.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _colors = require("./colors");
+
+var _colors2 = _interopRequireDefault(_colors);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _colors2.default)("1f77b4ff7f0e2ca02cd627289467bd8c564be377c27f7f7fbcbd2217becf");
+},{"./colors":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/colors.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/category20b.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _colors = require("./colors");
+
+var _colors2 = _interopRequireDefault(_colors);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _colors2.default)("393b795254a36b6ecf9c9ede6379398ca252b5cf6bcedb9c8c6d31bd9e39e7ba52e7cb94843c39ad494ad6616be7969c7b4173a55194ce6dbdde9ed6");
+},{"./colors":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/colors.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/category20c.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _colors = require("./colors");
+
+var _colors2 = _interopRequireDefault(_colors);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _colors2.default)("3182bd6baed69ecae1c6dbefe6550dfd8d3cfdae6bfdd0a231a35474c476a1d99bc7e9c0756bb19e9ac8bcbddcdadaeb636363969696bdbdbdd9d9d9");
+},{"./colors":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/colors.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/category20.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _colors = require("./colors");
+
+var _colors2 = _interopRequireDefault(_colors);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _colors2.default)("1f77b4aec7e8ff7f0effbb782ca02c98df8ad62728ff98969467bdc5b0d58c564bc49c94e377c2f7b6d27f7f7fc7c7c7bcbd22dbdb8d17becf9edae5");
+},{"./colors":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/colors.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/cubehelix.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _d3Color = require("d3-color");
+
+var _d3Interpolate = require("d3-interpolate");
+
+exports.default = (0, _d3Interpolate.interpolateCubehelixLong)((0, _d3Color.cubehelix)(300, 0.5, 0.0), (0, _d3Color.cubehelix)(-240, 0.5, 1.0));
+},{"d3-color":"../node_modules/d3-color/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/rainbow.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.cool = exports.warm = undefined;
+
+exports.default = function (t) {
+  if (t < 0 || t > 1) t -= Math.floor(t);
+  var ts = Math.abs(t - 0.5);
+  rainbow.h = 360 * t - 100;
+  rainbow.s = 1.5 - 1.5 * ts;
+  rainbow.l = 0.8 - 0.9 * ts;
+  return rainbow + "";
+};
+
+var _d3Color = require("d3-color");
+
+var _d3Interpolate = require("d3-interpolate");
+
+var warm = exports.warm = (0, _d3Interpolate.interpolateCubehelixLong)((0, _d3Color.cubehelix)(-100, 0.75, 0.35), (0, _d3Color.cubehelix)(80, 1.50, 0.8));
+
+var cool = exports.cool = (0, _d3Interpolate.interpolateCubehelixLong)((0, _d3Color.cubehelix)(260, 0.75, 0.35), (0, _d3Color.cubehelix)(80, 1.50, 0.8));
+
+var rainbow = (0, _d3Color.cubehelix)();
+},{"d3-color":"../node_modules/d3-color/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/viridis.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.plasma = exports.inferno = exports.magma = undefined;
+
+var _colors = require("./colors");
+
+var _colors2 = _interopRequireDefault(_colors);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ramp(range) {
+  var n = range.length;
+  return function (t) {
+    return range[Math.max(0, Math.min(n - 1, Math.floor(t * n)))];
+  };
+}
+
+exports.default = ramp((0, _colors2.default)("44015444025645045745055946075a46085c460a5d460b5e470d60470e6147106347116447136548146748166848176948186a481a6c481b6d481c6e481d6f481f70482071482173482374482475482576482677482878482979472a7a472c7a472d7b472e7c472f7d46307e46327e46337f463480453581453781453882443983443a83443b84433d84433e85423f854240864241864142874144874045884046883f47883f48893e49893e4a893e4c8a3d4d8a3d4e8a3c4f8a3c508b3b518b3b528b3a538b3a548c39558c39568c38588c38598c375a8c375b8d365c8d365d8d355e8d355f8d34608d34618d33628d33638d32648e32658e31668e31678e31688e30698e306a8e2f6b8e2f6c8e2e6d8e2e6e8e2e6f8e2d708e2d718e2c718e2c728e2c738e2b748e2b758e2a768e2a778e2a788e29798e297a8e297b8e287c8e287d8e277e8e277f8e27808e26818e26828e26828e25838e25848e25858e24868e24878e23888e23898e238a8d228b8d228c8d228d8d218e8d218f8d21908d21918c20928c20928c20938c1f948c1f958b1f968b1f978b1f988b1f998a1f9a8a1e9b8a1e9c891e9d891f9e891f9f881fa0881fa1881fa1871fa28720a38620a48621a58521a68522a78522a88423a98324aa8325ab8225ac8226ad8127ad8128ae8029af7f2ab07f2cb17e2db27d2eb37c2fb47c31b57b32b67a34b67935b77937b87838b9773aba763bbb753dbc743fbc7340bd7242be7144bf7046c06f48c16e4ac16d4cc26c4ec36b50c46a52c56954c56856c66758c7655ac8645cc8635ec96260ca6063cb5f65cb5e67cc5c69cd5b6ccd5a6ece5870cf5773d05675d05477d1537ad1517cd2507fd34e81d34d84d44b86d54989d5488bd6468ed64590d74393d74195d84098d83e9bd93c9dd93ba0da39a2da37a5db36a8db34aadc32addc30b0dd2fb2dd2db5de2bb8de29bade28bddf26c0df25c2df23c5e021c8e020cae11fcde11dd0e11cd2e21bd5e21ad8e219dae319dde318dfe318e2e418e5e419e7e419eae51aece51befe51cf1e51df4e61ef6e620f8e621fbe723fde725"));
+var magma = exports.magma = ramp((0, _colors2.default)("00000401000501010601010802010902020b02020d03030f03031204041405041606051806051a07061c08071e0907200a08220b09240c09260d0a290e0b2b100b2d110c2f120d31130d34140e36150e38160f3b180f3d19103f1a10421c10441d11471e114920114b21114e22115024125325125527125829115a2a115c2c115f2d11612f116331116533106734106936106b38106c390f6e3b0f703d0f713f0f72400f74420f75440f764510774710784910784a10794c117a4e117b4f127b51127c52137c54137d56147d57157e59157e5a167e5c167f5d177f5f187f601880621980641a80651a80671b80681c816a1c816b1d816d1d816e1e81701f81721f817320817521817621817822817922827b23827c23827e24828025828125818326818426818627818827818928818b29818c29818e2a81902a81912b81932b80942c80962c80982d80992d809b2e7f9c2e7f9e2f7fa02f7fa1307ea3307ea5317ea6317da8327daa337dab337cad347cae347bb0357bb2357bb3367ab5367ab73779b83779ba3878bc3978bd3977bf3a77c03a76c23b75c43c75c53c74c73d73c83e73ca3e72cc3f71cd4071cf4070d0416fd2426fd3436ed5446dd6456cd8456cd9466bdb476adc4869de4968df4a68e04c67e24d66e34e65e44f64e55064e75263e85362e95462ea5661eb5760ec5860ed5a5fee5b5eef5d5ef05f5ef1605df2625df2645cf3655cf4675cf4695cf56b5cf66c5cf66e5cf7705cf7725cf8745cf8765cf9785df9795df97b5dfa7d5efa7f5efa815ffb835ffb8560fb8761fc8961fc8a62fc8c63fc8e64fc9065fd9266fd9467fd9668fd9869fd9a6afd9b6bfe9d6cfe9f6dfea16efea36ffea571fea772fea973feaa74feac76feae77feb078feb27afeb47bfeb67cfeb77efeb97ffebb81febd82febf84fec185fec287fec488fec68afec88cfeca8dfecc8ffecd90fecf92fed194fed395fed597fed799fed89afdda9cfddc9efddea0fde0a1fde2a3fde3a5fde5a7fde7a9fde9aafdebacfcecaefceeb0fcf0b2fcf2b4fcf4b6fcf6b8fcf7b9fcf9bbfcfbbdfcfdbf"));
+
+var inferno = exports.inferno = ramp((0, _colors2.default)("00000401000501010601010802010a02020c02020e03021004031204031405041706041907051b08051d09061f0a07220b07240c08260d08290e092b10092d110a30120a32140b34150b37160b39180c3c190c3e1b0c411c0c431e0c451f0c48210c4a230c4c240c4f260c51280b53290b552b0b572d0b592f0a5b310a5c320a5e340a5f3609613809623909633b09643d09653e0966400a67420a68440a68450a69470b6a490b6a4a0c6b4c0c6b4d0d6c4f0d6c510e6c520e6d540f6d550f6d57106e59106e5a116e5c126e5d126e5f136e61136e62146e64156e65156e67166e69166e6a176e6c186e6d186e6f196e71196e721a6e741a6e751b6e771c6d781c6d7a1d6d7c1d6d7d1e6d7f1e6c801f6c82206c84206b85216b87216b88226a8a226a8c23698d23698f24699025689225689326679526679727669827669a28659b29649d29649f2a63a02a63a22b62a32c61a52c60a62d60a82e5fa92e5eab2f5ead305dae305cb0315bb1325ab3325ab43359b63458b73557b93556ba3655bc3754bd3853bf3952c03a51c13a50c33b4fc43c4ec63d4dc73e4cc83f4bca404acb4149cc4248ce4347cf4446d04545d24644d34743d44842d54a41d74b3fd84c3ed94d3dda4e3cdb503bdd513ade5238df5337e05536e15635e25734e35933e45a31e55c30e65d2fe75e2ee8602de9612bea632aeb6429eb6628ec6726ed6925ee6a24ef6c23ef6e21f06f20f1711ff1731df2741cf3761bf37819f47918f57b17f57d15f67e14f68013f78212f78410f8850ff8870ef8890cf98b0bf98c0af98e09fa9008fa9207fa9407fb9606fb9706fb9906fb9b06fb9d07fc9f07fca108fca309fca50afca60cfca80dfcaa0ffcac11fcae12fcb014fcb216fcb418fbb61afbb81dfbba1ffbbc21fbbe23fac026fac228fac42afac62df9c72ff9c932f9cb35f8cd37f8cf3af7d13df7d340f6d543f6d746f5d949f5db4cf4dd4ff4df53f4e156f3e35af3e55df2e661f2e865f2ea69f1ec6df1ed71f1ef75f1f179f2f27df2f482f3f586f3f68af4f88ef5f992f6fa96f8fb9af9fc9dfafda1fcffa4"));
+
+var plasma = exports.plasma = ramp((0, _colors2.default)("0d088710078813078916078a19068c1b068d1d068e20068f2206902406912605912805922a05932c05942e05952f059631059733059735049837049938049a3a049a3c049b3e049c3f049c41049d43039e44039e46039f48039f4903a04b03a14c02a14e02a25002a25102a35302a35502a45601a45801a45901a55b01a55c01a65e01a66001a66100a76300a76400a76600a76700a86900a86a00a86c00a86e00a86f00a87100a87201a87401a87501a87701a87801a87a02a87b02a87d03a87e03a88004a88104a78305a78405a78606a68707a68808a68a09a58b0aa58d0ba58e0ca48f0da4910ea3920fa39410a29511a19613a19814a099159f9a169f9c179e9d189d9e199da01a9ca11b9ba21d9aa31e9aa51f99a62098a72197a82296aa2395ab2494ac2694ad2793ae2892b02991b12a90b22b8fb32c8eb42e8db52f8cb6308bb7318ab83289ba3388bb3488bc3587bd3786be3885bf3984c03a83c13b82c23c81c33d80c43e7fc5407ec6417dc7427cc8437bc9447aca457acb4679cc4778cc4977cd4a76ce4b75cf4c74d04d73d14e72d24f71d35171d45270d5536fd5546ed6556dd7566cd8576bd9586ada5a6ada5b69db5c68dc5d67dd5e66de5f65de6164df6263e06363e16462e26561e26660e3685fe4695ee56a5de56b5de66c5ce76e5be76f5ae87059e97158e97257ea7457eb7556eb7655ec7754ed7953ed7a52ee7b51ef7c51ef7e50f07f4ff0804ef1814df1834cf2844bf3854bf3874af48849f48948f58b47f58c46f68d45f68f44f79044f79143f79342f89441f89540f9973ff9983ef99a3efa9b3dfa9c3cfa9e3bfb9f3afba139fba238fca338fca537fca636fca835fca934fdab33fdac33fdae32fdaf31fdb130fdb22ffdb42ffdb52efeb72dfeb82cfeba2cfebb2bfebd2afebe2afec029fdc229fdc328fdc527fdc627fdc827fdca26fdcb26fccd25fcce25fcd025fcd225fbd324fbd524fbd724fad824fada24f9dc24f9dd25f8df25f8e125f7e225f7e425f6e626f6e826f5e926f5eb27f4ed27f3ee27f3f027f2f227f1f426f1f525f0f724f0f921"));
+},{"./colors":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/colors.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/src/sequential.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = sequential;
+
+var _linear = require("./linear");
+
+function sequential(interpolator) {
+  var x0 = 0,
+      x1 = 1,
+      clamp = false;
+
+  function scale(x) {
+    var t = (x - x0) / (x1 - x0);
+    return interpolator(clamp ? Math.max(0, Math.min(1, t)) : t);
+  }
+
+  scale.domain = function (_) {
+    return arguments.length ? (x0 = +_[0], x1 = +_[1], scale) : [x0, x1];
+  };
+
+  scale.clamp = function (_) {
+    return arguments.length ? (clamp = !!_, scale) : clamp;
+  };
+
+  scale.interpolator = function (_) {
+    return arguments.length ? (interpolator = _, scale) : interpolator;
+  };
+
+  scale.copy = function () {
+    return sequential(interpolator).domain([x0, x1]).clamp(clamp);
+  };
+
+  return (0, _linear.linearish)(scale);
+}
+},{"./linear":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/linear.js"}],"../node_modules/d3-svg-legend/node_modules/d3-scale/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _band = require("./src/band");
+
+Object.defineProperty(exports, "scaleBand", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_band).default;
+  }
+});
+Object.defineProperty(exports, "scalePoint", {
+  enumerable: true,
+  get: function () {
+    return _band.point;
+  }
+});
+
+var _identity = require("./src/identity");
+
+Object.defineProperty(exports, "scaleIdentity", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_identity).default;
+  }
+});
+
+var _linear = require("./src/linear");
+
+Object.defineProperty(exports, "scaleLinear", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_linear).default;
+  }
+});
+
+var _log = require("./src/log");
+
+Object.defineProperty(exports, "scaleLog", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_log).default;
+  }
+});
+
+var _ordinal = require("./src/ordinal");
+
+Object.defineProperty(exports, "scaleOrdinal", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_ordinal).default;
+  }
+});
+Object.defineProperty(exports, "scaleImplicit", {
+  enumerable: true,
+  get: function () {
+    return _ordinal.implicit;
+  }
+});
+
+var _pow = require("./src/pow");
+
+Object.defineProperty(exports, "scalePow", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_pow).default;
+  }
+});
+Object.defineProperty(exports, "scaleSqrt", {
+  enumerable: true,
+  get: function () {
+    return _pow.sqrt;
+  }
+});
+
+var _quantile = require("./src/quantile");
+
+Object.defineProperty(exports, "scaleQuantile", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_quantile).default;
+  }
+});
+
+var _quantize = require("./src/quantize");
+
+Object.defineProperty(exports, "scaleQuantize", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_quantize).default;
+  }
+});
+
+var _threshold = require("./src/threshold");
+
+Object.defineProperty(exports, "scaleThreshold", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_threshold).default;
+  }
+});
+
+var _time = require("./src/time");
+
+Object.defineProperty(exports, "scaleTime", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_time).default;
+  }
+});
+
+var _utcTime = require("./src/utcTime");
+
+Object.defineProperty(exports, "scaleUtc", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_utcTime).default;
+  }
+});
+
+var _category = require("./src/category10");
+
+Object.defineProperty(exports, "schemeCategory10", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_category).default;
+  }
+});
+
+var _category20b = require("./src/category20b");
+
+Object.defineProperty(exports, "schemeCategory20b", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_category20b).default;
+  }
+});
+
+var _category20c = require("./src/category20c");
+
+Object.defineProperty(exports, "schemeCategory20c", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_category20c).default;
+  }
+});
+
+var _category2 = require("./src/category20");
+
+Object.defineProperty(exports, "schemeCategory20", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_category2).default;
+  }
+});
+
+var _cubehelix = require("./src/cubehelix");
+
+Object.defineProperty(exports, "interpolateCubehelixDefault", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_cubehelix).default;
+  }
+});
+
+var _rainbow = require("./src/rainbow");
+
+Object.defineProperty(exports, "interpolateRainbow", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_rainbow).default;
+  }
+});
+Object.defineProperty(exports, "interpolateWarm", {
+  enumerable: true,
+  get: function () {
+    return _rainbow.warm;
+  }
+});
+Object.defineProperty(exports, "interpolateCool", {
+  enumerable: true,
+  get: function () {
+    return _rainbow.cool;
+  }
+});
+
+var _viridis = require("./src/viridis");
+
+Object.defineProperty(exports, "interpolateViridis", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_viridis).default;
+  }
+});
+Object.defineProperty(exports, "interpolateMagma", {
+  enumerable: true,
+  get: function () {
+    return _viridis.magma;
+  }
+});
+Object.defineProperty(exports, "interpolateInferno", {
+  enumerable: true,
+  get: function () {
+    return _viridis.inferno;
+  }
+});
+Object.defineProperty(exports, "interpolatePlasma", {
+  enumerable: true,
+  get: function () {
+    return _viridis.plasma;
+  }
+});
+
+var _sequential = require("./src/sequential");
+
+Object.defineProperty(exports, "scaleSequential", {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_sequential).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./src/band":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/band.js","./src/identity":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/identity.js","./src/linear":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/linear.js","./src/log":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/log.js","./src/ordinal":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/ordinal.js","./src/pow":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/pow.js","./src/quantile":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/quantile.js","./src/quantize":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/quantize.js","./src/threshold":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/threshold.js","./src/time":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/time.js","./src/utcTime":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/utcTime.js","./src/category10":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/category10.js","./src/category20b":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/category20b.js","./src/category20c":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/category20c.js","./src/category20":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/category20.js","./src/cubehelix":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/cubehelix.js","./src/rainbow":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/rainbow.js","./src/viridis":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/viridis.js","./src/sequential":"../node_modules/d3-svg-legend/node_modules/d3-scale/src/sequential.js"}],"../node_modules/d3-svg-legend/indexRollupNext.js":[function(require,module,exports) {
 'use strict';
 
-var _d = require('d3');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.legendHelpers = exports.legendSymbol = exports.legendSize = exports.legendColor = undefined;
 
-var d3 = _interopRequireWildcard(_d);
+var _d3Selection = require('d3-selection');
+
+var _d3Format = require('d3-format');
+
+var _d3Dispatch = require('d3-dispatch');
+
+var _d3Scale = require('d3-scale');
+
+var _d3Array = require('d3-array');
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+var d3_identity = function d3_identity(d) {
+  return d;
+};
+
+var d3_reverse = function d3_reverse(arr) {
+  var mirror = [];
+  for (var i = 0, l = arr.length; i < l; i++) {
+    mirror[i] = arr[l - i - 1];
+  }
+  return mirror;
+};
+
+//Text wrapping code adapted from Mike Bostock
+var d3_textWrapping = function d3_textWrapping(text, width) {
+  text.each(function () {
+    var text = (0, _d3Selection.select)(this),
+        words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.2,
+
+    //ems
+    y = text.attr("y"),
+        dy = parseFloat(text.attr("dy")) || 0,
+        tspan = text.text(null).append("tspan").attr("x", 0).attr("dy", dy + "em");
+
+    while (word = words.pop()) {
+      line.push(word);
+      tspan.text(line.join(" "));
+      if (tspan.node().getComputedTextLength() > width && line.length > 1) {
+        line.pop();
+        tspan.text(line.join(" "));
+        line = [word];
+        tspan = text.append("tspan").attr("x", 0).attr("dy", lineHeight + dy + "em").text(word);
+      }
+    }
+  });
+};
+
+var d3_mergeLabels = function d3_mergeLabels() {
+  var gen = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var labels = arguments[1];
+  var domain = arguments[2];
+  var range = arguments[3];
+  var labelDelimiter = arguments[4];
+
+  if ((typeof labels === "undefined" ? "undefined" : _typeof(labels)) === "object") {
+    if (labels.length === 0) return gen;
+
+    var i = labels.length;
+    for (; i < gen.length; i++) {
+      labels.push(gen[i]);
+    }
+    return labels;
+  } else if (typeof labels === "function") {
+    var customLabels = [];
+    var genLength = gen.length;
+    for (var _i = 0; _i < genLength; _i++) {
+      customLabels.push(labels({
+        i: _i,
+        genLength: genLength,
+        generatedLabels: gen,
+        domain: domain,
+        range: range,
+        labelDelimiter: labelDelimiter
+      }));
+    }
+    return customLabels;
+  }
+
+  return gen;
+};
+
+var d3_linearLegend = function d3_linearLegend(scale, cells, labelFormat) {
+  var data = [];
+
+  if (cells.length > 1) {
+    data = cells;
+  } else {
+    var domain = scale.domain(),
+        increment = (domain[domain.length - 1] - domain[0]) / (cells - 1);
+    var i = 0;
+
+    for (; i < cells; i++) {
+      data.push(domain[0] + i * increment);
+    }
+  }
+
+  var labels = data.map(labelFormat);
+  return {
+    data: data,
+    labels: labels,
+    feature: function feature(d) {
+      return scale(d);
+    }
+  };
+};
+
+var d3_quantLegend = function d3_quantLegend(scale, labelFormat, labelDelimiter) {
+  var labels = scale.range().map(function (d) {
+    var invert = scale.invertExtent(d);
+    return labelFormat(invert[0]) + " " + labelDelimiter + " " + labelFormat(invert[1]);
+  });
+
+  return {
+    data: scale.range(),
+    labels: labels,
+    feature: d3_identity
+  };
+};
+
+var d3_ordinalLegend = function d3_ordinalLegend(scale) {
+  return {
+    data: scale.domain(),
+    labels: scale.domain(),
+    feature: function feature(d) {
+      return scale(d);
+    }
+  };
+};
+
+var d3_cellOver = function d3_cellOver(cellDispatcher, d, obj) {
+  cellDispatcher.call("cellover", obj, d);
+};
+
+var d3_cellOut = function d3_cellOut(cellDispatcher, d, obj) {
+  cellDispatcher.call("cellout", obj, d);
+};
+
+var d3_cellClick = function d3_cellClick(cellDispatcher, d, obj) {
+  cellDispatcher.call("cellclick", obj, d);
+};
+
+var helper = {
+  d3_drawShapes: function d3_drawShapes(shape, shapes, shapeHeight, shapeWidth, shapeRadius, path) {
+    if (shape === "rect") {
+      shapes.attr("height", shapeHeight).attr("width", shapeWidth);
+    } else if (shape === "circle") {
+      shapes.attr("r", shapeRadius);
+    } else if (shape === "line") {
+      shapes.attr("x1", 0).attr("x2", shapeWidth).attr("y1", 0).attr("y2", 0);
+    } else if (shape === "path") {
+      shapes.attr("d", path);
+    }
+  },
+
+  d3_addText: function d3_addText(svg, enter, labels, classPrefix, labelWidth) {
+    enter.append("text").attr("class", classPrefix + "label");
+    var text = svg.selectAll("g." + classPrefix + "cell text." + classPrefix + "label").data(labels).text(d3_identity);
+
+    if (labelWidth) {
+      svg.selectAll("g." + classPrefix + "cell text." + classPrefix + "label").call(d3_textWrapping, labelWidth);
+    }
+
+    return text;
+  },
+
+  d3_calcType: function d3_calcType(scale, ascending, cells, labels, labelFormat, labelDelimiter) {
+    var type = scale.invertExtent ? d3_quantLegend(scale, labelFormat, labelDelimiter) : scale.ticks ? d3_linearLegend(scale, cells, labelFormat) : d3_ordinalLegend(scale);
+
+    //for d3.scaleSequential that doesn't have a range function
+    var range = scale.range && scale.range() || scale.domain();
+    type.labels = d3_mergeLabels(type.labels, labels, scale.domain(), range, labelDelimiter);
+
+    if (ascending) {
+      type.labels = d3_reverse(type.labels);
+      type.data = d3_reverse(type.data);
+    }
+
+    return type;
+  },
+
+  d3_filterCells: function d3_filterCells(type, cellFilter) {
+    var filterCells = type.data.map(function (d, i) {
+      return { data: d, label: type.labels[i] };
+    }).filter(cellFilter);
+    var dataValues = filterCells.map(function (d) {
+      return d.data;
+    });
+    var labelValues = filterCells.map(function (d) {
+      return d.label;
+    });
+    type.data = type.data.filter(function (d) {
+      return dataValues.indexOf(d) !== -1;
+    });
+    type.labels = type.labels.filter(function (d) {
+      return labelValues.indexOf(d) !== -1;
+    });
+    return type;
+  },
+
+  d3_placement: function d3_placement(orient, cell, cellTrans, text, textTrans, labelAlign) {
+    cell.attr("transform", cellTrans);
+    text.attr("transform", textTrans);
+    if (orient === "horizontal") {
+      text.style("text-anchor", labelAlign);
+    }
+  },
+
+  d3_addEvents: function d3_addEvents(cells, dispatcher) {
+    cells.on("mouseover.legend", function (d) {
+      d3_cellOver(dispatcher, d, this);
+    }).on("mouseout.legend", function (d) {
+      d3_cellOut(dispatcher, d, this);
+    }).on("click.legend", function (d) {
+      d3_cellClick(dispatcher, d, this);
+    });
+  },
+
+  d3_title: function d3_title(svg, title, classPrefix, titleWidth) {
+    if (title !== "") {
+      var titleText = svg.selectAll("text." + classPrefix + "legendTitle");
+
+      titleText.data([title]).enter().append("text").attr("class", classPrefix + "legendTitle");
+
+      svg.selectAll("text." + classPrefix + "legendTitle").text(title);
+
+      if (titleWidth) {
+        svg.selectAll("text." + classPrefix + "legendTitle").call(d3_textWrapping, titleWidth);
+      }
+
+      var cellsSvg = svg.select("." + classPrefix + "legendCells");
+      var yOffset = svg.select("." + classPrefix + "legendTitle").nodes().map(function (d) {
+        return d.getBBox().height;
+      })[0],
+          xOffset = -cellsSvg.nodes().map(function (d) {
+        return d.getBBox().x;
+      })[0];
+      cellsSvg.attr("transform", "translate(" + xOffset + "," + yOffset + ")");
+    }
+  },
+
+  d3_defaultLocale: {
+    format: _d3Format.format,
+    formatPrefix: _d3Format.formatPrefix
+  },
+
+  d3_defaultFormatSpecifier: ".01f",
+
+  d3_defaultDelimiter: "to"
+};
+
+function color() {
+  var scale = (0, _d3Scale.scaleLinear)(),
+      shape = "rect",
+      shapeWidth = 15,
+      shapeHeight = 15,
+      shapeRadius = 10,
+      shapePadding = 2,
+      cells = [5],
+      cellFilter = void 0,
+      labels = [],
+      classPrefix = "",
+      useClass = false,
+      title = "",
+      locale = helper.d3_defaultLocale,
+      specifier = helper.d3_defaultFormatSpecifier,
+      labelOffset = 10,
+      labelAlign = "middle",
+      labelDelimiter = helper.d3_defaultDelimiter,
+      labelWrap = void 0,
+      orient = "vertical",
+      ascending = false,
+      path = void 0,
+      titleWidth = void 0,
+      legendDispatcher = (0, _d3Dispatch.dispatch)("cellover", "cellout", "cellclick");
+
+  function legend(svg) {
+    var type = helper.d3_calcType(scale, ascending, cells, labels, locale.format(specifier), labelDelimiter),
+        legendG = svg.selectAll("g").data([scale]);
+
+    legendG.enter().append("g").attr("class", classPrefix + "legendCells");
+
+    if (cellFilter) {
+      helper.d3_filterCells(type, cellFilter);
+    }
+
+    var cell = svg.select("." + classPrefix + "legendCells").selectAll("." + classPrefix + "cell").data(type.data);
+
+    var cellEnter = cell.enter().append("g").attr("class", classPrefix + "cell");
+    cellEnter.append(shape).attr("class", classPrefix + "swatch");
+
+    var shapes = svg.selectAll("g." + classPrefix + "cell " + shape + "." + classPrefix + "swatch").data(type.data);
+
+    //add event handlers
+    helper.d3_addEvents(cellEnter, legendDispatcher);
+
+    cell.exit().transition().style("opacity", 0).remove();
+    shapes.exit().transition().style("opacity", 0).remove();
+
+    shapes = shapes.merge(shapes);
+
+    helper.d3_drawShapes(shape, shapes, shapeHeight, shapeWidth, shapeRadius, path);
+    var text = helper.d3_addText(svg, cellEnter, type.labels, classPrefix, labelWrap);
+
+    // we need to merge the selection, otherwise changes in the legend (e.g. change of orientation) are applied only to the new cells and not the existing ones.
+    cell = cellEnter.merge(cell);
+
+    // sets placement
+    var textSize = text.nodes().map(function (d) {
+      return d.getBBox();
+    }),
+        shapeSize = shapes.nodes().map(function (d) {
+      return d.getBBox();
+    });
+    //sets scale
+    //everything is fill except for line which is stroke,
+    if (!useClass) {
+      if (shape == "line") {
+        shapes.style("stroke", type.feature);
+      } else {
+        shapes.style("fill", type.feature);
+      }
+    } else {
+      shapes.attr("class", function (d) {
+        return classPrefix + "swatch " + type.feature(d);
+      });
+    }
+
+    var cellTrans = void 0,
+        textTrans = void 0,
+        textAlign = labelAlign == "start" ? 0 : labelAlign == "middle" ? 0.5 : 1;
+
+    //positions cells and text
+    if (orient === "vertical") {
+      (function () {
+        var cellSize = textSize.map(function (d, i) {
+          return Math.max(d.height, shapeSize[i].height);
+        });
+
+        cellTrans = function cellTrans(d, i) {
+          var height = (0, _d3Array.sum)(cellSize.slice(0, i));
+          return "translate(0, " + (height + i * shapePadding) + ")";
+        };
+
+        textTrans = function textTrans(d, i) {
+          return "translate( " + (shapeSize[i].width + shapeSize[i].x + labelOffset) + ", " + (shapeSize[i].y + shapeSize[i].height / 2 + 5) + ")";
+        };
+      })();
+    } else if (orient === "horizontal") {
+      cellTrans = function cellTrans(d, i) {
+        return "translate(" + i * (shapeSize[i].width + shapePadding) + ",0)";
+      };
+      textTrans = function textTrans(d, i) {
+        return "translate(" + (shapeSize[i].width * textAlign + shapeSize[i].x) + ",\n          " + (shapeSize[i].height + shapeSize[i].y + labelOffset + 8) + ")";
+      };
+    }
+
+    helper.d3_placement(orient, cell, cellTrans, text, textTrans, labelAlign);
+    helper.d3_title(svg, title, classPrefix, titleWidth);
+
+    cell.transition().style("opacity", 1);
+  }
+
+  legend.scale = function (_) {
+    if (!arguments.length) return scale;
+    scale = _;
+    return legend;
+  };
+
+  legend.cells = function (_) {
+    if (!arguments.length) return cells;
+    if (_.length > 1 || _ >= 2) {
+      cells = _;
+    }
+    return legend;
+  };
+
+  legend.cellFilter = function (_) {
+    if (!arguments.length) return cellFilter;
+    cellFilter = _;
+    return legend;
+  };
+
+  legend.shape = function (_, d) {
+    if (!arguments.length) return shape;
+    if (_ == "rect" || _ == "circle" || _ == "line" || _ == "path" && typeof d === "string") {
+      shape = _;
+      path = d;
+    }
+    return legend;
+  };
+
+  legend.shapeWidth = function (_) {
+    if (!arguments.length) return shapeWidth;
+    shapeWidth = +_;
+    return legend;
+  };
+
+  legend.shapeHeight = function (_) {
+    if (!arguments.length) return shapeHeight;
+    shapeHeight = +_;
+    return legend;
+  };
+
+  legend.shapeRadius = function (_) {
+    if (!arguments.length) return shapeRadius;
+    shapeRadius = +_;
+    return legend;
+  };
+
+  legend.shapePadding = function (_) {
+    if (!arguments.length) return shapePadding;
+    shapePadding = +_;
+    return legend;
+  };
+
+  legend.labels = function (_) {
+    if (!arguments.length) return labels;
+    labels = _;
+    return legend;
+  };
+
+  legend.labelAlign = function (_) {
+    if (!arguments.length) return labelAlign;
+    if (_ == "start" || _ == "end" || _ == "middle") {
+      labelAlign = _;
+    }
+    return legend;
+  };
+
+  legend.locale = function (_) {
+    if (!arguments.length) return locale;
+    locale = (0, _d3Format.formatLocale)(_);
+    return legend;
+  };
+
+  legend.labelFormat = function (_) {
+    if (!arguments.length) return legend.locale().format(specifier);
+    specifier = (0, _d3Format.formatSpecifier)(_);
+    return legend;
+  };
+
+  legend.labelOffset = function (_) {
+    if (!arguments.length) return labelOffset;
+    labelOffset = +_;
+    return legend;
+  };
+
+  legend.labelDelimiter = function (_) {
+    if (!arguments.length) return labelDelimiter;
+    labelDelimiter = _;
+    return legend;
+  };
+
+  legend.labelWrap = function (_) {
+    if (!arguments.length) return labelWrap;
+    labelWrap = _;
+    return legend;
+  };
+
+  legend.useClass = function (_) {
+    if (!arguments.length) return useClass;
+    if (_ === true || _ === false) {
+      useClass = _;
+    }
+    return legend;
+  };
+
+  legend.orient = function (_) {
+    if (!arguments.length) return orient;
+    _ = _.toLowerCase();
+    if (_ == "horizontal" || _ == "vertical") {
+      orient = _;
+    }
+    return legend;
+  };
+
+  legend.ascending = function (_) {
+    if (!arguments.length) return ascending;
+    ascending = !!_;
+    return legend;
+  };
+
+  legend.classPrefix = function (_) {
+    if (!arguments.length) return classPrefix;
+    classPrefix = _;
+    return legend;
+  };
+
+  legend.title = function (_) {
+    if (!arguments.length) return title;
+    title = _;
+    return legend;
+  };
+
+  legend.titleWidth = function (_) {
+    if (!arguments.length) return titleWidth;
+    titleWidth = _;
+    return legend;
+  };
+
+  legend.textWrap = function (_) {
+    if (!arguments.length) return textWrap;
+    textWrap = _;
+    return legend;
+  };
+
+  legend.on = function () {
+    var value = legendDispatcher.on.apply(legendDispatcher, arguments);
+    return value === legendDispatcher ? legend : value;
+  };
+
+  return legend;
+}
+
+function size() {
+  var scale = (0, _d3Scale.scaleLinear)(),
+      shape = "rect",
+      shapeWidth = 15,
+      shapePadding = 2,
+      cells = [5],
+      cellFilter = void 0,
+      labels = [],
+      classPrefix = "",
+      title = "",
+      locale = helper.d3_defaultLocale,
+      specifier = helper.d3_defaultFormatSpecifier,
+      labelOffset = 10,
+      labelAlign = "middle",
+      labelDelimiter = helper.d3_defaultDelimiter,
+      labelWrap = void 0,
+      orient = "vertical",
+      ascending = false,
+      path = void 0,
+      titleWidth = void 0,
+      legendDispatcher = (0, _d3Dispatch.dispatch)("cellover", "cellout", "cellclick");
+
+  function legend(svg) {
+    var type = helper.d3_calcType(scale, ascending, cells, labels, locale.format(specifier), labelDelimiter),
+        legendG = svg.selectAll("g").data([scale]);
+
+    if (cellFilter) {
+      helper.d3_filterCells(type, cellFilter);
+    }
+
+    legendG.enter().append("g").attr("class", classPrefix + "legendCells");
+
+    var cell = svg.select("." + classPrefix + "legendCells").selectAll("." + classPrefix + "cell").data(type.data);
+    var cellEnter = cell.enter().append("g").attr("class", classPrefix + "cell");
+    cellEnter.append(shape).attr("class", classPrefix + "swatch");
+
+    var shapes = svg.selectAll("g." + classPrefix + "cell " + shape + "." + classPrefix + "swatch");
+
+    //add event handlers
+    helper.d3_addEvents(cellEnter, legendDispatcher);
+
+    cell.exit().transition().style("opacity", 0).remove();
+
+    shapes.exit().transition().style("opacity", 0).remove();
+    shapes = shapes.merge(shapes);
+
+    //creates shape
+    if (shape === "line") {
+      helper.d3_drawShapes(shape, shapes, 0, shapeWidth);
+      shapes.attr("stroke-width", type.feature);
+    } else {
+      helper.d3_drawShapes(shape, shapes, type.feature, type.feature, type.feature, path);
+    }
+
+    var text = helper.d3_addText(svg, cellEnter, type.labels, classPrefix, labelWrap);
+
+    // we need to merge the selection, otherwise changes in the legend (e.g. change of orientation) are applied only to the new cells and not the existing ones.
+    cell = cellEnter.merge(cell);
+
+    //sets placement
+
+    var textSize = text.nodes().map(function (d) {
+      return d.getBBox();
+    }),
+        shapeSize = shapes.nodes().map(function (d, i) {
+      var bbox = d.getBBox();
+      var stroke = scale(type.data[i]);
+
+      if (shape === "line" && orient === "horizontal") {
+        bbox.height = bbox.height + stroke;
+      } else if (shape === "line" && orient === "vertical") {
+        bbox.width = bbox.width;
+      }
+      return bbox;
+    });
+
+    var maxH = (0, _d3Array.max)(shapeSize, function (d) {
+      return d.height + d.y;
+    }),
+        maxW = (0, _d3Array.max)(shapeSize, function (d) {
+      return d.width + d.x;
+    });
+
+    var cellTrans = void 0,
+        textTrans = void 0,
+        textAlign = labelAlign == "start" ? 0 : labelAlign == "middle" ? 0.5 : 1;
+
+    //positions cells and text
+    if (orient === "vertical") {
+      (function () {
+        var cellSize = textSize.map(function (d, i) {
+          return Math.max(d.height, shapeSize[i].height);
+        });
+        var y = shape == "circle" || shape == "line" ? shapeSize[0].height / 2 : 0;
+        cellTrans = function cellTrans(d, i) {
+          var height = (0, _d3Array.sum)(cellSize.slice(0, i));
+
+          return "translate(0, " + (y + height + i * shapePadding) + ")";
+        };
+
+        textTrans = function textTrans(d, i) {
+          return "translate( " + (maxW + labelOffset) + ",\n          " + (shapeSize[i].y + shapeSize[i].height / 2 + 5) + ")";
+        };
+      })();
+    } else if (orient === "horizontal") {
+      (function () {
+        cellTrans = function cellTrans(d, i) {
+          var width = (0, _d3Array.sum)(shapeSize.slice(0, i), function (d) {
+            return d.width;
+          });
+          var y = shape == "circle" || shape == "line" ? maxH / 2 : 0;
+          return "translate(" + (width + i * shapePadding) + ", " + y + ")";
+        };
+
+        var offset = shape == "line" ? maxH / 2 : maxH;
+        textTrans = function textTrans(d, i) {
+          return "translate( " + (shapeSize[i].width * textAlign + shapeSize[i].x) + ",\n              " + (offset + labelOffset) + ")";
+        };
+      })();
+    }
+
+    helper.d3_placement(orient, cell, cellTrans, text, textTrans, labelAlign);
+    helper.d3_title(svg, title, classPrefix, titleWidth);
+
+    cell.transition().style("opacity", 1);
+  }
+
+  legend.scale = function (_) {
+    if (!arguments.length) return scale;
+    scale = _;
+    return legend;
+  };
+
+  legend.cells = function (_) {
+    if (!arguments.length) return cells;
+    if (_.length > 1 || _ >= 2) {
+      cells = _;
+    }
+    return legend;
+  };
+
+  legend.cellFilter = function (_) {
+    if (!arguments.length) return cellFilter;
+    cellFilter = _;
+    return legend;
+  };
+
+  legend.shape = function (_, d) {
+    if (!arguments.length) return shape;
+    if (_ == "rect" || _ == "circle" || _ == "line") {
+      shape = _;
+      path = d;
+    }
+    return legend;
+  };
+
+  legend.shapeWidth = function (_) {
+    if (!arguments.length) return shapeWidth;
+    shapeWidth = +_;
+    return legend;
+  };
+
+  legend.shapePadding = function (_) {
+    if (!arguments.length) return shapePadding;
+    shapePadding = +_;
+    return legend;
+  };
+
+  legend.labels = function (_) {
+    if (!arguments.length) return labels;
+    labels = _;
+    return legend;
+  };
+
+  legend.labelAlign = function (_) {
+    if (!arguments.length) return labelAlign;
+    if (_ == "start" || _ == "end" || _ == "middle") {
+      labelAlign = _;
+    }
+    return legend;
+  };
+
+  legend.locale = function (_) {
+    if (!arguments.length) return locale;
+    locale = (0, _d3Format.formatLocale)(_);
+    return legend;
+  };
+
+  legend.labelFormat = function (_) {
+    if (!arguments.length) return legend.locale().format(specifier);
+    specifier = (0, _d3Format.formatSpecifier)(_);
+    return legend;
+  };
+
+  legend.labelOffset = function (_) {
+    if (!arguments.length) return labelOffset;
+    labelOffset = +_;
+    return legend;
+  };
+
+  legend.labelDelimiter = function (_) {
+    if (!arguments.length) return labelDelimiter;
+    labelDelimiter = _;
+    return legend;
+  };
+
+  legend.labelWrap = function (_) {
+    if (!arguments.length) return labelWrap;
+    labelWrap = _;
+    return legend;
+  };
+
+  legend.orient = function (_) {
+    if (!arguments.length) return orient;
+    _ = _.toLowerCase();
+    if (_ == "horizontal" || _ == "vertical") {
+      orient = _;
+    }
+    return legend;
+  };
+
+  legend.ascending = function (_) {
+    if (!arguments.length) return ascending;
+    ascending = !!_;
+    return legend;
+  };
+
+  legend.classPrefix = function (_) {
+    if (!arguments.length) return classPrefix;
+    classPrefix = _;
+    return legend;
+  };
+
+  legend.title = function (_) {
+    if (!arguments.length) return title;
+    title = _;
+    return legend;
+  };
+
+  legend.titleWidth = function (_) {
+    if (!arguments.length) return titleWidth;
+    titleWidth = _;
+    return legend;
+  };
+
+  legend.on = function () {
+    var value = legendDispatcher.on.apply(legendDispatcher, arguments);
+    return value === legendDispatcher ? legend : value;
+  };
+
+  return legend;
+}
+
+function symbol() {
+  var scale = (0, _d3Scale.scaleLinear)(),
+      shape = "path",
+      shapeWidth = 15,
+      shapeHeight = 15,
+      shapeRadius = 10,
+      shapePadding = 5,
+      cells = [5],
+      cellFilter = void 0,
+      labels = [],
+      classPrefix = "",
+      title = "",
+      locale = helper.d3_defaultLocale,
+      specifier = helper.d3_defaultFormatSpecifier,
+      labelAlign = "middle",
+      labelOffset = 10,
+      labelDelimiter = helper.d3_defaultDelimiter,
+      labelWrap = void 0,
+      orient = "vertical",
+      ascending = false,
+      titleWidth = void 0,
+      legendDispatcher = (0, _d3Dispatch.dispatch)("cellover", "cellout", "cellclick");
+
+  function legend(svg) {
+    var type = helper.d3_calcType(scale, ascending, cells, labels, locale.format(specifier), labelDelimiter),
+        legendG = svg.selectAll("g").data([scale]);
+
+    if (cellFilter) {
+      helper.d3_filterCells(type, cellFilter);
+    }
+
+    legendG.enter().append("g").attr("class", classPrefix + "legendCells");
+
+    var cell = svg.select("." + classPrefix + "legendCells").selectAll("." + classPrefix + "cell").data(type.data);
+    var cellEnter = cell.enter().append("g").attr("class", classPrefix + "cell");
+    cellEnter.append(shape).attr("class", classPrefix + "swatch");
+
+    var shapes = svg.selectAll("g." + classPrefix + "cell " + shape + "." + classPrefix + "swatch");
+
+    //add event handlers
+    helper.d3_addEvents(cellEnter, legendDispatcher);
+
+    //remove old shapes
+    cell.exit().transition().style("opacity", 0).remove();
+    shapes.exit().transition().style("opacity", 0).remove();
+    shapes = shapes.merge(shapes);
+
+    helper.d3_drawShapes(shape, shapes, shapeHeight, shapeWidth, shapeRadius, type.feature);
+    var text = helper.d3_addText(svg, cellEnter, type.labels, classPrefix, labelWrap);
+
+    // we need to merge the selection, otherwise changes in the legend (e.g. change of orientation) are applied only to the new cells and not the existing ones.
+    cell = cellEnter.merge(cell);
+
+    // sets placement
+    var textSize = text.nodes().map(function (d) {
+      return d.getBBox();
+    }),
+        shapeSize = shapes.nodes().map(function (d) {
+      return d.getBBox();
+    });
+
+    var maxH = (0, _d3Array.max)(shapeSize, function (d) {
+      return d.height;
+    }),
+        maxW = (0, _d3Array.max)(shapeSize, function (d) {
+      return d.width;
+    });
+
+    var cellTrans = void 0,
+        textTrans = void 0,
+        textAlign = labelAlign == "start" ? 0 : labelAlign == "middle" ? 0.5 : 1;
+
+    //positions cells and text
+    if (orient === "vertical") {
+      (function () {
+        var cellSize = textSize.map(function (d, i) {
+          return Math.max(maxH, d.height);
+        });
+
+        cellTrans = function cellTrans(d, i) {
+          var height = (0, _d3Array.sum)(cellSize.slice(0, i));
+          return "translate(0, " + (height + i * shapePadding) + " )";
+        };
+        textTrans = function textTrans(d, i) {
+          return "translate( " + (maxW + labelOffset) + ",\n              " + (shapeSize[i].y + shapeSize[i].height / 2 + 5) + ")";
+        };
+      })();
+    } else if (orient === "horizontal") {
+      cellTrans = function cellTrans(d, i) {
+        return "translate( " + i * (maxW + shapePadding) + ",0)";
+      };
+      textTrans = function textTrans(d, i) {
+        return "translate( " + (shapeSize[i].width * textAlign + shapeSize[i].x) + ",\n              " + (maxH + labelOffset) + ")";
+      };
+    }
+
+    helper.d3_placement(orient, cell, cellTrans, text, textTrans, labelAlign);
+    helper.d3_title(svg, title, classPrefix, titleWidth);
+    cell.transition().style("opacity", 1);
+  }
+
+  legend.scale = function (_) {
+    if (!arguments.length) return scale;
+    scale = _;
+    return legend;
+  };
+
+  legend.cells = function (_) {
+    if (!arguments.length) return cells;
+    if (_.length > 1 || _ >= 2) {
+      cells = _;
+    }
+    return legend;
+  };
+
+  legend.cellFilter = function (_) {
+    if (!arguments.length) return cellFilter;
+    cellFilter = _;
+    return legend;
+  };
+
+  legend.shapePadding = function (_) {
+    if (!arguments.length) return shapePadding;
+    shapePadding = +_;
+    return legend;
+  };
+
+  legend.labels = function (_) {
+    if (!arguments.length) return labels;
+    labels = _;
+    return legend;
+  };
+
+  legend.labelAlign = function (_) {
+    if (!arguments.length) return labelAlign;
+    if (_ == "start" || _ == "end" || _ == "middle") {
+      labelAlign = _;
+    }
+    return legend;
+  };
+
+  legend.locale = function (_) {
+    if (!arguments.length) return locale;
+    locale = (0, _d3Format.formatLocale)(_);
+    return legend;
+  };
+
+  legend.labelFormat = function (_) {
+    if (!arguments.length) return legend.locale().format(specifier);
+    specifier = (0, _d3Format.formatSpecifier)(_);
+    return legend;
+  };
+
+  legend.labelOffset = function (_) {
+    if (!arguments.length) return labelOffset;
+    labelOffset = +_;
+    return legend;
+  };
+
+  legend.labelDelimiter = function (_) {
+    if (!arguments.length) return labelDelimiter;
+    labelDelimiter = _;
+    return legend;
+  };
+
+  legend.labelWrap = function (_) {
+    if (!arguments.length) return labelWrap;
+    labelWrap = _;
+    return legend;
+  };
+
+  legend.orient = function (_) {
+    if (!arguments.length) return orient;
+    _ = _.toLowerCase();
+    if (_ == "horizontal" || _ == "vertical") {
+      orient = _;
+    }
+    return legend;
+  };
+
+  legend.ascending = function (_) {
+    if (!arguments.length) return ascending;
+    ascending = !!_;
+    return legend;
+  };
+
+  legend.classPrefix = function (_) {
+    if (!arguments.length) return classPrefix;
+    classPrefix = _;
+    return legend;
+  };
+
+  legend.title = function (_) {
+    if (!arguments.length) return title;
+    title = _;
+    return legend;
+  };
+
+  legend.titleWidth = function (_) {
+    if (!arguments.length) return titleWidth;
+    titleWidth = _;
+    return legend;
+  };
+
+  legend.on = function () {
+    var value = legendDispatcher.on.apply(legendDispatcher, arguments);
+    return value === legendDispatcher ? legend : value;
+  };
+
+  return legend;
+}
+
+var thresholdLabels = function thresholdLabels(_ref) {
+  var i = _ref.i,
+      genLength = _ref.genLength,
+      generatedLabels = _ref.generatedLabels,
+      labelDelimiter = _ref.labelDelimiter;
+
+  if (i === 0) {
+    var values = generatedLabels[i].split(" " + labelDelimiter + " ");
+    return "Less than " + values[1];
+  } else if (i === genLength - 1) {
+    var _values = generatedLabels[i].split(" " + labelDelimiter + " ");
+    return _values[0] + " or more";
+  }
+  return generatedLabels[i];
+};
+
+var legendHelpers = {
+  thresholdLabels: thresholdLabels
+};
+
+var index = {
+  legendColor: color,
+  legendSize: size,
+  legendSymbol: symbol,
+  legendHelpers: legendHelpers
+};
+
+exports.legendColor = color;
+exports.legendSize = size;
+exports.legendSymbol = symbol;
+exports.legendHelpers = legendHelpers;
+exports.default = index;
+//# sourceMappingURL=indexRollupNext.js.map
+},{"d3-selection":"../node_modules/d3-svg-legend/node_modules/d3-selection/index.js","d3-format":"../node_modules/d3-svg-legend/node_modules/d3-format/index.js","d3-dispatch":"../node_modules/d3-svg-legend/node_modules/d3-dispatch/index.js","d3-scale":"../node_modules/d3-svg-legend/node_modules/d3-scale/index.js","d3-array":"../node_modules/d3-svg-legend/node_modules/d3-array/index.js"}],"data/selfiedeaths_grouped_coded_allcountries_fix.csv":[function(require,module,exports) {
+"use strict";
+
+module.exports = "/selfiedeaths_grouped_coded_allcountries_fix.79d1a378.csv";
+},{}],"03-chart.js":[function(require,module,exports) {
+'use strict';
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _d2 = require('d3');
+
+var d3 = _interopRequireWildcard(_d2);
+
+var _topojson = require('topojson');
+
+var topojson = _interopRequireWildcard(_topojson);
+
+var _d3SvgLegend = require('d3-svg-legend');
+
+var _d3SvgLegend2 = _interopRequireDefault(_d3SvgLegend);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var margin = { top: 50, left: 125, right: 20, bottom: 100 };
+// import { scaleBand } from 'd3-scale'
 
-var height = 600 - margin.top - margin.bottom;
-var width = 600 - margin.left - margin.right;
+var margin = { top: 10, left: 10, right: 10, bottom: 10 };
 
-var svg = d3.select('#chart-1').append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom).append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+var height = 500 - margin.top - margin.bottom;
 
-var xPositionScale = d3.scaleLinear().domain([0, 50]).range([0, width]);
+var width = 900 - margin.left - margin.right;
 
-var yPositionScale = d3.scaleBand().range([height, 0]).padding(0.25);
+var svg = d3.select('#chart-3').append('svg').attr('height', height + margin.top + margin.bottom).attr('width', width + margin.left + margin.right).append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-var colorScale = d3.scaleOrdinal().range(['#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69']);
+// map and projection
+var projection = d3.geoEqualEarth().scale(width / 2 / Math.PI).translate([width / 2, height / 2]);
+var path = d3.geoPath().projection(projection);
 
-d3.csv(require('./data/selfiedeaths.csv')).then(ready).catch(function (err) {
-  return console.log('Failed on', err);
-});
-function ready(datapoints) {
-  var types = datapoints.map(function (d) {
-    return d.Type;
-  });
-  yPositionScale.domain(types);
+// create a variable to store data from the csv
+var data = d3.map();
 
-  var datapoints2011 = datapoints.filter(function (d) {
-    return d.Year === '2011';
-  });
-  var nested2011 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2011);
+// create color scale for the choropleth
+var colorScale = d3.scaleThreshold().domain(d3.range(0, 160)).range(d3.schemePuBu[8]);
+// .unknown('#ffffff')
 
-  var datapoints2013 = datapoints.filter(function (d) {
-    return d.Year === '2013';
-  });
-  var nested2013 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2013);
 
-  var datapoints2014 = datapoints.filter(function (d) {
-    return d.Year === '2014';
-  });
-  var nested2014 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2014);
+// Legend
+// var g = svg
+//   .append('g')
+//   .attr('class', 'legendThreshold')
+//   .attr('transform', 'translate(20,20)')
+// g.append('text')
+//   .attr('class', 'caption')
+//   .attr('x', 0)
+//   .attr('y', -6)
+//   .text('Students')
+// var labels = ['0', '1-5', '6-10', '11-25', '26-100', '101-1000', '> 1000']
 
-  var datapoints2015 = datapoints.filter(function (d) {
-    return d.Year === '2015';
-  });
-  var nested2015 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2015);
+// var legend = d3
+//   .legendColor()
+//   .labels(function(d) {
+//     return labels[d.i]
+//   })
+//   .shapePadding(4)
+//   .scale(colorScale)
+// svg.select('.legendThreshold').call(legend)
 
-  var datapoints2016 = datapoints.filter(function (d) {
-    return d.Year === '2016';
-  });
-  var nested2016 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2016);
+// NEW LEGEND
+// var quantize = d3
+//   .scaleQuantize()
+//   .domain([0, 0.15])
+//   .range(
+//     d3.range(9).map(function(i) {
+//       return 'q' + i + '-9'
+//     })
+//   )
 
-  var datapoints2017 = datapoints.filter(function (d) {
-    return d.Year === '2017';
-  });
-  var nested2017 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2017);
+// svg
+//   .append('g')
+//   .attr('class', 'legendQuant')
+//   .attr('transform', 'translate(20,20)')
 
-  var datapoints2018 = datapoints.filter(function (d) {
-    return d.Year === '2018';
-  });
-  var nested2018 = d3.nest().key(function (d) {
-    return d.Type;
-  }).entries(datapoints2018);
+// var legend = d3
+//   .legendColor()
+//   .labelFormat(d3.format('.2f'))
+//   .useClass(true)
+//   .title('A really long title')
+//   .titleWidth(100)
+//   .scale(quantize)
 
-  svg.selectAll('.death-type').data(nested2016).enter().append('rect').attr('class', 'death-type').attr('y', function (d) {
-    return yPositionScale(d.key);
-  }).attr('x', 0).attr('height', yPositionScale.bandwidth()).attr('width', 0)
-  // .attr('width', d => {
-  //   var casualties2016 = d.values.map(function(d) {
-  //     return d.Casualties
-  //   })
-  //   let sumCasualties2016 = d3.sum(casualties2016)
-  //   // console.log(sumCasualties2016)
-  //   return xPositionScale(sumCasualties2016)
-  // })
-  .attr('fill', function (d) {
-    return colorScale(d.key);
-  }).attr('opacity', 0.5);
+// svg.select('.legendQuant').call(legend)
 
-  var yAxis = d3.axisLeft(yPositionScale).tickSize(0).tickFormat(function (d) {
-    return d;
-  });
+// read in the data
 
-  svg.append('g').attr('class', 'axis y-axis').call(yAxis);
+var promises = [d3.json('https://enjalot.github.io/wwsd/data/world/world-110m.geojson'), d3.csv(require('./data/selfiedeaths_grouped_coded_allcountries_fix.csv'), function (d) {
+  data.set(d.code, +d.Casualties);
+})];
 
-  svg.selectAll('.y-axis text').attr('fill', '#999999').attr('dx', -10);
+Promise.all(promises).then(ready);
 
-  var xAxis = d3.axisTop(xPositionScale).tickValues([10, 20, 30, 40]).tickFormat(function (d) {
-    return d;
-  }).tickSize(-height);
+function ready(_ref) {
+  var _ref2 = _slicedToArray(_ref, 1),
+      json = _ref2[0];
 
-  svg.append('g').attr('class', 'axis x-axis').call(xAxis).lower();
+  // console.log(json)
+  // console.log(json.features)
 
-  svg.selectAll('.axis line').attr('stroke', '#ccc');
-  svg.selectAll('.axis path').attr('stroke', 'none');
-
-  svg.selectAll('.axis text').attr('font-size', 15);
-  svg.selectAll('.x-axis text').attr('fill', '#999999');
-
-  // SCROLLYTELLING! steps
-
-  d3.select('#blank').on('stepin', function () {
-    svg.selectAll('.death-type').attr('width', 0);
-  });
-
-  d3.select('#eleven').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2011, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('width', function (d) {
-      var casualties2011 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2011 = d3.sum(casualties2011);
-      console.log('sum casualties 2011', sumCasualties2011);
-      return xPositionScale(sumCasualties2011);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
-    });
-  });
-
-  d3.select('#thirteen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2013, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('height', yPositionScale.bandwidth()).attr('width', function (d) {
-      var casualties2013 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2013 = d3.sum(casualties2013);
-      console.log('sum casualties 2013', sumCasualties2013);
-      return xPositionScale(sumCasualties2013);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
-    });
-  });
-
-  d3.select('#fourteen').on('stepin', function () {
-    var bars = svg.selectAll('.death-type').data(nested2014, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('width', function (d) {
-      var casualties2014 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2014 = d3.sum(casualties2014);
-      return xPositionScale(sumCasualties2014);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
-    });
-    bars.exit().transition().attr('width', 0);
-  });
-
-  d3.select('#fifteen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2015, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('width', function (d) {
-      var casualties2015 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2015 = d3.sum(casualties2015);
-      return xPositionScale(sumCasualties2015);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
-    });
-  });
-
-  d3.select('#sixteen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2016, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('width', function (d) {
-      var casualties2016 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2016 = d3.sum(casualties2016);
-      return xPositionScale(sumCasualties2016);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
-    });
-  });
-
-  d3.select('#seventeen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2017, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('width', function (d) {
-      var casualties2017 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2017 = d3.sum(casualties2017);
-      return xPositionScale(sumCasualties2017);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
-    });
-  });
-
-  d3.select('#eighteen').on('stepin', function () {
-    svg.selectAll('.death-type').data(nested2018, function (d) {
-      return d.key;
-    }).transition().attr('y', function (d) {
-      return yPositionScale(d.key);
-    }).attr('width', function (d) {
-      var casualties2018 = d.values.map(function (d) {
-        return d.Casualties;
-      });
-      var sumCasualties2018 = d3.sum(casualties2018);
-      // console.log('sum casualties 2018', sumCasualties2018)
-      return xPositionScale(sumCasualties2018);
-    }).attr('fill', function (d) {
-      return colorScale(d.key);
-    });
-  });
+  svg.append('g').attr('class', 'countries').selectAll('path').data(json.features).enter().append('path').attr('fill', function (d) {
+    if (d) {
+      return colorScale(d.Casualties = data.get(d.id));
+    } else {
+      return '#ccc';
+    }
+  })
+  // .style(
+  //   'fill',
+  //   d => (d ? colorScale((d.Casualties = data.get(d.id))) : 'white')
+  // )
+  .attr('d', path).attr('stroke', 'white').attr('stroke-width', 0.5);
 }
-},{"d3":"../node_modules/d3/index.js","./data/selfiedeaths.csv":"data/selfiedeaths.csv"}],"../../../../.npm-global/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"d3":"../node_modules/d3/index.js","topojson":"../node_modules/topojson/index.js","d3-svg-legend":"../node_modules/d3-svg-legend/indexRollupNext.js","./data/selfiedeaths_grouped_coded_allcountries_fix.csv":"data/selfiedeaths_grouped_coded_allcountries_fix.csv"}],"../../../../.npm-global/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -27845,7 +35984,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '63412' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62796' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -27986,5 +36125,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},["../../../../.npm-global/lib/node_modules/parcel/src/builtins/hmr-runtime.js","01-chart.js"], null)
-//# sourceMappingURL=/01-chart.07db4483.map
+},{}]},{},["../../../../.npm-global/lib/node_modules/parcel/src/builtins/hmr-runtime.js","03-chart.js"], null)
+//# sourceMappingURL=/03-chart.ea0ab25b.map

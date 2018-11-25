@@ -32,7 +32,8 @@ const colorScale = d3
     '#fb8072',
     '#80b1d3',
     '#fdb462',
-    '#b3de69'
+    '#b3de69',
+    '#fccde5'
   ])
 
 d3.csv(require('./data/selfiedeaths.csv'))
@@ -326,4 +327,130 @@ function ready(datapoints) {
       })
       .attr('fill', d => colorScale(d.key))
   })
+
+  // d3.select('#blank').on('stepin', () => {
+  //   svg.selectAll('.death-type').attr('width', 0)
+  // })
+
+  // d3.select('#eleven').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2011)
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('width', d => {
+  //       var casualties2011 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2011 = d3.sum(casualties2011)
+  //       console.log('sum casualties 2011', sumCasualties2011)
+  //       return xPositionScale(sumCasualties2011)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
+
+  // d3.select('#thirteen').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2013)
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('height', yPositionScale.bandwidth())
+  //     .attr('width', d => {
+  //       var casualties2013 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2013 = d3.sum(casualties2013)
+  //       console.log('sum casualties 2013', sumCasualties2013)
+  //       return xPositionScale(sumCasualties2013)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
+
+  // d3.select('#fourteen').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2014)
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('width', d => {
+  //       var casualties2014 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2014 = d3.sum(casualties2014)
+  //       return xPositionScale(sumCasualties2014)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
+
+  // d3.select('#fifteen').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2015)
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('width', d => {
+  //       var casualties2015 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2015 = d3.sum(casualties2015)
+  //       return xPositionScale(sumCasualties2015)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
+
+  // d3.select('#sixteen').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2016)
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('width', d => {
+  //       var casualties2016 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2016 = d3.sum(casualties2016)
+  //       return xPositionScale(sumCasualties2016)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
+
+  // d3.select('#seventeen').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2017)
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('width', d => {
+  //       var casualties2017 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2017 = d3.sum(casualties2017)
+  //       console.log('sum casualties 2017', sumCasualties2017)
+  //       return xPositionScale(sumCasualties2017)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
+
+  // d3.select('#eighteen').on('stepin', () => {
+  //   svg
+  //     .selectAll('.death-type')
+  //     .data(nested2018)
+  //     .exit()
+  //     .remove()
+
+  //   svg
+  //     .selectAll('.death-type')
+  //     .transition()
+  //     .attr('y', d => yPositionScale(d.key))
+  //     .attr('width', d => {
+  //       var casualties2018 = d.values.map(function(d) {
+  //         return d.Casualties
+  //       })
+  //       let sumCasualties2018 = d3.sum(casualties2018)
+  //       console.log('sum casualties 2018', sumCasualties2018)
+  //       return xPositionScale(sumCasualties2018)
+  //     })
+  //     .attr('fill', d => colorScale(d.key))
+  // })
 }

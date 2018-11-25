@@ -6,7 +6,7 @@ let height = 600 - margin.top - margin.bottom
 let width = 900 - margin.left - margin.right
 
 const svg = d3
-  .select('#chart-2')
+  .select('#force-chart')
   .append('svg')
   .attr('width', width + margin.left + margin.right)
   .attr('height', height + margin.top + margin.bottom)
