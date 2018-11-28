@@ -235,10 +235,12 @@ function ready(datapoints) {
       .selectAll('.label-death-type')
       .transition()
       .style('visibility', 'hidden')
+    svg.selectAll('.death').attr('fill', d => colorScale(d.Type))
     svg
-      .selectAll('.death')
-      // .data(datapoints)
-      .attr('fill', d => colorScale(d.Type))
+      .select('.fire-death')
+      .transition()
+      .style('fill', d => colorScale(d.Type))
+
     simulation
       .force('x', forceXCombine)
       .force('y', forceYCombine)
@@ -258,7 +260,12 @@ function ready(datapoints) {
       .attr('fill', function(d) {
         return colorScale(d.Type)
       })
-      
+
+    svg
+      .select('.fire-death')
+      .transition()
+      .style('fill', d => colorScale(d.Type))
+
     simulation
       .force('x', forceXSeparate)
       .force('y', forceYSeparate)
@@ -270,7 +277,13 @@ function ready(datapoints) {
     svg
       .selectAll('.parks-death')
       .transition()
-      .attr('fill', '#3596B5')
+      .attr('fill', '#4FFBDF')
+
+    svg
+      .select('.fire-death')
+      .transition()
+      .style('fill', d => colorScale(d.Type))
+
     svg
       .selectAll('.label-death-type')
       .transition()
@@ -294,7 +307,7 @@ function ready(datapoints) {
     svg
       .select('.fire-death')
       .transition()
-      .style('fill', '#3596B5')
+      .style('fill', '#4FFBDF')
 
     svg
       .selectAll('.label-death-type')

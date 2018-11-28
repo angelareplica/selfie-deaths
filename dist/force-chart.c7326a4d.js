@@ -27739,11 +27739,13 @@ function ready(datapoints) {
 
   d3.select('#start').on('stepin', function () {
     svg.selectAll('.label-death-type').transition().style('visibility', 'hidden');
-    svg.selectAll('.death')
-    // .data(datapoints)
-    .attr('fill', function (d) {
+    svg.selectAll('.death').attr('fill', function (d) {
       return colorScale(d.Type);
     });
+    svg.select('.fire-death').transition().style('fill', function (d) {
+      return colorScale(d.Type);
+    });
+
     simulation.force('x', forceXCombine).force('y', forceYCombine).alphaTarget(0.01).restart();
   });
 
@@ -27754,11 +27756,20 @@ function ready(datapoints) {
       return colorScale(d.Type);
     });
 
+    svg.select('.fire-death').transition().style('fill', function (d) {
+      return colorScale(d.Type);
+    });
+
     simulation.force('x', forceXSeparate).force('y', forceYSeparate).alphaTarget(0.7).restart();
   });
 
   d3.select('#highlight-parks').on('stepin', function () {
-    svg.selectAll('.parks-death').transition().attr('fill', '#3596B5');
+    svg.selectAll('.parks-death').transition().attr('fill', '#4FFBDF');
+
+    svg.select('.fire-death').transition().style('fill', function (d) {
+      return colorScale(d.Type);
+    });
+
     svg.selectAll('.label-death-type').transition().style('visibility', 'visible');
 
     simulation.force('x', forceXSeparate).force('y', forceYSeparate).alphaTarget(0.7).restart();
@@ -27769,7 +27780,7 @@ function ready(datapoints) {
     svg.selectAll('.death').transition().attr('fill', function (d) {
       return colorScale(d.Type);
     });
-    svg.select('.fire-death').transition().style('fill', '#3596B5');
+    svg.select('.fire-death').transition().style('fill', '#4FFBDF');
 
     svg.selectAll('.label-death-type').transition().style('visibility', 'visible');
     simulation.force('x', forceXSeparate).force('y', forceYSeparate).alphaTarget(0.7).restart();
