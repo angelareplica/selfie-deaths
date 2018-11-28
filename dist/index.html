@@ -8,7 +8,7 @@
 
         body {
           padding-bottom: 2rem;
-          background-color: #DDDDDD;
+          background-color: #FAFAF0;
           font-family: 'Roboto', sans-serif;
           font-weight: lighter;
         }
@@ -46,11 +46,12 @@
             padding: 10px;			
             font-family: 'Helvetica', sans-serif;	
             font: 15px sans-serif;		
-            background-color: #DDDDDD;	
+            background-color: #FAFAF0;	
             border: 0px;		
             border-radius: 8px;			
             pointer-events: none;
             vertical-align: middle;
+            width: 250px;
           }
 
           hr { 
@@ -89,14 +90,14 @@
           }
 
           .step > p {
-            background: rgba(221, 221, 221, 0.9);
+            background:#FAFAF0;
             padding: 10px 0;
             margin-bottom: 0;
             padding-bottom: 1rem;
           }
 
           .step > ul, .step > h2, .step > h3 {
-            background: rgba(221, 221, 221, 0.9);
+            background:#FAFAF0;
           }
 
           h1 { 
@@ -133,20 +134,10 @@
         </div>
       </div>
 
-      <!-- <div class="row mt-5">
-          <div class="col-sm-12">
-              <h1>At Least 159 People Have Departed This Life While Taking Selfies</h1>
-              <center><h5>(Or were seriously injured in the act.)</h5>
-                <br>Mouse over the dots, yo!</center>
-            </div>
-              
-        <div class="col-lg-6">
-          <div id="chart-2"></div>
-        </div>
-        <div class="offset-1 col-lg-4"> -->
+
             <div class="row mt-5 mb-5">
                 <div class="col-sm-12">
-                    <h2>Every selfie death ever recorded... on Wikipedia</h2>
+                    <h2>Every selfie casualty documented on Wikipedia</h2>
                 </div>
                 <div class="col-lg-8 sticky">
                   <div id="force-chart"></div>
@@ -159,10 +150,16 @@
               </div> -->
               
           <div class="step" id="start">
-          <p>159 in total.</p>
+          <p>160 selfie-related deaths and serious injuries have been logged by Wikipedia editors.</p>
           </div>
           <div class="step" id="split-death-type">
-            <p>Most were hurt via falls.</p>
+            <p>Falls account for over a third of selfie deaths.</p>
+          </div>
+          <div class="step" id="highlight-parks">
+            <p>Multiple fatal falls have occurred in National Parks.</p>
+          </div>
+          <div class="step" id="highlight-fire">
+            <p>Nearly 50 people were injured while snapping selfies <a href="https://www.indiatoday.in/india/story/chennai-bakery-fire-onlookers-injured-selfie-craze-1024652-2017-07-17">too close to a burning bakery</a> in Chennai.</p>
           </div>
           <div class="step" id="back-together">
               <p>Hover to read a detailed description of each incident.</p>
@@ -172,14 +169,14 @@
 
       <div class="row mt-5 mb-5">
           <div class="col-sm-12">
-              <h2>How Selfie-Takers Have Perished Over Time</h2>
+              <h2>How selfie-takers have perished over time</h2>
           </div>
           <div class="col-lg-8 sticky">
             <div id="bar-chart"></div>
           </div>
           <div class="col-lg-4">
             <div class="step" id="blank">
-              <p><strong>Scroll please!!!</strong></p>
+              <p><strong>TKTK</strong></p>
            </div>
            <div class="step" id="eleven">
               <p>2011</p>
@@ -216,7 +213,7 @@
 
       <div class="row mt-5">
         <div class="col-sm-12">
-          <h2>Where Selfie Deaths Happen The Most</h2>
+          <h2>Where selfie deaths happen the mosts</h2>
         </div>
         <div class="col-lg-12 sticky order-lg-2">
           <div id="choropleth-chart"></div>
@@ -229,10 +226,10 @@
 
     </div>
 
-    <script src="/bar-chart.c938a154.js"></script>
-    <script src="/force-chart.359d85a3.js"></script>
-    <script src="/choropleth-chart.47d22e5c.js"></script>
-    <script src="/scrollytelling.cab071ec.js" b=""></script>
+    <script src="/bar-chart.ba11fe94.js"></script>
+    <script src="/force-chart.c7326a4d.js"></script>
+    <script src="/choropleth-chart.82799867.js"></script>
+    <script src="/scrollytelling.0c2542cf.js" b=""></script>
 
    </div></body>
 </html>

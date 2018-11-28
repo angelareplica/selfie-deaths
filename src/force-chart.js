@@ -110,7 +110,7 @@ var simulation = d3
   )
   .force('charge', d3.forceManyBody().strength(-3))
 
-d3.csv(require('./data/selfiedeaths.csv'))
+d3.csv(require('./data/selfiedeaths_update.csv'))
   .then(ready)
   .catch(err => console.log('Failed on', err))
 function ready(datapoints) {
@@ -123,6 +123,17 @@ function ready(datapoints) {
     .attr('r', d => radiusScale(d.Casualties))
     .attr('fill', d => colorScale(d.Type))
     .attr('opacity', 0.7)
+    .classed('fire-death', function(d) {
+      // console.log(d)
+      if (d.Type === 'Fire') {
+        return true
+      }
+    })
+    .classed('parks-death', d => {
+      if (d.Description.indexOf('National Park') !== -1) {
+        return true
+      }
+    })
     .on('mousemove', function(d) {
       div
         .html(
@@ -224,7 +235,10 @@ function ready(datapoints) {
       .selectAll('.label-death-type')
       .transition()
       .style('visibility', 'hidden')
-
+    svg
+      .selectAll('.death')
+      // .data(datapoints)
+      .attr('fill', d => colorScale(d.Type))
     simulation
       .force('x', forceXCombine)
       .force('y', forceYCombine)
@@ -238,6 +252,54 @@ function ready(datapoints) {
       .transition()
       .style('visibility', 'visible')
 
+    svg
+      .selectAll('.death')
+      .transition()
+      .attr('fill', function(d) {
+        return colorScale(d.Type)
+      })
+      
+    simulation
+      .force('x', forceXSeparate)
+      .force('y', forceYSeparate)
+      .alphaTarget(0.7)
+      .restart()
+  })
+
+  d3.select('#highlight-parks').on('stepin', () => {
+    svg
+      .selectAll('.parks-death')
+      .transition()
+      .attr('fill', '#3596B5')
+    svg
+      .selectAll('.label-death-type')
+      .transition()
+      .style('visibility', 'visible')
+
+    simulation
+      .force('x', forceXSeparate)
+      .force('y', forceYSeparate)
+      .alphaTarget(0.7)
+      .restart()
+  })
+
+  d3.select('#highlight-fire').on('stepin', () => {
+    // console.log('Got stepped in')
+    svg
+      .selectAll('.death')
+      .transition()
+      .attr('fill', function(d) {
+        return colorScale(d.Type)
+      })
+    svg
+      .select('.fire-death')
+      .transition()
+      .style('fill', '#3596B5')
+
+    svg
+      .selectAll('.label-death-type')
+      .transition()
+      .style('visibility', 'visible')
     simulation
       .force('x', forceXSeparate)
       .force('y', forceYSeparate)
@@ -258,7 +320,14 @@ function ready(datapoints) {
       .restart()
 
     svg
+      .select('.fire-death')
+      .transition()
+      .style('fill', d => colorScale(d.Type))
+
+    svg
       .selectAll('.death')
+      // .data(datapoints)
+      .attr('fill', d => colorScale(d.Type))
       .on('mousemove', function(d) {
         div
           .html(d.Description)

@@ -27575,10 +27575,10 @@ Object.keys(_d3Zoom).forEach(function (key) {
     }
   });
 });
-},{"./dist/package":"../node_modules/d3/dist/package.js","d3-array":"../node_modules/d3-array/src/index.js","d3-axis":"../node_modules/d3-axis/src/index.js","d3-brush":"../node_modules/d3-brush/src/index.js","d3-chord":"../node_modules/d3-chord/src/index.js","d3-collection":"../node_modules/d3-collection/src/index.js","d3-color":"../node_modules/d3-color/src/index.js","d3-contour":"../node_modules/d3-contour/src/index.js","d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-dsv":"../node_modules/d3-dsv/src/index.js","d3-ease":"../node_modules/d3-ease/src/index.js","d3-fetch":"../node_modules/d3-fetch/src/index.js","d3-force":"../node_modules/d3-force/src/index.js","d3-format":"../node_modules/d3-format/src/index.js","d3-geo":"../node_modules/d3-geo/src/index.js","d3-hierarchy":"../node_modules/d3-hierarchy/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-path":"../node_modules/d3-path/src/index.js","d3-polygon":"../node_modules/d3-polygon/src/index.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js","d3-random":"../node_modules/d3-random/src/index.js","d3-scale":"../node_modules/d3-scale/src/index.js","d3-scale-chromatic":"../node_modules/d3-scale-chromatic/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-shape":"../node_modules/d3-shape/src/index.js","d3-time":"../node_modules/d3-time/src/index.js","d3-time-format":"../node_modules/d3-time-format/src/index.js","d3-timer":"../node_modules/d3-timer/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","d3-voronoi":"../node_modules/d3-voronoi/src/index.js","d3-zoom":"../node_modules/d3-zoom/src/index.js"}],"data/selfiedeaths.csv":[function(require,module,exports) {
+},{"./dist/package":"../node_modules/d3/dist/package.js","d3-array":"../node_modules/d3-array/src/index.js","d3-axis":"../node_modules/d3-axis/src/index.js","d3-brush":"../node_modules/d3-brush/src/index.js","d3-chord":"../node_modules/d3-chord/src/index.js","d3-collection":"../node_modules/d3-collection/src/index.js","d3-color":"../node_modules/d3-color/src/index.js","d3-contour":"../node_modules/d3-contour/src/index.js","d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-dsv":"../node_modules/d3-dsv/src/index.js","d3-ease":"../node_modules/d3-ease/src/index.js","d3-fetch":"../node_modules/d3-fetch/src/index.js","d3-force":"../node_modules/d3-force/src/index.js","d3-format":"../node_modules/d3-format/src/index.js","d3-geo":"../node_modules/d3-geo/src/index.js","d3-hierarchy":"../node_modules/d3-hierarchy/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-path":"../node_modules/d3-path/src/index.js","d3-polygon":"../node_modules/d3-polygon/src/index.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js","d3-random":"../node_modules/d3-random/src/index.js","d3-scale":"../node_modules/d3-scale/src/index.js","d3-scale-chromatic":"../node_modules/d3-scale-chromatic/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-shape":"../node_modules/d3-shape/src/index.js","d3-time":"../node_modules/d3-time/src/index.js","d3-time-format":"../node_modules/d3-time-format/src/index.js","d3-timer":"../node_modules/d3-timer/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","d3-voronoi":"../node_modules/d3-voronoi/src/index.js","d3-zoom":"../node_modules/d3-zoom/src/index.js"}],"data/selfiedeaths_update.csv":[function(require,module,exports) {
 "use strict";
 
-module.exports = "/selfiedeaths.2ac6a4ac.csv";
+module.exports = "/selfiedeaths_update.81e77a2b.csv";
 },{}],"force-chart.js":[function(require,module,exports) {
 'use strict';
 
@@ -27658,7 +27658,7 @@ d3.forceCollide(function (d) {
   // add 1 to push the circles out apart a bit more
 })).force('charge', d3.forceManyBody().strength(-3));
 
-d3.csv(require('./data/selfiedeaths.csv')).then(ready).catch(function (err) {
+d3.csv(require('./data/selfiedeaths_update.csv')).then(ready).catch(function (err) {
   return console.log('Failed on', err);
 });
 function ready(datapoints) {
@@ -27666,7 +27666,16 @@ function ready(datapoints) {
     return radiusScale(d.Casualties);
   }).attr('fill', function (d) {
     return colorScale(d.Type);
-  }).attr('opacity', 0.7).on('mousemove', function (d) {
+  }).attr('opacity', 0.7).classed('fire-death', function (d) {
+    // console.log(d)
+    if (d.Type === 'Fire') {
+      return true;
+    }
+  }).classed('parks-death', function (d) {
+    if (d.Description.indexOf('National Park') !== -1) {
+      return true;
+    }
+  }).on('mousemove', function (d) {
     div.html('Number of casualties: '.bold() + d.Casualties + '<br>' + 'Type of incident: '.bold() + d.Type).style('left', d3.event.pageX + 'px')
     // .style('right', d3.event.pageX + 'px')
     .style('top', d3.event.pageY - 28 + 'px').style('display', 'block');
@@ -27730,13 +27739,39 @@ function ready(datapoints) {
 
   d3.select('#start').on('stepin', function () {
     svg.selectAll('.label-death-type').transition().style('visibility', 'hidden');
-
+    svg.selectAll('.death')
+    // .data(datapoints)
+    .attr('fill', function (d) {
+      return colorScale(d.Type);
+    });
     simulation.force('x', forceXCombine).force('y', forceYCombine).alphaTarget(0.01).restart();
   });
 
   d3.select('#split-death-type').on('stepin', function () {
     svg.selectAll('.label-death-type').transition().style('visibility', 'visible');
 
+    svg.selectAll('.death').transition().attr('fill', function (d) {
+      return colorScale(d.Type);
+    });
+
+    simulation.force('x', forceXSeparate).force('y', forceYSeparate).alphaTarget(0.7).restart();
+  });
+
+  d3.select('#highlight-parks').on('stepin', function () {
+    svg.selectAll('.parks-death').transition().attr('fill', '#3596B5');
+    svg.selectAll('.label-death-type').transition().style('visibility', 'visible');
+
+    simulation.force('x', forceXSeparate).force('y', forceYSeparate).alphaTarget(0.7).restart();
+  });
+
+  d3.select('#highlight-fire').on('stepin', function () {
+    // console.log('Got stepped in')
+    svg.selectAll('.death').transition().attr('fill', function (d) {
+      return colorScale(d.Type);
+    });
+    svg.select('.fire-death').transition().style('fill', '#3596B5');
+
+    svg.selectAll('.label-death-type').transition().style('visibility', 'visible');
     simulation.force('x', forceXSeparate).force('y', forceYSeparate).alphaTarget(0.7).restart();
   });
 
@@ -27745,7 +27780,15 @@ function ready(datapoints) {
 
     simulation.force('x', forceXCombine).force('y', forceYCombine).alphaTarget(0.01).restart();
 
-    svg.selectAll('.death').on('mousemove', function (d) {
+    svg.select('.fire-death').transition().style('fill', function (d) {
+      return colorScale(d.Type);
+    });
+
+    svg.selectAll('.death')
+    // .data(datapoints)
+    .attr('fill', function (d) {
+      return colorScale(d.Type);
+    }).on('mousemove', function (d) {
       div.html(d.Description).style('left', d3.event.pageX + 'px')
       // .style('right', d3.event.pageX + 'px')
       .style('top', d3.event.pageY - 28 + 'px').style('display', 'block');
@@ -27773,7 +27816,7 @@ function ready(datapoints) {
     });
   }
 }
-},{"d3":"../node_modules/d3/index.js","./data/selfiedeaths.csv":"data/selfiedeaths.csv"}],"../../../../.npm-global/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"d3":"../node_modules/d3/index.js","./data/selfiedeaths_update.csv":"data/selfiedeaths_update.csv"}],"../../../../.npm-global/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -27802,7 +27845,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62796' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50278' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
